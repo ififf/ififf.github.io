@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Blank">
+    
+    <title>
+        
+            Java 并发 - 知识专题 |
+        
+        Blankの博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.jfif">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo.jfif","favicon":"/images/logo.jfif","avatar":"/images/logo.jfif","font_size":"18px","font_family":"STKaiti","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg3.jpg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Java工程师"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.jfif">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Blankの博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">Java 并发 - 知识专题</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/logo.jfif">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Blank</span>
+                            
+                                <span class="author-label">Lv3</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2021-01-25 11:40:36</span>
+        <span class="mobile">2021-01-25 11:40</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-02-19 06:48:30</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/">Java多线程</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Java%E9%AB%98%E5%B9%B6%E5%8F%91/">Java高并发</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.4k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>5 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h1 id="java并发知识专题"><a href="#java并发知识专题" class="headerlink" title="java并发知识专题"></a>java并发知识专题</h1><hr>
+<p>努力的意义，就是，在以后的日子里，放眼望去全是自己喜欢的人和事！</p>
+<p>整个系列文章为<strong>Java并发专题</strong>，一是自己的兴趣，二是，这部分在实际理解上很有难度，另外在面试过程中也是经常被问到。所以在学习过程中，记录了Java并发相关的基础知识，一是自己对知识能够建立体系，同时也希望有幸能够对其他人有用。</p>
+<p>关于Java并发专题：</p>
+<p>（1）包含了并发的基础知识，每个标题链接到一篇具体的文章；</p>
+<p>（2）包含了秋招面试的问题，弄懂了会让你有所收获（也祝大家都能找到心仪的工作 😃 ）</p>
+<p>（3）在阅读过程中，如果有所帮助，麻烦点赞，算是对我码字的这份坚持的鼓励。</p>
+<ol>
+<li><p><strong>基础知识</strong></p>
+<p>1.1 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5ae6c3ef6fb9a07ab508ac85" >并发编程的优缺点<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）为什么要用到并发？（优点）；（2）并发编程的缺点；（3）易混淆的概念</p>
+<p>1.2 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5ae6cf7a518825670960fcc2" >线程的状态和基本操作<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）如何新建线程；（2）线程状态的转换；（3）线程的基本操作；（4）守护线程Daemon；</p>
+</li>
+<li><p><strong>并发理论（JMM）</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5ae6d309518825673123fd0e" >java内存模型以及happens-before规则<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）JMM内存结构；（2）重排序；（3）happens-before规则</p>
+</li>
+<li><p><strong>并发关键字</strong></p>
+<p>3.1 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5ae6dc04f265da0ba351d3ff" >让你彻底理解Synchronized<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）如何使用synchronized；（2）monitor机制；（3）synchronized的happens-before关系；（4）synchronized的内存语义；（5）锁优化；（6）锁升级策略</p>
+<p>3.2 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5ae9b41b518825670b33e6c4" >让你彻底理解volatile<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）实现原理；（2）happens-before的关系推导；（3）内存语义；（4）内存语义的实现</p>
+<p>3.3 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5ae9b82c6fb9a07ac3634941" >你以为你真的了解final吗？<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）如何使用；（2）final的重排序规则；（3）final实现原理；（4）final引用不能从构造函数中“溢出”（this逃逸）</p>
+<p>3.4 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeb022cf265da0b722af7b8" >三大性质总结：原子性，有序性，可见性<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）原子性：synchronized；（2）可见性：synchronized，volatile；（3）有序性：synchronized，volatile</p>
+</li>
+<li><p><strong>Lock体系</strong></p>
+<p>4.1 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeb055b6fb9a07abf725c8c" >初识Lock与AbstractQueuedSynchronizer(AQS)<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）Lock和synchronized的比较；（2）AQS设计意图；（3）如何使用AQS实现自定义同步组件；（4）可重写的方法；（5）AQS提供的模板方法；</p>
+<p>4.2 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeb07ab6fb9a07ac36350c8" >深入理解AbstractQueuedSynchronizer(AQS)<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）AQS同步队列的数据结构；（2）独占式锁；（3）共享式锁；</p>
+<p>4.3 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeb0a8b518825673a2066f0" >再一次理解ReentrantLock<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）重入锁的实现原理；（2）公平锁的实现原理；（3）非公平锁的实现原理；（4）公平锁和非公平锁的比较</p>
+<p>4.4 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeb0e016fb9a07ab7740d90" >深入理解读写锁ReentrantReadWriteLock<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）如何表示读写状态；（2）WriteLock的获取和释放；（3）ReadLock的获取和释放；（4）锁降级策略；（5）生成Condition等待队列；（6）应用场景</p>
+<p>4.5 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeea5e951882506a36c67f0" >详解Condition的await和signal等待&#x2F;通知机制<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）与Object的wait&#x2F;notify机制相比具有的特性；（2）与Object的wait&#x2F;notify相对应的方法；（3）底层数据结构；（4）await实现原理；（5）signal&#x2F;signalAll实现原理；（6）await和signal&#x2F;signalAll的结合使用；</p>
+<p>4.6 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeed27f51882567336aa0fa" >LockSupport工具<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）主要功能；（2）与synchronized阻塞唤醒相比具有的特色；</p>
+</li>
+<li><p><strong>并发容器</strong></p>
+<p>5.1 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeeaba8f265da0b9d781d16" >并发容器之ConcurrentHashMap(JDK 1.8版本)<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）关键属性；（2）重要内部类；（3）涉及到的CAS操作；（4）构造方法；（5）put执行流程；（6）get执行流程；（7）扩容机制；（8）用于统计size的方法的执行流程；（9）1.8版本的ConcurrentHashMap与之前版本的比较</p>
+<p>5.2 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeeb55f5188256715478c21" >并发容器之CopyOnWriteArrayList<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）实现原理；（2）COW和ReentrantReadWriteLock的区别；（3）应用场景；（4）为什么具有弱一致性；（5）COW的缺点；</p>
+<p>5.3 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeeae756fb9a07ab11112af" >并发容器之ConcurrentLinkedQueue<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）实现原理；（2）数据结构；（3）核心方法；（4）HOPS延迟更新的设计意图</p>
+<p>5.4 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeeb22e6fb9a07aa213404a" >并发容器之ThreadLocal<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）实现原理；（2）set方法原理；（3）get方法原理；（4）remove方法原理；（5）ThreadLocalMap</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.jianshu.com/p/dde92ec37bd1" >一篇文章，从源码深入详解ThreadLocal内存泄漏问题<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）ThreadLocal内存泄漏原理；（2）ThreadLocal的最佳实践；（3）应用场景</p>
+<p>5.5 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeebd02518825672f19c546" >并发容器之BlockingQueue<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）BlockingQueue的基本操作；（2）常用的BlockingQueue；</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeebdb26fb9a07aa83ea17e" >并发容器之ArrayBlockingQueue和LinkedBlockingQueue实现原理详解<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+<li><p><strong>线程池（Executor体系）</strong></p>
+<p>6.1 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeec0106fb9a07ab379574f" >线程池实现原理<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）为什么要用到线程池？（2）执行流程；（3）构造器各个参数的意义；（4）如何关闭线程池；（5）如何配置线程池；</p>
+<p>6.2 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeec106518825670a10328a" >线程池之ScheduledThreadPoolExecutor<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）类结构；（2）常用方法；（3）ScheduledFutureTask；（3）DelayedWorkQueue;</p>
+<p>6.3 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeec249f265da0b886d5101" >FutureTask基本操作总结<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）FutureTask的几种状态；（2）get方法；（3）cancel方法；（4）应用场景；（5）实现 Runnable接口</p>
+</li>
+<li><p><strong>原子操作类</strong></p>
+<p>7.1 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeec351518825670a103292" >Java中atomic包中的原子操作类总结<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）实现原理；（2）原子更新基本类型；（3）原子更新数组类型；（4）原子更新引用类型；（5）原子更新字段类型</p>
+</li>
+<li><p><strong>并发工具</strong></p>
+<p>8.1 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeec3ebf265da0ba76fa327" >大白话说java并发工具类-CountDownLatch，CyclicBarrier<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）倒计时器CountDownLatch；（2）循环栅栏CyclicBarrier；（3）CountDownLatch与CyclicBarrier的比较</p>
+<p>8.2 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeec49b518825673614d183" >大白话说java并发工具类-Semaphore，Exchanger<i class="fas fa-external-link-alt"></i></a></p>
+<p>知识点：（1）资源访问控制Semaphore；（2）数据交换Exchanger</p>
+</li>
+<li><p><strong>并发实践</strong></p>
+<p>9.1 <a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/5aeec675f265da0b7c072c56" >一篇文章，让你彻底弄懂生产者–消费者问题<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+</ol>
+<blockquote>
+<p>JAVA并发知识图谱</p>
+</blockquote>
+<p><strong>可移动到新窗口，放大查看效果更好或者查看原图</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.processon.com/view/5ab5a979e4b0a248b0e026b3?fromnew=1" >知识图谱原图链接，如果有用，可克隆给自己使用<i class="fas fa-external-link-alt"></i></a></p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">Java 并发 - 知识专题</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Blank</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2021-01-25 11:40:36</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2021/01/25/java并发知识专题/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Java%E9%AB%98%E5%B9%B6%E5%8F%91/">#Java高并发</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2021/01/25/MQTT%E5%8D%8F%E8%AE%AE%E4%B8%AD%E6%96%87%E7%89%88/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">MQTT协议中文版</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2021/01/25/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">微信小程序开发资源汇总</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java%E5%B9%B6%E5%8F%91%E7%9F%A5%E8%AF%86%E4%B8%93%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">java并发知识专题</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2021</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Blank</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

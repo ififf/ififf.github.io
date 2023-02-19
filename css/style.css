@@ -489,6 +489,7 @@ button {
   transition-property: color, background, box-shadow, border-color, transform;
 }
 .btn:hover {
+  transform: scaleX(1.06) scaleY(1.06);
   box-shadow: 2px 2px 8px var(--shadow-hover-color);
 }
 .btn:hover {
@@ -1969,6 +1970,77 @@ pre .javascript .function {
 .post-toc-wrap .post-toc .nav .active-current > a .nav-text {
   color: var(--primary-color);
 }
+.valine-container #vcomments .vwrap {
+  border: 0.1rem solid var(--text-color-4);
+}
+.valine-container #vcomments .vwrap .vheader .vinput {
+  color: var(--text-color-3);
+  border-color: var(--text-color-4);
+}
+.valine-container #vcomments .vwrap .vheader .vinput:focus {
+  border-bottom: 0.1rem dashed var(--primary-color) !important;
+}
+.valine-container #vcomments .vwrap .vedit .veditor {
+  color: var(--text-color-3);
+}
+.valine-container #vcomments .vwrap .vedit .vctrl .vicon {
+  fill: var(--text-color-3);
+}
+.valine-container #vcomments .vwrap .vedit .vctrl .vicon.actived {
+  fill: var(--primary-color);
+}
+.valine-container #vcomments .vwrap button.vsubmit {
+  color: var(--text-color-3) !important;
+  background: transparent !important;
+  border: 0.1rem solid var(--text-color-3) !important;
+}
+.valine-container #vcomments .vwrap button.vsubmit:hover {
+  color: var(--primary-color) !important;
+  border: 0.1rem solid var(--primary-color) !important;
+}
+.valine-container #vcomments .vcount {
+  color: var(--text-color-3);
+}
+.valine-container #vcomments .vcount .vnum {
+  color: var(--text-color-2);
+}
+.valine-container #vcomments .vcard .vnick .author {
+  margin-left: 0.15rem;
+  padding: 0.15rem;
+  color: #fff;
+  font-weight: 450;
+  font-size: 0.9rem;
+  background: -webkit-linear-gradient(45deg, #e3565e, #ee854b, #f6c258, #90c68a, #5fb3b3, #69c, #c594c5);
+  background: linear-gradient(45deg, #e3565e, #ee854b, #f6c258, #90c68a, #5fb3b3, #69c, #c594c5);
+  border-radius: 0.15rem;
+}
+.valine-container #vcomments .vcard .vhead .vnick {
+  color: var(--primary-color);
+}
+.valine-container #vcomments .vcard .vhead .vsys {
+  color: var(--text-color-3);
+  background: var(--background-color-2) !important;
+}
+.valine-container #vcomments .vcard .vcontent P {
+  color: var(--text-color-3);
+}
+.valine-container #vcomments .vcard .vcontent P code {
+  color: var(--code-foreground);
+  background: var(--code-background);
+}
+.valine-container #vcomments .vcard .vh {
+  border-bottom-color: var(--border-color);
+}
+.valine-container #vcomments .vcard .vquote {
+  border-left-color: var(--border-color);
+}
+.valine-container #vcomments .vcopy {
+  color: var(--text-color-4);
+}
+.valine-container #vcomments .vpage .vmore {
+  color: var(--text-color-2);
+  border: 0.1rem solid var(--border-color);
+}
 .comments-container {
   display: inline-block;
   width: 100%;
@@ -2357,6 +2429,7 @@ pre .javascript .function {
   margin-bottom: 0;
 }
 .post-tools-container .tools-list li:hover {
+  transform: scaleX(1.06) scaleY(1.06);
   box-shadow: 2px 2px 8px var(--shadow-hover-color);
 }
 .post-tools-container .tools-list li.toggle-show-toc {
@@ -2719,17 +2792,6 @@ pre .javascript .function {
   height: 100vh;
   overflow: hidden;
   background: url("/images/bg3.jpg") center center/cover no-repeat;
-  background-position-y: 70px;
-}
-@media (max-width: 800px) {
-  .first-screen-container {
-    background-position-y: 63px;
-  }
-}
-@media (max-width: 500px) {
-  .first-screen-container {
-    background-position-y: 56px;
-  }
 }
 .first-screen-container .content {
   position: relative;
@@ -3011,6 +3073,7 @@ pre .javascript .function {
   }
 }
 .home-content-container .home-article-list .home-article-item:hover {
+  transform: scaleX(1.015) scaleY(1.015);
   box-shadow: 2px 2px 8px var(--shadow-hover-color);
 }
 @media (max-width: 800px) {
@@ -3364,6 +3427,7 @@ pre .javascript .function {
 }
 .post-page-container .article-content-container .article-nav .article-prev:hover,
 .post-page-container .article-content-container .article-nav .article-next:hover {
+  transform: scaleX(1.03) scaleY(1.03);
   box-shadow: 2px 2px 8px var(--shadow-hover-color);
 }
 @media (max-width: 800px) {

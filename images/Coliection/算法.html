@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Blank">
+    
+    <title>
+        
+        Blankの博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo.jpg","favicon":"/images/logo.jpg","avatar":"/images/logo.jpg","font_size":"18px","font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":true},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"5ober","github_admins":"5ober","repository":"hexo-blog-comments","client_id":"40d85a7b36388c0b5094","client_secret":"6c7eab92d24b6f1bdfbcdf077c73e86841b35d5e","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["Trainee","Engineer","Java工程师"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Blankの博客" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.jpg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Blankの博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    
+<div class="fade-in-down-animation">
+    <div class="page-template-container">
+        
+        
+        <div class="page-template-content keep-markdown-body">
+            
+                <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">title: java资源大全2</span><br><span class="line">date: 2020-04-19</span><br><span class="line">tags:</span><br><span class="line">- &quot;资源&quot;</span><br><span class="line">categories:</span><br><span class="line">- &quot;java&quot;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>操作系统</th>
+<th>网络</th>
+<th>面向对象</th>
+<th>数据库</th>
+<th>Java</th>
+<th>系统设计</th>
+<th>工具</th>
+<th>编码实践</th>
+<th>后记</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/tree/master/docs/views/star/awesome-java2#pencil2-%E7%AE%97%E6%B3%95"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/pencil2-5cff1ebed4afa7217548360ec8e02fc8.png"
+                      alt=":pencil2:"
+                ></a></td>
+<td><a target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/tree/master/docs/views/star/awesome-java2#computer-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/computer-2853e9e97cdb8823d20aebadb1dc7d12.png"
+                      alt=":computer:"
+                ></a></td>
+<td><a target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/tree/master/docs/views/star/awesome-java2#cloud-%E7%BD%91%E7%BB%9C"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/cloud-06f9bec4809466d0a67135e5cf6598e9.png"
+                      alt=":cloud:"
+                ></a></td>
+<td><a target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/tree/master/docs/views/star/awesome-java2#art-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/art-4973ecf8f6e8c4495c2e9a0531cb531a.png"
+                      alt=":art:"
+                ></a></td>
+<td><a target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/tree/master/docs/views/star/awesome-java2#floppy_disk-%E6%95%B0%E6%8D%AE%E5%BA%93"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/floppy_disk-5f780c8464fc24e2010c06fcf4265dfb.png"
+                      alt=":floppy_disk:"
+                ></a></td>
+<td><a target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/tree/master/docs/views/star/awesome-java2#coffee-java"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/coffee-8dc2f1644a52b4c55d9011bcc33de369.png"
+                      alt=":coffee:"
+                ></a></td>
+<td><a target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/tree/master/docs/views/star/awesome-java2#bulb-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/bulb-1a3c24fbc87130bd6f279c148d19dab6.png"
+                      alt=":bulb:"
+                ></a></td>
+<td><a target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/tree/master/docs/views/star/awesome-java2#wrench-%E5%B7%A5%E5%85%B7"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/wrench-959c46ae2af5078546d7950457687c75.png"
+                      alt=":wrench:"
+                ></a></td>
+<td><a target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/tree/master/docs/views/star/awesome-java2#watermelon-%E7%BC%96%E7%A0%81%E5%AE%9E%E8%B7%B5"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/watermelon-7f510ee42059fda4dcc665d9d6b92b61.png"
+                      alt=":watermelon:"
+                ></a></td>
+<td><a target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/tree/master/docs/views/star/awesome-java2#memo-%E5%90%8E%E8%AE%B0"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/memo-93d80026f8b51ed3cb4acac28309110e.png"
+                      alt=":memo:"
+                ></a></td>
+</tr>
+</tbody></table>
+<h2 id="算法"><a href="#算法" class="headerlink" title=" 算法"></a><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/pencil2-5cff1ebed4afa7217548360ec8e02fc8.png"
+                      alt=":pencil2:"
+                > 算法</h2><ul>
+<li>[剑指 Offer 题解](<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/%E5%89%91%E6%8C%87" >https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/剑指<i class="fas fa-external-link-alt"></i></a> Offer 题解 - 目录.md)</li>
+<li>[Leetcode 题解](<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Leetcode" >https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Leetcode<i class="fas fa-external-link-alt"></i></a> 题解 - 目录.md)</li>
+<li>[算法](<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/%E7%AE%97%E6%B3%95" >https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/算法<i class="fas fa-external-link-alt"></i></a> - 目录.md)</li>
+<li><a class="link"   href="https://gitee.com/link?target=https://www.nowcoder.com/contestRoom?from=cyc_github" >笔试面试题库<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<h2 id="操作系统"><a href="#操作系统" class="headerlink" title=" 操作系统"></a><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/computer-2853e9e97cdb8823d20aebadb1dc7d12.png"
+                      alt=":computer:"
+                > 操作系统</h2><ul>
+<li>[计算机操作系统](<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F" >https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/计算机操作系统<i class="fas fa-external-link-alt"></i></a> - 目录.md)</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Linux.md" >Linux<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<h2 id="网络"><a href="#网络" class="headerlink" title=" 网络"></a><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/cloud-06f9bec4809466d0a67135e5cf6598e9.png"
+                      alt=":cloud:"
+                > 网络</h2><ul>
+<li>[计算机网络](<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C" >https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/计算机网络<i class="fas fa-external-link-alt"></i></a> - 目录.md)</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/HTTP.md" >HTTP<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Socket.md" >Socket<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title=" 面向对象"></a><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/art-4973ecf8f6e8c4495c2e9a0531cb531a.png"
+                      alt=":art:"
+                > 面向对象</h2><ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3.md" >面向对象思想<i class="fas fa-external-link-alt"></i></a></li>
+<li>[设计模式](<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F" >https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/设计模式<i class="fas fa-external-link-alt"></i></a> - 目录.md)</li>
+</ul>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title=" 数据库"></a><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/floppy_disk-5f780c8464fc24e2010c06fcf4265dfb.png"
+                      alt=":floppy_disk:"
+                > 数据库</h2><ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86.md" >数据库系统原理<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/SQL.md" >SQL<i class="fas fa-external-link-alt"></i></a></li>
+<li>[Leetcode-Database 题解](<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Leetcode-Database" >https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Leetcode-Database<i class="fas fa-external-link-alt"></i></a> 题解.md)</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/MySQL.md" >MySQL<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Redis.md" >Redis<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<h2 id="Java"><a href="#Java" class="headerlink" title=" Java"></a><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/coffee-8dc2f1644a52b4c55d9011bcc33de369.png"
+                      alt=":coffee:"
+                > Java</h2><ul>
+<li>[Java 基础](<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Java" >https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Java<i class="fas fa-external-link-alt"></i></a> 基础.md)</li>
+<li>[Java 容器](<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Java" >https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Java<i class="fas fa-external-link-alt"></i></a> 容器.md)</li>
+<li>[Java 并发](<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Java" >https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Java<i class="fas fa-external-link-alt"></i></a> 并发.md)</li>
+<li>[Java 虚拟机](<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Java" >https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Java<i class="fas fa-external-link-alt"></i></a> 虚拟机.md)</li>
+<li>[Java I&#x2F;O](<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Java" >https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Java<i class="fas fa-external-link-alt"></i></a> IO.md)</li>
+</ul>
+<h2 id="系统设计"><a href="#系统设计" class="headerlink" title=" 系统设计"></a><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/bulb-1a3c24fbc87130bd6f279c148d19dab6.png"
+                      alt=":bulb:"
+                > 系统设计</h2><ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80.md" >系统设计基础<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/%E5%88%86%E5%B8%83%E5%BC%8F.md" >分布式<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/%E9%9B%86%E7%BE%A4.md" >集群<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/%E6%94%BB%E5%87%BB%E6%8A%80%E6%9C%AF.md" >攻击技术<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/%E7%BC%93%E5%AD%98.md" >缓存<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97.md" >消息队列<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<h2 id="工具"><a href="#工具" class="headerlink" title=" 工具"></a><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/wrench-959c46ae2af5078546d7950457687c75.png"
+                      alt=":wrench:"
+                > 工具</h2><ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Git.md" >Git<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/Docker.md" >Docker<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7.md" >构建工具<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.md" >正则表达式<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<h2 id="编码实践"><a href="#编码实践" class="headerlink" title=" 编码实践"></a><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/watermelon-7f510ee42059fda4dcc665d9d6b92b61.png"
+                      alt=":watermelon:"
+                > 编码实践</h2><ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/%E4%BB%A3%E7%A0%81%E5%8F%AF%E8%AF%BB%E6%80%A7.md" >代码可读性<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/notes/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E8%A7%84%E8%8C%83.md" >代码风格规范<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<h2 id="后记"><a href="#后记" class="headerlink" title=" 后记"></a><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cn-assets.gitee.com/assets/emoji/memo-93d80026f8b51ed3cb4acac28309110e.png"
+                      alt=":memo:"
+                > 后记</h2><p><a class="link"   href="https://gitee.com/link?target=https://www.nowcoder.com/discuss/137593?from=cyc_github" >我的面经 <i class="fas fa-external-link-alt"></i></a>&#x2F; <a class="link"   href="https://gitee.com/link?target=https://cyc2018.github.io" >我的简历 <i class="fas fa-external-link-alt"></i></a>&#x2F; <a class="link"   href="https://gitee.com/link?target=https://github.com/CyC2018/Markdown-Resume" >简历模版 <i class="fas fa-external-link-alt"></i></a>&#x2F; <a class="link"   href="https://gitee.com/link?target=https://github.com/CyC2018/Job-Recommend" >内推 <i class="fas fa-external-link-alt"></i></a>&#x2F; <a class="link"   href="https://gitee.com/link?target=https://xiaozhuanlan.com/CyC2018" >专栏 <i class="fas fa-external-link-alt"></i></a>&#x2F; <a class="link"   target="_blank" rel="noopener" href="https://gitee.com/pchaoo/blog/blob/master/docs/views/star/awesome-java2/assets/QQ2%E7%BE%A4.png" >QQ 群<i class="fas fa-external-link-alt"></i></a></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/githubio/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81-2.png"
+                      alt="img"
+                ></p>
+<h3 id="排版"><a href="#排版" class="headerlink" title="排版"></a>排版</h3><p>笔记内容按照 <a class="link"   href="https://gitee.com/link?target=https://github.com/sparanoid/chinese-copywriting-guidelines" >中文文案排版指北<i class="fas fa-external-link-alt"></i></a> 进行排版，以保证内容的可读性。</p>
+<p>不使用 <code>![]()</code> 这种方式来引用图片，而是用 <code>&lt;img&gt;</code> 标签。一方面是为了能够控制图片以合适的大小显示，另一方面是因为 <a class="link"   href="https://gitee.com/link?target=https://github.github.com/gfm/" >GFM<i class="fas fa-external-link-alt"></i></a> 不支持 <code>&lt;center&gt; ![]() &lt;/center&gt;</code> 这种方法让图片居中显示，只能使用 <code>&lt;div align=&quot;center&quot;&gt; &lt;img src=&quot;&quot;/&gt; &lt;/div&gt;</code> 达到居中的效果。</p>
+<p>在线排版工具：<a class="link"   href="https://gitee.com/link?target=https://github.com/CyC2018/Text-Typesetting" >Text-Typesetting<i class="fas fa-external-link-alt"></i></a>。</p>
+<h3 id="License"><a href="#License" class="headerlink" title="License"></a>License</h3><p>本仓库的内容不是将网上的资料随意拼凑而来，除了少部分引用书上和技术文档的原文（这部分内容都在末尾的参考链接中加了出处），其余都是我的原创。在您引用本仓库内容或者对内容进行修改演绎时，请署名并以相同方式共享，谢谢。</p>
+<p>转载文章请在开头明显处标明该页面地址，公众号等其它转载请联系 <a class="link"   href="mailto:zhengyc101@163.com" >zhengyc101@163.com<i class="fas fa-external-link-alt"></i></a>。</p>
+<p>Logo：<a class="link"   href="https://gitee.com/link?target=https://logomakr.com/" >logomakr<i class="fas fa-external-link-alt"></i></a></p>
+<p><a href="https://gitee.com/link?target=http://creativecommons.org/licenses/by-nc-sa/4.0/"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"
+                      alt="知识共享许可协议"
+                ></a></p>
+<h3 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h3><p>感谢以下人员对本仓库做出的贡献，当然不仅仅只有这些贡献者，这里就不一一列举了。如果你希望被添加到这个名单中，并且提交过 Issue 或者 PR，请与我联系。</p>
+<p><a href="https://gitee.com/link?target=https://github.com/linw7"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://avatars3.githubusercontent.com/u/21679154?s=400&v=4"
+                      alt="img"
+                > </a><a href="https://gitee.com/link?target=https://github.com/g10guang"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://avatars1.githubusercontent.com/u/18458140?s=400&v=4"
+                      alt="img"
+                > </a><a href="https://gitee.com/link?target=https://github.com/Sctwang"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://avatars3.githubusercontent.com/u/33345444?s=400&v=4"
+                      alt="img"
+                > </a><a href="https://gitee.com/link?target=https://github.com/ResolveWang"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://avatars1.githubusercontent.com/u/8018776?s=400&v=4"
+                      alt="img"
+                > </a><a href="https://gitee.com/link?target=https://github.com/crossoverJie"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://avatars1.githubusercontent.com/u/15684156?s=400&v=4"
+                      alt="img"
+                > </a><a href="https://gitee.com/link?target=https://github.com/jy03078584"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://avatars2.githubusercontent.com/u/7719370?s=400&v=4"
+                      alt="img"
+                > </a><a href="https://gitee.com/link?target=https://github.com/kwongtailau"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://avatars0.githubusercontent.com/u/22954582?s=400&v=4"
+                      alt="img"
+                > </a><a href="https://gitee.com/link?target=https://github.com/xiangflight"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://avatars2.githubusercontent.com/u/10072416?s=400&v=4"
+                      alt="img"
+                > </a><a href="https://gitee.com/link?target=https://github.com/mafulong"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://avatars1.githubusercontent.com/u/24795000?s=400&v=4"
+                      alt="img"
+                > </a><a href="https://gitee.com/link?target=https://github.com/yanglbme"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://avatars1.githubusercontent.com/u/21008209?s=400&v=4"
+                      alt="img"
+                > </a><a href="https://gitee.com/link?target=https://github.com/OOCZC"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://avatars1.githubusercontent.com/u/11623828?s=400&v=4"
+                      alt="img"
+                > </a><a href="https://gitee.com/link?target=https://github.com/5renyuebing"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://avatars1.githubusercontent.com/u/32872430?s=400&v=4"
+                      alt="img"
+                ></a></p>
+
+            
+        </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Blank</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://github.com/5ober">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

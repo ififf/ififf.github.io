@@ -219,7 +219,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-02-19 20:19:15</span>
+        <span class="pc">2023-02-20 14:52:38</span>
     </span>
     
     
@@ -273,9 +273,7 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h1 id="Collection-Stack-amp-Queue-源码解析"><a href="#Collection-Stack-amp-Queue-源码解析" class="headerlink" title="Collection - Stack &amp; Queue 源码解析"></a>Collection - Stack &amp; Queue 源码解析</h1><p>遣悲怀三首·其三 • 元稹</p>
-<p>惟将终夜常开眼，报答平生未展眉。</p>
-<blockquote>
+                <h1 id="Collection-Stack-amp-Queue-源码解析"><a href="#Collection-Stack-amp-Queue-源码解析" class="headerlink" title="Collection - Stack &amp; Queue 源码解析"></a>Collection - Stack &amp; Queue 源码解析</h1><blockquote>
 <p>本文主要对Collection - Stack &amp; Queue进行源码解析。</p>
 </blockquote>
 <ul>
@@ -294,11 +292,11 @@
 </ul>
 </li>
 </ul>
-<h2 id="JDK版本"><a href="#JDK版本" class="headerlink" title="#JDK版本"></a>#JDK版本</h2><blockquote>
+<h2 id="JDK版本"><a href="#JDK版本" class="headerlink" title="JDK版本"></a>JDK版本</h2><blockquote>
 <p>JDK 1.8.0_110</p>
 </blockquote>
-<h2 id="参考"><a href="#参考" class="headerlink" title="#参考"></a>#参考</h2><h2 id="Stack-amp-Queue概述"><a href="#Stack-amp-Queue概述" class="headerlink" title="#Stack &amp; Queue概述"></a>#Stack &amp; Queue概述</h2><p>Java里有一个叫做_Stack_的类，却没有叫做_Queue_的类(它是个接口名字)。当需要使用栈时，Java已不推荐使用_Stack_，而是推荐使用更高效的_ArrayDeque_；既然_Queue_只是一个接口，当需要使用队列时也就首选_ArrayDeque_了(次选是_LinkedList_)。</p>
-<h2 id="Queue"><a href="#Queue" class="headerlink" title="#Queue"></a>#Queue</h2><p><em>Queue_接口继承自Collection接口，除了最基本的Collection的方法之外，它还支持额外的_insertion</em>, _extraction_和_inspection_操作。这里有两组格式，共6个方法，一组是抛出异常的实现；另外一组是返回值的实现(没有则返回null)。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><h2 id="Stack-amp-Queue概述"><a href="#Stack-amp-Queue概述" class="headerlink" title="Stack &amp; Queue概述"></a>Stack &amp; Queue概述</h2><p>Java里有一个叫做_Stack_的类，却没有叫做_Queue_的类(它是个接口名字)。当需要使用栈时，Java已不推荐使用_Stack_，而是推荐使用更高效的_ArrayDeque_；既然_Queue_只是一个接口，当需要使用队列时也就首选_ArrayDeque_了(次选是_LinkedList_)。</p>
+<h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><p><em>Queue_接口继承自Collection接口，除了最基本的Collection的方法之外，它还支持额外的_insertion</em>, _extraction_和_inspection_操作。这里有两组格式，共6个方法，一组是抛出异常的实现；另外一组是返回值的实现(没有则返回null)。</p>
 <p>Throws exception</p>
 <p>Returns special value</p>
 <p>Insert</p>
@@ -310,7 +308,7 @@
 <p>Examine</p>
 <p>element()</p>
 <p>peek()</p>
-<h2 id="Deque"><a href="#Deque" class="headerlink" title="#Deque"></a>#Deque</h2><p><code>Deque</code>是”double ended queue”, 表示双向的队列，英文读作”deck”. Deque 继承自 Queue接口，除了支持Queue的方法之外，还支持<code>insert</code>, <code>remove</code>和<code>examine</code>操作，由于Deque是双向的，所以可以对队列的头和尾都进行操作，它同时也支持两组格式，一组是抛出异常的实现；另外一组是返回值的实现(没有则返回null)。共12个方法如下:</p>
+<h2 id="Deque"><a href="#Deque" class="headerlink" title="Deque"></a>Deque</h2><p><code>Deque</code>是”double ended queue”, 表示双向的队列，英文读作”deck”. Deque 继承自 Queue接口，除了支持Queue的方法之外，还支持<code>insert</code>, <code>remove</code>和<code>examine</code>操作，由于Deque是双向的，所以可以对队列的头和尾都进行操作，它同时也支持两组格式，一组是抛出异常的实现；另外一组是返回值的实现(没有则返回null)。共12个方法如下:</p>
 <p>||First Element - Head|| Last Element - Tail || |——–|——–|——–|——–| ||Throws exception| Special value| Throws exception| Special value | |Insert| addFirst(e)| offerFirst(e)| addLast(e)| offerLast(e) | |Remove| removeFirst()| pollFirst()| removeLast()| pollLast() | |Examine| getFirst()| peekFirst()| getLast()| peekLast() |</p>
 <p>当把<code>Deque</code>当做FIFO的<code>queue</code>来使用时，元素是从<code>deque</code>的尾部添加，从头部进行删除的； 所以<code>deque</code>的部分方法是和<code>queue</code>是等同的。具体如下:</p>
 <p>Queue Method</p>
@@ -384,7 +382,7 @@
                       alt="ArrayDeque_base.png"
                 ></p>
 <p>上图中我们看到，**<code>head</code>指向首端第一个有效元素，<code>tail</code>指向尾端第一个可以插入元素的空位**。因为是循环数组，所以<code>head</code>不一定总等于0，<code>tail</code>也不一定总是比<code>head</code>大。</p>
-<h2 id="方法剖析"><a href="#方法剖析" class="headerlink" title="#方法剖析"></a>#方法剖析</h2><h3 id="addFirst"><a href="#addFirst" class="headerlink" title="#addFirst()"></a>#addFirst()</h3><p><code>addFirst(E e)</code>的作用是在_Deque_的首端插入元素，也就是在<code>head</code>的前面插入元素，在空间足够且下标没有越界的情况下，只需要将<code>elements[--head] = e</code>即可。</p>
+<h2 id="方法剖析"><a href="#方法剖析" class="headerlink" title="方法剖析"></a>方法剖析</h2><h3 id="addFirst"><a href="#addFirst" class="headerlink" title="addFirst()"></a>addFirst()</h3><p><code>addFirst(E e)</code>的作用是在_Deque_的首端插入元素，也就是在<code>head</code>的前面插入元素，在空间足够且下标没有越界的情况下，只需要将<code>elements[--head] = e</code>即可。</p>
 <p><img  
                      lazyload
                      alt="image"
@@ -410,7 +408,7 @@
 
 
 
-<h3 id="addLast"><a href="#addLast" class="headerlink" title="#addLast()"></a>#addLast()</h3><p><code>addLast(E e)</code>的作用是在_Deque_的尾端插入元素，也就是在<code>tail</code>的位置插入元素，由于<code>tail</code>总是指向下一个可以插入的空位，因此只需要<code>elements[tail] = e;</code>即可。插入完成后再检查空间，如果空间已经用光，则调用<code>doubleCapacity()</code>进行扩容。</p>
+<h3 id="addLast"><a href="#addLast" class="headerlink" title="addLast()"></a>addLast()</h3><p><code>addLast(E e)</code>的作用是在_Deque_的尾端插入元素，也就是在<code>tail</code>的位置插入元素，由于<code>tail</code>总是指向下一个可以插入的空位，因此只需要<code>elements[tail] = e;</code>即可。插入完成后再检查空间，如果空间已经用光，则调用<code>doubleCapacity()</code>进行扩容。</p>
 <p><img  
                      lazyload
                      alt="image"
@@ -422,22 +420,22 @@
 
 
 <p>下标越界处理方式<code>addFirt()</code>中已经讲过，不再赘述。</p>
-<h3 id="pollFirst"><a href="#pollFirst" class="headerlink" title="#pollFirst()"></a>#pollFirst()</h3><p><code>pollFirst()</code>的作用是删除并返回_Deque_首端元素，也即是<code>head</code>位置处的元素。如果容器不空，只需要直接返回<code>elements[head]</code>即可，当然还需要处理下标的问题。由于<code>ArrayDeque</code>中不允许放入<code>null</code>，当<code>elements[head] == null</code>时，意味着容器为空。</p>
+<h3 id="pollFirst"><a href="#pollFirst" class="headerlink" title="pollFirst()"></a>pollFirst()</h3><p><code>pollFirst()</code>的作用是删除并返回_Deque_首端元素，也即是<code>head</code>位置处的元素。如果容器不空，只需要直接返回<code>elements[head]</code>即可，当然还需要处理下标的问题。由于<code>ArrayDeque</code>中不允许放入<code>null</code>，当<code>elements[head] == null</code>时，意味着容器为空。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> E <span class="title function_">pollFirst</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">E</span> <span class="variable">result</span> <span class="operator">=</span> elements[head];</span><br><span class="line">    <span class="keyword">if</span> (result == <span class="literal">null</span>)<span class="comment">//null值意味着deque为空</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    elements[h] = <span class="literal">null</span>;<span class="comment">//let GC work</span></span><br><span class="line">    head = (head + <span class="number">1</span>) &amp; (elements.length - <span class="number">1</span>);<span class="comment">//下标越界处理</span></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="pollLast"><a href="#pollLast" class="headerlink" title="#pollLast()"></a>#pollLast()</h3><p><code>pollLast()</code>的作用是删除并返回_Deque_尾端元素，也即是<code>tail</code>位置前面的那个元素。</p>
+<h3 id="pollLast"><a href="#pollLast" class="headerlink" title="pollLast()"></a>pollLast()</h3><p><code>pollLast()</code>的作用是删除并返回_Deque_尾端元素，也即是<code>tail</code>位置前面的那个元素。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> E <span class="title function_">pollLast</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> (tail - <span class="number">1</span>) &amp; (elements.length - <span class="number">1</span>);<span class="comment">//tail的上一个位置是最后一个元素</span></span><br><span class="line">    <span class="type">E</span> <span class="variable">result</span> <span class="operator">=</span> elements[t];</span><br><span class="line">    <span class="keyword">if</span> (result == <span class="literal">null</span>)<span class="comment">//null值意味着deque为空</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    elements[t] = <span class="literal">null</span>;<span class="comment">//let GC work</span></span><br><span class="line">    tail = t;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="peekFirst"><a href="#peekFirst" class="headerlink" title="#peekFirst()"></a>#peekFirst()</h3><p><code>peekFirst()</code>的作用是返回但不删除_Deque_首端元素，也即是<code>head</code>位置处的元素，直接返回<code>elements[head]</code>即可。</p>
+<h3 id="peekFirst"><a href="#peekFirst" class="headerlink" title="peekFirst()"></a>peekFirst()</h3><p><code>peekFirst()</code>的作用是返回但不删除_Deque_首端元素，也即是<code>head</code>位置处的元素，直接返回<code>elements[head]</code>即可。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> E <span class="title function_">peekFirst</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> elements[head]; <span class="comment">// elements[head] is null if deque empty</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="peekLast"><a href="#peekLast" class="headerlink" title="#peekLast()"></a>#peekLast()</h3><p><code>peekLast()</code>的作用是返回但不删除_Deque_尾端元素，也即是<code>tail</code>位置前面的那个元素。</p>
+<h3 id="peekLast"><a href="#peekLast" class="headerlink" title="peekLast()"></a>peekLast()</h3><p><code>peekLast()</code>的作用是返回但不删除_Deque_尾端元素，也即是<code>tail</code>位置前面的那个元素。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> E <span class="title function_">peekLast</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> elements[(tail - <span class="number">1</span>) &amp; (elements.length - <span class="number">1</span>)];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
             </div>
 
@@ -524,7 +522,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Collection-Stack-amp-Queue-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">Collection - Stack &amp; Queue 源码解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK%E7%89%88%E6%9C%AC"><span class="nav-number">1.1.</span> <span class="nav-text">#JDK版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.2.</span> <span class="nav-text">#参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stack-amp-Queue%E6%A6%82%E8%BF%B0"><span class="nav-number">1.3.</span> <span class="nav-text">#Stack &amp; Queue概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Queue"><span class="nav-number">1.4.</span> <span class="nav-text">#Queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deque"><span class="nav-number">1.5.</span> <span class="nav-text">#Deque</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%89%96%E6%9E%90"><span class="nav-number">1.6.</span> <span class="nav-text">#方法剖析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#addFirst"><span class="nav-number">1.6.1.</span> <span class="nav-text">#addFirst()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#addLast"><span class="nav-number">1.6.2.</span> <span class="nav-text">#addLast()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pollFirst"><span class="nav-number">1.6.3.</span> <span class="nav-text">#pollFirst()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pollLast"><span class="nav-number">1.6.4.</span> <span class="nav-text">#pollLast()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#peekFirst"><span class="nav-number">1.6.5.</span> <span class="nav-text">#peekFirst()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#peekLast"><span class="nav-number">1.6.6.</span> <span class="nav-text">#peekLast()</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Collection-Stack-amp-Queue-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">Collection - Stack &amp; Queue 源码解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK%E7%89%88%E6%9C%AC"><span class="nav-number">1.1.</span> <span class="nav-text">JDK版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.2.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stack-amp-Queue%E6%A6%82%E8%BF%B0"><span class="nav-number">1.3.</span> <span class="nav-text">Stack &amp; Queue概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Queue"><span class="nav-number">1.4.</span> <span class="nav-text">Queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deque"><span class="nav-number">1.5.</span> <span class="nav-text">Deque</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%89%96%E6%9E%90"><span class="nav-number">1.6.</span> <span class="nav-text">方法剖析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#addFirst"><span class="nav-number">1.6.1.</span> <span class="nav-text">addFirst()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#addLast"><span class="nav-number">1.6.2.</span> <span class="nav-text">addLast()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pollFirst"><span class="nav-number">1.6.3.</span> <span class="nav-text">pollFirst()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pollLast"><span class="nav-number">1.6.4.</span> <span class="nav-text">pollLast()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#peekFirst"><span class="nav-number">1.6.5.</span> <span class="nav-text">peekFirst()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#peekLast"><span class="nav-number">1.6.6.</span> <span class="nav-text">peekLast()</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 
@@ -564,6 +562,16 @@
             由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
         </div>
         
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://gitee.com/lucky0915">
+                
+                    本站由 <span class="tooltip" data-content="Gitee Pages"><img src="/images/deploy-provider/gitee.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
         
     </div>
 </footer>

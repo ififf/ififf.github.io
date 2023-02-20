@@ -219,7 +219,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-02-19 20:19:25</span>
+        <span class="pc">2023-02-20 14:54:00</span>
     </span>
     
     
@@ -250,7 +250,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>675 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>656 字</span>
         </span>
     
     
@@ -274,8 +274,6 @@
                 
 
                 <h1 id="Collection-类关系图"><a href="#Collection-类关系图" class="headerlink" title="Collection 类关系图"></a>Collection 类关系图</h1><hr>
-<p>江雪 • 柳宗元</p>
-<p>孤舟蓑笠翁，独钓寒江雪。</p>
 <blockquote>
 <p>本文主要介绍JDK中Collection和Map相关知识体系，后续章节将对主要对类进行源码解读。</p>
 </blockquote>
@@ -285,7 +283,7 @@
                      data-src="https://pchaoo.gitee.io/blog/img/java_collections_overview.png"
                       alt="img"
                 ></p>
-<h1 id="介绍"><a href="#介绍" class="headerlink" title="#介绍"></a>#介绍</h1><p>容器，就是可以容纳其他Java对象的对象。*Java Collections Framework(JCF)*为Java开发者提供了通用的容器，其始于JDK 1.2，优点是:</p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>容器，就是可以容纳其他Java对象的对象。*Java Collections Framework(JCF)*为Java开发者提供了通用的容器，其始于JDK 1.2，优点是:</p>
 <ul>
 <li>降低编程难度</li>
 <li>提高程序性能</li>
@@ -295,21 +293,21 @@
 <li>增加程序的重用性</li>
 </ul>
 <p>Java容器里只能放对象，对于基本类型(int, long, float, double等)，需要将其包装成对象类型后(Integer, Long, Float, Double等)才能放到容器里。很多时候拆包装和解包装能够自动完成。这虽然会导致额外的性能和空间开销，但简化了设计和编程。</p>
-<h1 id="Collection"><a href="#Collection" class="headerlink" title="#Collection"></a>#Collection</h1><blockquote>
+<h1 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h1><blockquote>
 <p>容器主要包括 Collection 和 Map 两种，Collection 存储着对象的集合，而 Map 存储着键值对(两个对象)的映射表。</p>
 </blockquote>
-<h3 id="Set"><a href="#Set" class="headerlink" title="#Set"></a>#Set</h3><h4 id="TreeSet"><a href="#TreeSet" class="headerlink" title="#TreeSet"></a>#TreeSet</h4><p>基于红黑树实现，支持有序性操作，例如根据一个范围查找元素的操作。但是查找效率不如 HashSet，HashSet 查找的时间复杂度为 O(1)，TreeSet 则为 O(logN)。</p>
-<h4 id="HashSet"><a href="#HashSet" class="headerlink" title="#HashSet"></a>#HashSet</h4><p>基于哈希表实现，支持快速查找，但不支持有序性操作。并且失去了元素的插入顺序信息，也就是说使用 Iterator 遍历 HashSet 得到的结果是不确定的。</p>
-<h4 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="#LinkedHashSet"></a>#LinkedHashSet</h4><p>具有 HashSet 的查找效率，且内部使用双向链表维护元素的插入顺序。</p>
-<h3 id="List"><a href="#List" class="headerlink" title="#List"></a>#List</h3><h4 id="ArrayList"><a href="#ArrayList" class="headerlink" title="#ArrayList"></a>#ArrayList</h4><p>基于动态数组实现，支持随机访问。</p>
-<h4 id="Vector"><a href="#Vector" class="headerlink" title="#Vector"></a>#Vector</h4><p>和 ArrayList 类似，但它是线程安全的。</p>
-<h4 id="LinkedList"><a href="#LinkedList" class="headerlink" title="#LinkedList"></a>#LinkedList</h4><p>基于双向链表实现，只能顺序访问，但是可以快速地在链表中间插入和删除元素。不仅如此，LinkedList 还可以用作栈、队列和双向队列。</p>
-<h3 id="Queue"><a href="#Queue" class="headerlink" title="#Queue"></a>#Queue</h3><h4 id="LinkedList-1"><a href="#LinkedList-1" class="headerlink" title="#LinkedList"></a>#LinkedList</h4><p>可以用它来实现双向队列。</p>
-<h4 id="PriorityQueue"><a href="#PriorityQueue" class="headerlink" title="#PriorityQueue"></a>#PriorityQueue</h4><p>基于堆结构实现，可以用它来实现优先队列。</p>
-<h1 id="Map"><a href="#Map" class="headerlink" title="#Map"></a>#Map</h1><h3 id="TreeMap"><a href="#TreeMap" class="headerlink" title="#TreeMap"></a>#TreeMap</h3><p>基于红黑树实现。</p>
-<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="#HashMap"></a>#HashMap</h3><p>基于哈希表实现。</p>
-<h3 id="HashTable"><a href="#HashTable" class="headerlink" title="#HashTable"></a>#HashTable</h3><p>和 HashMap 类似，但它是线程安全的，这意味着同一时刻多个线程可以同时写入 HashTable 并且不会导致数据不一致。它是遗留类，不应该去使用它。现在可以使用 ConcurrentHashMap 来支持线程安全，并且 ConcurrentHashMap 的效率会更高，因为 ConcurrentHashMap 引入了分段锁。</p>
-<h3 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="#LinkedHashMap"></a>#LinkedHashMap</h3><p>使用双向链表来维护元素的顺序，顺序为插入顺序或者最近最少使用(LRU)顺序。</p>
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><h4 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h4><p>基于红黑树实现，支持有序性操作，例如根据一个范围查找元素的操作。但是查找效率不如 HashSet，HashSet 查找的时间复杂度为 O(1)，TreeSet 则为 O(logN)。</p>
+<h4 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h4><p>基于哈希表实现，支持快速查找，但不支持有序性操作。并且失去了元素的插入顺序信息，也就是说使用 Iterator 遍历 HashSet 得到的结果是不确定的。</p>
+<h4 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h4><p>具有 HashSet 的查找效率，且内部使用双向链表维护元素的插入顺序。</p>
+<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><h4 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h4><p>基于动态数组实现，支持随机访问。</p>
+<h4 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h4><p>和 ArrayList 类似，但它是线程安全的。</p>
+<h4 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h4><p>基于双向链表实现，只能顺序访问，但是可以快速地在链表中间插入和删除元素。不仅如此，LinkedList 还可以用作栈、队列和双向队列。</p>
+<h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><h4 id="LinkedList-1"><a href="#LinkedList-1" class="headerlink" title="LinkedList"></a>LinkedList</h4><p>可以用它来实现双向队列。</p>
+<h4 id="PriorityQueue"><a href="#PriorityQueue" class="headerlink" title="PriorityQueue"></a>PriorityQueue</h4><p>基于堆结构实现，可以用它来实现优先队列。</p>
+<h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><h3 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h3><p>基于红黑树实现。</p>
+<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>基于哈希表实现。</p>
+<h3 id="HashTable"><a href="#HashTable" class="headerlink" title="HashTable"></a>HashTable</h3><p>和 HashMap 类似，但它是线程安全的，这意味着同一时刻多个线程可以同时写入 HashTable 并且不会导致数据不一致。它是遗留类，不应该去使用它。现在可以使用 ConcurrentHashMap 来支持线程安全，并且 ConcurrentHashMap 的效率会更高，因为 ConcurrentHashMap 引入了分段锁。</p>
+<h3 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h3><p>使用双向链表来维护元素的顺序，顺序为插入顺序或者最近最少使用(LRU)顺序。</p>
 <p>参考内容</p>
 <ul>
 <li>CarpenterLee&#x2F;JCFInternals <a class="link"   target="_blank" rel="noopener" href="https://github.com/CarpenterLee/JCFInternals" >https://github.com/CarpenterLee/JCFInternals<i class="fas fa-external-link-alt"></i></a></li>
@@ -362,13 +360,13 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2023/02/19/Java%20%E5%B9%B6%E5%8F%91%20-%20%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/"
+                               href="/2023/02/19/Map%20-%20HashSet%20&amp;%20HashMap%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">Java 并发 - 理论基础</span>
+                                <span class="post-nav-title-item">Map - HashSet &amp; HashMap 源码解析</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             </a>
@@ -400,7 +398,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Collection-%E7%B1%BB%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">Collection 类关系图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">#知识体系结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">3.</span> <span class="nav-text">#介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Collection"><span class="nav-number">4.</span> <span class="nav-text">#Collection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">4.0.1.</span> <span class="nav-text">#Set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TreeSet"><span class="nav-number">4.0.1.1.</span> <span class="nav-text">#TreeSet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HashSet"><span class="nav-number">4.0.1.2.</span> <span class="nav-text">#HashSet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedHashSet"><span class="nav-number">4.0.1.3.</span> <span class="nav-text">#LinkedHashSet</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List"><span class="nav-number">4.0.2.</span> <span class="nav-text">#List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList"><span class="nav-number">4.0.2.1.</span> <span class="nav-text">#ArrayList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vector"><span class="nav-number">4.0.2.2.</span> <span class="nav-text">#Vector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedList"><span class="nav-number">4.0.2.3.</span> <span class="nav-text">#LinkedList</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Queue"><span class="nav-number">4.0.3.</span> <span class="nav-text">#Queue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedList-1"><span class="nav-number">4.0.3.1.</span> <span class="nav-text">#LinkedList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PriorityQueue"><span class="nav-number">4.0.3.2.</span> <span class="nav-text">#PriorityQueue</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Map"><span class="nav-number">5.</span> <span class="nav-text">#Map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TreeMap"><span class="nav-number">5.0.1.</span> <span class="nav-text">#TreeMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap"><span class="nav-number">5.0.2.</span> <span class="nav-text">#HashMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashTable"><span class="nav-number">5.0.3.</span> <span class="nav-text">#HashTable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedHashMap"><span class="nav-number">5.0.4.</span> <span class="nav-text">#LinkedHashMap</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Collection-%E7%B1%BB%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">Collection 类关系图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">#知识体系结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">3.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Collection"><span class="nav-number">4.</span> <span class="nav-text">Collection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">4.0.1.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TreeSet"><span class="nav-number">4.0.1.1.</span> <span class="nav-text">TreeSet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HashSet"><span class="nav-number">4.0.1.2.</span> <span class="nav-text">HashSet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedHashSet"><span class="nav-number">4.0.1.3.</span> <span class="nav-text">LinkedHashSet</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List"><span class="nav-number">4.0.2.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList"><span class="nav-number">4.0.2.1.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vector"><span class="nav-number">4.0.2.2.</span> <span class="nav-text">Vector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedList"><span class="nav-number">4.0.2.3.</span> <span class="nav-text">LinkedList</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Queue"><span class="nav-number">4.0.3.</span> <span class="nav-text">Queue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedList-1"><span class="nav-number">4.0.3.1.</span> <span class="nav-text">LinkedList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PriorityQueue"><span class="nav-number">4.0.3.2.</span> <span class="nav-text">PriorityQueue</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Map"><span class="nav-number">5.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TreeMap"><span class="nav-number">5.0.1.</span> <span class="nav-text">TreeMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap"><span class="nav-number">5.0.2.</span> <span class="nav-text">HashMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashTable"><span class="nav-number">5.0.3.</span> <span class="nav-text">HashTable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedHashMap"><span class="nav-number">5.0.4.</span> <span class="nav-text">LinkedHashMap</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 
@@ -440,6 +438,16 @@
             由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
         </div>
         
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://gitee.com/lucky0915">
+                
+                    本站由 <span class="tooltip" data-content="Gitee Pages"><img src="/images/deploy-provider/gitee.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
         
     </div>
 </footer>

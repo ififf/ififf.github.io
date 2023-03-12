@@ -211,13 +211,13 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-02-21 00:57:05</span>
-        <span class="mobile">2023-02-21 00:57</span>
+        <span class="pc">2023-03-13 03:06:19</span>
+        <span class="mobile">2023-03-13 03:06</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-02-21 00:29:32</span>
+        <span class="pc">2023-03-13 03:03:32</span>
     </span>
     
     
@@ -226,12 +226,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>365 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.2k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>5 分钟</span>
         </span>
     
     
@@ -249,34 +249,353 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h1 id="3-数组中重复的数字"><a href="#3-数组中重复的数字" class="headerlink" title="3. 数组中重复的数字"></a>3. 数组中重复的数字</h1><h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a class="link"   target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/623a5ac0ea5b4e5f95552655361ae0a8?tpId=13&tqId=11203&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking&from=cyc_github" >牛客网<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>在一个长度为 n 的数组里的所有数字都在 0 到 n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字是重复的，也不知道每个数字重复几次。请找出数组中任意一个重复的数字。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">&#123;2, 3, 1, 0, 2, 5&#125;</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
-
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>要求时间复杂度 O(N)，空间复杂度 O(1)。因此不能使用排序的方法，也不能使用额外的标记数组。</p>
-<p>对于这种数组元素在 [0, n-1] 范围内的问题，可以将值为 i 的元素调整到第 i 个位置上进行求解。本题要求找出重复的数字，因此在调整过程中，如果第 i 位置上已经有一个值为 i 的元素，就可以知道 i 值重复。</p>
-<p>以 (2, 3, 1, 0, 2, 5) 为例，遍历到位置 4 时，该位置上的数为 2，但是第 2 个位置上已经有一个 2 的值了，因此可以知道 2 重复：</p>
-<div align="center"> <img  
-                     lazyload
-                     alt="image"
-                     data-src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/643b6f18-f933-4ac5-aa7a-e304dbd7fe49.gif"
-                      width="350px"
-                > </div><br>
-
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">duplicate</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> length, <span class="type">int</span>[] duplication)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums == <span class="literal">null</span> || length &lt;= <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">        <span class="keyword">while</span> (nums[i] != i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == nums[nums[i]]) &#123;</span><br><span class="line">                duplication[<span class="number">0</span>] = nums[i];</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            swap(nums, i, nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> nums[i];</span><br><span class="line">    nums[i] = nums[j];</span><br><span class="line">    nums[j] = t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-<div align="center"><img  width="320px" 
-                     lazyload
-                     alt="image"
-                     data-src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/githubio/公众号二维码-2.png"
-                     
-                ></img></div>
+                <p>title: IDEA的日常快捷键<br>date: ${DATE} ${TIME}<br>tags: IDEA<br>categories: 快捷键<br>sticky: </p>
+<h1 id="IntelliJ-IDEA-常用快捷键一览表"><a href="#IntelliJ-IDEA-常用快捷键一览表" class="headerlink" title="IntelliJ IDEA 常用快捷键一览表"></a>IntelliJ IDEA 常用快捷键一览表</h1><hr>
+<h2 id="1-IDEA的日常快捷键"><a href="#1-IDEA的日常快捷键" class="headerlink" title="1-IDEA的日常快捷键"></a>1-IDEA的日常快捷键</h2><h3 id="第1组：通用型"><a href="#第1组：通用型" class="headerlink" title="第1组：通用型"></a>第1组：通用型</h3><table>
+<thead>
+<tr>
+<th>说明</th>
+<th>快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>复制代码-copy</td>
+<td>ctrl + c</td>
+</tr>
+<tr>
+<td>粘贴-paste</td>
+<td>ctrl + v</td>
+</tr>
+<tr>
+<td>剪切-cut</td>
+<td>ctrl + x</td>
+</tr>
+<tr>
+<td>撤销-undo</td>
+<td>ctrl + z</td>
+</tr>
+<tr>
+<td>反撤销-redo</td>
+<td>ctrl + shift + z</td>
+</tr>
+<tr>
+<td>保存-save all</td>
+<td>ctrl + s</td>
+</tr>
+<tr>
+<td>全选-select all</td>
+<td>ctrl + a</td>
+</tr>
+</tbody></table>
+<h3 id="第2组：提高编写速度（上）"><a href="#第2组：提高编写速度（上）" class="headerlink" title="第2组：提高编写速度（上）"></a>第2组：提高编写速度（上）</h3><table>
+<thead>
+<tr>
+<th>说明</th>
+<th>快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>智能提示-edit</td>
+<td>alt + enter</td>
+</tr>
+<tr>
+<td>提示代码模板-insert live template</td>
+<td>ctrl+j</td>
+</tr>
+<tr>
+<td>使用xx块环绕-surround with …</td>
+<td>ctrl+alt+t</td>
+</tr>
+<tr>
+<td>调出生成getter&#x2F;setter&#x2F;构造器等结构-generate …</td>
+<td>alt+insert</td>
+</tr>
+<tr>
+<td>自动生成返回值变量-introduce variable …</td>
+<td>ctrl+alt+v</td>
+</tr>
+<tr>
+<td>复制指定行的代码-duplicate line or selection</td>
+<td>ctrl+d</td>
+</tr>
+<tr>
+<td>删除指定行的代码-delete line</td>
+<td>ctrl+y</td>
+</tr>
+<tr>
+<td>切换到下一行代码空位-start new line</td>
+<td>shift + enter</td>
+</tr>
+<tr>
+<td>切换到上一行代码空位-start new line before current</td>
+<td>ctrl +alt+ enter</td>
+</tr>
+<tr>
+<td>向上移动代码-move statement up</td>
+<td>ctrl+shift+↑</td>
+</tr>
+<tr>
+<td>向下移动代码-move statement down</td>
+<td>ctrl+shift+↓</td>
+</tr>
+<tr>
+<td>向上移动一行-move line up</td>
+<td>alt+shift+↑</td>
+</tr>
+<tr>
+<td>向下移动一行-move line down</td>
+<td>alt+shift+↓</td>
+</tr>
+<tr>
+<td>方法的形参列表提醒-parameter info</td>
+<td>ctrl+p</td>
+</tr>
+</tbody></table>
+<h3 id="第3组：提高编写速度（下）"><a href="#第3组：提高编写速度（下）" class="headerlink" title="第3组：提高编写速度（下）"></a>第3组：提高编写速度（下）</h3><table>
+<thead>
+<tr>
+<th>说明</th>
+<th>快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>批量修改指定的变量名、方法名、类名等-rename</td>
+<td>shift+f6</td>
+</tr>
+<tr>
+<td>抽取代码重构方法-extract method …</td>
+<td>ctrl+alt+m</td>
+</tr>
+<tr>
+<td>重写父类的方法-override methods …</td>
+<td>ctrl+o</td>
+</tr>
+<tr>
+<td>实现接口的方法-implements methods …</td>
+<td>ctrl+i</td>
+</tr>
+<tr>
+<td>选中的结构的大小写的切换-toggle case</td>
+<td>ctrl+shift+u</td>
+</tr>
+<tr>
+<td>批量导包-optimize imports</td>
+<td>ctrl+alt+o</td>
+</tr>
+</tbody></table>
+<h3 id="第4组：类结构、查找和查看源码"><a href="#第4组：类结构、查找和查看源码" class="headerlink" title="第4组：类结构、查找和查看源码"></a>第4组：类结构、查找和查看源码</h3><table>
+<thead>
+<tr>
+<th>说明</th>
+<th>快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>如何查看源码-go to class…</td>
+<td>ctrl + 选中指定的结构 或 ctrl+n</td>
+</tr>
+<tr>
+<td>显示当前类结构，支持搜索指定的方法、属性等-file structure</td>
+<td>ctrl+f12</td>
+</tr>
+<tr>
+<td>退回到前一个编辑的页面-back</td>
+<td>ctrl+alt+←</td>
+</tr>
+<tr>
+<td>进入到下一个编辑的页面-forward</td>
+<td>ctrl+alt+→</td>
+</tr>
+<tr>
+<td>打开的类文件之间切换-select previous&#x2F;next tab</td>
+<td>alt+←&#x2F;→</td>
+</tr>
+<tr>
+<td>光标选中指定的类，查看继承树结构-Type Hierarchy</td>
+<td>ctrl+h</td>
+</tr>
+<tr>
+<td>查看方法文档-quick documentation</td>
+<td>ctrl+q</td>
+</tr>
+<tr>
+<td>类的UML关系图-show uml popup</td>
+<td>ctrl+alt+u</td>
+</tr>
+<tr>
+<td>定位某行-go to line&#x2F;column</td>
+<td>ctrl+g</td>
+</tr>
+<tr>
+<td>回溯变量或方法的来源-go to implementation(s)</td>
+<td>ctrl+alt+b</td>
+</tr>
+<tr>
+<td>折叠方法实现-collapse all</td>
+<td>ctrl+shift+ -</td>
+</tr>
+<tr>
+<td>展开方法实现-expand all</td>
+<td>ctrl+shift+ +</td>
+</tr>
+</tbody></table>
+<h3 id="第5组：查找、替换与关闭"><a href="#第5组：查找、替换与关闭" class="headerlink" title="第5组：查找、替换与关闭"></a>第5组：查找、替换与关闭</h3><table>
+<thead>
+<tr>
+<th>说明</th>
+<th>快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查找指定的结构</td>
+<td>ctlr+f</td>
+</tr>
+<tr>
+<td>快速查找：选中的Word快速定位到下一个-find next</td>
+<td>ctrl+l</td>
+</tr>
+<tr>
+<td>查找与替换-replace</td>
+<td>ctrl+r</td>
+</tr>
+<tr>
+<td>直接定位到当前行的首位-move caret to line start</td>
+<td>home</td>
+</tr>
+<tr>
+<td>直接定位到当前行的末位 -move caret to line end</td>
+<td>end</td>
+</tr>
+<tr>
+<td>查询当前元素在当前文件中的引用，然后按 F3 可以选择</td>
+<td>ctrl+f7</td>
+</tr>
+<tr>
+<td>全项目搜索文本-find in path …</td>
+<td>ctrl+shift+f</td>
+</tr>
+<tr>
+<td>关闭当前窗口-close</td>
+<td>ctrl+f4</td>
+</tr>
+</tbody></table>
+<h3 id="第6组：调整格式"><a href="#第6组：调整格式" class="headerlink" title="第6组：调整格式"></a>第6组：调整格式</h3><table>
+<thead>
+<tr>
+<th>说明</th>
+<th>快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>格式化代码-reformat code</td>
+<td>ctrl+alt+l</td>
+</tr>
+<tr>
+<td>使用单行注释-comment with line comment</td>
+<td>ctrl + &#x2F;</td>
+</tr>
+<tr>
+<td>使用&#x2F;取消多行注释-comment with block comment</td>
+<td>ctrl + shift + &#x2F;</td>
+</tr>
+<tr>
+<td>选中数行，整体往后移动-tab</td>
+<td>tab</td>
+</tr>
+<tr>
+<td>选中数行，整体往前移动-prev tab</td>
+<td>shift + tab</td>
+</tr>
+</tbody></table>
+<h2 id="2-Debug快捷键"><a href="#2-Debug快捷键" class="headerlink" title="2-Debug快捷键"></a>2-Debug快捷键</h2><table>
+<thead>
+<tr>
+<th>说明</th>
+<th>快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单步调试（不进入函数内部）- step over</td>
+<td>F8</td>
+</tr>
+<tr>
+<td>单步调试（进入函数内部）- step into</td>
+<td>F7</td>
+</tr>
+<tr>
+<td>强制单步调试（进入函数内部） - force step into</td>
+<td>alt+shift+f7</td>
+</tr>
+<tr>
+<td>选择要进入的函数 - smart step into</td>
+<td>shift + F7</td>
+</tr>
+<tr>
+<td>跳出函数 - step out</td>
+<td>shift + F8</td>
+</tr>
+<tr>
+<td>运行到断点 - run to cursor</td>
+<td>alt + F9</td>
+</tr>
+<tr>
+<td>继续执行，进入下一个断点或执行完程序 - resume program</td>
+<td>F9</td>
+</tr>
+<tr>
+<td>停止 - stop</td>
+<td>Ctrl+F2</td>
+</tr>
+<tr>
+<td>查看断点 - view breakpoints</td>
+<td>Ctrl+Shift+F8</td>
+</tr>
+<tr>
+<td>关闭 - close</td>
+<td>Ctrl+F4</td>
+</tr>
+</tbody></table>
+<h3 id="3-常用代码模板"><a href="#3-常用代码模板" class="headerlink" title="3- 常用代码模板"></a>3- 常用代码模板</h3><h4 id="1、非空判断"><a href="#1、非空判断" class="headerlink" title="1、非空判断"></a>1、非空判断</h4><ul>
+<li>变量.null：if(变量 &#x3D;&#x3D; null)</li>
+<li>变量.nn：if(变量 !&#x3D; null) </li>
+<li>变量.notnull：if(变量 !&#x3D; null) </li>
+<li>ifn：if(xx  &#x3D;&#x3D; null)</li>
+<li>inn：if(xx  !&#x3D; null)</li>
+</ul>
+<h4 id="2、遍历数组和集合"><a href="#2、遍历数组和集合" class="headerlink" title="2、遍历数组和集合"></a>2、遍历数组和集合</h4><ul>
+<li>数组或集合变量.fori：for循环</li>
+<li>数组或集合变量.for：增强for循环</li>
+<li>数组或集合变量.forr：反向for循环</li>
+<li>数组或集合变量.iter：增强for循环遍历数组或集合</li>
+</ul>
+<h4 id="3、输出语句"><a href="#3、输出语句" class="headerlink" title="3、输出语句"></a>3、输出语句</h4><ul>
+<li>sout：相当于System.out.println</li>
+<li>soutm：打印当前方法的名称</li>
+<li>soutp：打印当前方法的形参及形参对应的实参值</li>
+<li>soutv：打印方法中声明的最近的变量的值</li>
+<li>变量.sout：打印当前变量值</li>
+<li>变量.soutv：打印当前变量名及变量值</li>
+</ul>
+<h4 id="4、对象操作"><a href="#4、对象操作" class="headerlink" title="4、对象操作"></a>4、对象操作</h4><ul>
+<li>创建对象<ul>
+<li>Xxx.new  .var ：创建Xxx类的对象，并赋给相应的变量</li>
+<li>Xxx.new  .field：会将方法内刚创建的Xxx对象抽取为一个属性</li>
+</ul>
+</li>
+<li>强转<ul>
+<li>对象.cast：将对象进行强转</li>
+<li>对象.castvar：将对象强转后，并赋给一个变量</li>
+</ul>
+</li>
+</ul>
+<h4 id="5、静态常量声明"><a href="#5、静态常量声明" class="headerlink" title="5、静态常量声明"></a>5、静态常量声明</h4><ul>
+<li>psf：public static final</li>
+<li>psfi：public static final int</li>
+<li>psfs：public static final String</li>
+<li>prsf：private static final</li>
+</ul>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44895651/article/details/105289038" >Linux常用命令<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.linuxcool.com/" >Linux命令大全(手册)<i class="fas fa-external-link-alt"></i></a></p>
 
             </div>
 
@@ -292,10 +611,10 @@
             <span class="type">本文作者</span>：<span class="content">Blank</span>
         </li>
         <li class="post-time">
-            <span class="type">创建时间</span>：<span class="content">2023-02-21 00:57:05</span>
+            <span class="type">创建时间</span>：<span class="content">2023-03-13 03:06:19</span>
         </li>
         <li class="post-link">
-            <span class="type">本文链接</span>：<span class="content">2023/02/21/3. 数组中重复的数字/</span>
+            <span class="type">本文链接</span>：<span class="content">2023/03/13/IDEA 常用快捷键及LInux常用命令/</span>
         </li>
         <li class="post-license">
             <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
@@ -314,26 +633,11 @@
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="/2023/03/13/IDEA%20%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8ALInux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"
-                            >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item"></span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/02/21/4.%20%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/"
+                               href="/2023/02/21/3.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/"
                             >
                             <span class="title flex-center">
                                 <span class="post-nav-title-item"></span>
@@ -355,7 +659,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97"><span class="nav-number">1.</span> <span class="nav-text">3. 数组中重复的数字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5"><span class="nav-number">1.1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.2.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">1.3.</span> <span class="nav-text">解题思路</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IntelliJ-IDEA-%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E4%B8%80%E8%A7%88%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">IntelliJ IDEA 常用快捷键一览表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-IDEA%E7%9A%84%E6%97%A5%E5%B8%B8%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">1.1.</span> <span class="nav-text">1-IDEA的日常快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC1%E7%BB%84%EF%BC%9A%E9%80%9A%E7%94%A8%E5%9E%8B"><span class="nav-number">1.1.1.</span> <span class="nav-text">第1组：通用型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC2%E7%BB%84%EF%BC%9A%E6%8F%90%E9%AB%98%E7%BC%96%E5%86%99%E9%80%9F%E5%BA%A6%EF%BC%88%E4%B8%8A%EF%BC%89"><span class="nav-number">1.1.2.</span> <span class="nav-text">第2组：提高编写速度（上）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC3%E7%BB%84%EF%BC%9A%E6%8F%90%E9%AB%98%E7%BC%96%E5%86%99%E9%80%9F%E5%BA%A6%EF%BC%88%E4%B8%8B%EF%BC%89"><span class="nav-number">1.1.3.</span> <span class="nav-text">第3组：提高编写速度（下）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC4%E7%BB%84%EF%BC%9A%E7%B1%BB%E7%BB%93%E6%9E%84%E3%80%81%E6%9F%A5%E6%89%BE%E5%92%8C%E6%9F%A5%E7%9C%8B%E6%BA%90%E7%A0%81"><span class="nav-number">1.1.4.</span> <span class="nav-text">第4组：类结构、查找和查看源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC5%E7%BB%84%EF%BC%9A%E6%9F%A5%E6%89%BE%E3%80%81%E6%9B%BF%E6%8D%A2%E4%B8%8E%E5%85%B3%E9%97%AD"><span class="nav-number">1.1.5.</span> <span class="nav-text">第5组：查找、替换与关闭</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC6%E7%BB%84%EF%BC%9A%E8%B0%83%E6%95%B4%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.6.</span> <span class="nav-text">第6组：调整格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Debug%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">1.2.</span> <span class="nav-text">2-Debug快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.2.1.</span> <span class="nav-text">3- 常用代码模板</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E9%9D%9E%E7%A9%BA%E5%88%A4%E6%96%AD"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">1、非空判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84%E5%92%8C%E9%9B%86%E5%90%88"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">2、遍历数组和集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E8%BE%93%E5%87%BA%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">3、输出语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E5%AF%B9%E8%B1%A1%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">4、对象操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5%E3%80%81%E9%9D%99%E6%80%81%E5%B8%B8%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="nav-number">1.2.1.5.</span> <span class="nav-text">5、静态常量声明</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
 </div>
 

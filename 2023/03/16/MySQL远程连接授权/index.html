@@ -219,7 +219,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-03-16 19:42:58</span>
+        <span class="pc">2023-03-16 20:13:20</span>
     </span>
     
     
@@ -250,7 +250,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>371 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>375 字</span>
         </span>
     
     
@@ -275,19 +275,16 @@
 
                 <h3 id="MySQL中grant-all-privileges-on赋给用户远程权限"><a href="#MySQL中grant-all-privileges-on赋给用户远程权限" class="headerlink" title="MySQL中grant all privileges on赋给用户远程权限"></a>MySQL中grant all privileges on赋给用户远程权限</h3><p>当你的帐号不允许从远程登陆，只能在<code>localhost</code>连接时。这个时候只要在mysql服务器上，更改 <code>mysql</code> 数据库里的 <code>user</code> 表里的 <code>host</code> 项，从<code>localhost&quot;</code>改成<code>%</code>即可实现用户远程登录</p>
 <h4 id="1-改表法"><a href="#1-改表法" class="headerlink" title="1.改表法"></a>1.改表法</h4><p>在安装mysql的机器上运行：</p>
-<ol>
-<li>&#96;&#96;&#96;sql<ol>
-<li><p>mysql -u root -p  </p>
-</li>
-<li><p>select host,user from user where user&#x3D;’root’;</p>
-</li>
-<li><p>update user set host &#x3D; ‘%’ where user&#x3D;’root’ and host&#x3D;’localhost’;  </p>
-</li>
-<li><p>select host, user from user where user&#x3D;’root’;</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 2.授权法</span><br><span class="line"></span><br><span class="line">MySQL 5.0+版本</span><br><span class="line"></span><br><span class="line">```sql</span><br><span class="line">mysql -u root -p</span><br><span class="line"></span><br><span class="line">-- 给root账户授权（root默认只有本机访问的权限，要通过其他机器访问，必须授权）</span><br><span class="line"></span><br><span class="line">grant all privileges on *.* to root@&#x27;%&#x27; identified by &#x27;密码&#x27; with grant option;</span><br><span class="line"></span><br><span class="line">-- 最后刷新数据库服务</span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> mysql <span class="operator">-</span>u root <span class="operator">-</span>p  </span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> <span class="keyword">select</span> host,<span class="keyword">user</span> <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> <span class="keyword">user</span><span class="operator">=</span><span class="string">&#x27;root&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> <span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> host <span class="operator">=</span> <span class="string">&#x27;%&#x27;</span> <span class="keyword">where</span> <span class="keyword">user</span><span class="operator">=</span><span class="string">&#x27;root&#x27;</span> <span class="keyword">and</span> host<span class="operator">=</span><span class="string">&#x27;localhost&#x27;</span>;  </span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> <span class="keyword">select</span> host, <span class="keyword">user</span> <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> <span class="keyword">user</span><span class="operator">=</span><span class="string">&#x27;root&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h4 id="2-授权法"><a href="#2-授权法" class="headerlink" title="2.授权法"></a>2.授权法</h4><p>MySQL 5.0+版本</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql <span class="operator">-</span>u root <span class="operator">-</span>p</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 给root账户授权（root默认只有本机访问的权限，要通过其他机器访问，必须授权）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> privileges <span class="keyword">on</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">to</span> root@<span class="string">&#x27;%&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;密码&#x27;</span> <span class="keyword">with</span> <span class="keyword">grant</span> option;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 最后刷新数据库服务</span></span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+
+
 <p>模板： grant all privileges on 库名.表名 to ‘用户名‘@’IP地址’ identified by ‘密码’ with grant option; </p>
 <p>flush privileges;</p>
 <p>注意授权后必须FLUSH PRIVILEGES;否则无法立即生效。</p>
@@ -386,7 +383,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E4%B8%ADgrant-all-privileges-on%E8%B5%8B%E7%BB%99%E7%94%A8%E6%88%B7%E8%BF%9C%E7%A8%8B%E6%9D%83%E9%99%90"><span class="nav-number">1.</span> <span class="nav-text">MySQL中grant all privileges on赋给用户远程权限</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%94%B9%E8%A1%A8%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">1.改表法</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL%E4%B8%ADgrant-all-privileges-on%E8%B5%8B%E7%BB%99%E7%94%A8%E6%88%B7%E8%BF%9C%E7%A8%8B%E6%9D%83%E9%99%90"><span class="nav-number">1.</span> <span class="nav-text">MySQL中grant all privileges on赋给用户远程权限</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%94%B9%E8%A1%A8%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">1.改表法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%8E%88%E6%9D%83%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">2.授权法</span></a></li></ol></li></ol>
     </div>
 </div>
 

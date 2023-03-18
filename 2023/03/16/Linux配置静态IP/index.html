@@ -219,7 +219,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-03-16 20:15:17</span>
+        <span class="pc">2023-03-16 20:22:35</span>
     </span>
     
     
@@ -250,7 +250,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>198 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>199 字</span>
         </span>
     
     
@@ -273,7 +273,7 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h3 id="Linux-配置静态IP"><a href="#Linux-配置静态IP" class="headerlink" title="Linux 配置静态IP"></a>Linux 配置静态IP</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CentOS7为例</span><br><span class="line">    </span><br><span class="line">修改网卡配置文件</span><br><span class="line"></span><br><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-ens33</span><br><span class="line"># 配置的IP地址</span><br><span class="line">IPADDR=<span class="number">192.168</span><span class="number">.1</span><span class="number">.30</span></span><br><span class="line"># 配置子网掩码</span><br><span class="line">NETMASK=<span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span></span><br><span class="line"># 配置网关</span><br><span class="line">GATEWAY=<span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span></span><br><span class="line"># 配置DNS服务器</span><br><span class="line">DNS1=<span class="number">9.9</span><span class="number">.9</span><span class="number">.9</span>   </span><br><span class="line"></span><br><span class="line">重启网卡</span><br><span class="line"></span><br><span class="line">service network restart</span><br></pre></td></tr></table></figure>
+                <h3 id="Linux-配置静态IP"><a href="#Linux-配置静态IP" class="headerlink" title="Linux 配置静态IP"></a>Linux 配置静态IP</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CentOS 7 为例</span><br><span class="line">    </span><br><span class="line">修改网卡配置文件</span><br><span class="line"></span><br><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-ens33</span><br><span class="line"><span class="comment"># 配置的IP地址</span></span><br><span class="line">IPADDR=192.168.1.30</span><br><span class="line"><span class="comment"># 配置子网掩码</span></span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line"><span class="comment"># 配置网关</span></span><br><span class="line">GATEWAY=192.168.1.2</span><br><span class="line"><span class="comment"># 配置DNS服务器</span></span><br><span class="line">DNS1=9.9.9.9   </span><br><span class="line"></span><br><span class="line">重启网卡</span><br><span class="line"></span><br><span class="line">service network restart</span><br></pre></td></tr></table></figure>
 
 
 
@@ -332,6 +332,21 @@
 
             
                 <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/03/18/GitLab%20%E9%83%A8%E7%BD%B2%E5%BF%98%E8%AE%B0root%E5%AF%86%E7%A0%81%E4%BF%AE%E6%94%B9/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">GitLab 部署及管理员账号初始化</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
                     
                     
                         <div class="article-next">

@@ -9,7 +9,7 @@
     
     <title>
         
-            GitLab 部署及管理员账号初始化 |
+            Linux 配置 JDK Maven 环境变量 |
         
         Blankの博客
     </title>
@@ -191,7 +191,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">GitLab 部署及管理员账号初始化</span>
+                <span class="title-hover-animation">Linux 配置 JDK Maven 环境变量</span>
             </div>
 
             
@@ -213,13 +213,13 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-03-18 16:27:30</span>
-        <span class="mobile">2023-03-18 16:27</span>
+        <span class="pc">2023-03-22 03:13:04</span>
+        <span class="mobile">2023-03-22 03:13</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-03-18 16:27:22</span>
+        <span class="pc">2023-03-22 03:14:14</span>
     </span>
     
     
@@ -228,7 +228,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/GitLab/">GitLab</a>&nbsp;
+                        <a href="/categories/JDK-Maven-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">JDK Maven 环境变量</a>&nbsp;
                     </li>
                 
             </ul>
@@ -240,7 +240,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/GitLab-%E9%83%A8%E7%BD%B2/">GitLab 部署</a>&nbsp;
+                        <a href="/tags/JDK-Maven-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">JDK Maven 环境变量</a>&nbsp;
                     </li>
                 
             </ul>
@@ -250,12 +250,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>214 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>499 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>2 分钟</span>
         </span>
     
     
@@ -273,16 +273,33 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h2 id="GitLab-部署及管理员账号初始化"><a href="#GitLab-部署及管理员账号初始化" class="headerlink" title="GitLab 部署及管理员账号初始化"></a>GitLab 部署及管理员账号初始化</h2><h4 id="1-首先登录gitlab服务器执行以下命令："><a href="#1-首先登录gitlab服务器执行以下命令：" class="headerlink" title="1.首先登录gitlab服务器执行以下命令："></a>1.<strong>首先登录gitlab服务器执行以下命令：</strong></h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换到gitlab安装目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /opt/gitlab/bin</span><br><span class="line"></span><br><span class="line">sudo  gitlab-rails console -e production</span><br></pre></td></tr></table></figure>
+                <p>使用命令 <strong>java</strong> 、<strong>javac</strong> 、 <strong>java -version</strong> 来查看是否安装了JDK</p>
+<p>rpm -qa | grep java 或 rpm -qa | grep jdk <strong>命令来查询出系统自带的jdk（蓝框的四个就是系统自带的）注：其余的不要删</strong></p>
+<p>然后通过    rpm -e –nodeps   后面跟系统自带的jdk名    这个命令来删除系统自带的jdk，</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">卸载 CentOS 7.9 自带JDK</span></span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line"></span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line"></span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line"></span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br></pre></td></tr></table></figure>
 
-<h4 id="2-通过命令查找，确定用户为“root”"><a href="#2-通过命令查找，确定用户为“root”" class="headerlink" title="2.通过命令查找，确定用户为“root”"></a>2.通过命令查找，确定用户为“root”</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以下这两个命令都可以，随便输入一个</span></span><br><span class="line"></span><br><span class="line">user = User.<span class="built_in">where</span>(<span class="built_in">id</span>: 1).first </span><br><span class="line"></span><br><span class="line">user = User.<span class="built_in">where</span>(name: <span class="string">&quot;root&quot;</span>).first</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-将root用户密码重置为admin123"><a href="#3-将root用户密码重置为admin123" class="headerlink" title="3.将root用户密码重置为admin123!"></a>3.将root用户密码重置为admin123!</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入重置密码命令</span></span><br><span class="line"></span><br><span class="line">user.password=<span class="string">&quot;admin123&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 再次确认密码</span></span><br><span class="line"></span><br><span class="line">user.password_confirmation=<span class="string">&quot;admin123&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="4-保存重置信息，并结束"><a href="#4-保存重置信息，并结束" class="headerlink" title="4.保存重置信息，并结束"></a>4.保存重置信息，并结束</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入保存命令，以便使更改信息生效</span></span><br><span class="line"></span><br><span class="line">user.save</span><br><span class="line"></span><br><span class="line"><span class="comment"># 退出修改窗口</span></span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
 
-<p>如果看到上面截图中的true ，恭喜你已经成功了，执行 exit 或quit退出当前设置流程即可。</p>
-<p>回到gitlab ,可以通过 root&#x2F;admin123 这一超级管理员账号登录了</p>
+
+<h4 id="配置Java环境变量"><a href="#配置Java环境变量" class="headerlink" title="配置Java环境变量"></a>配置Java环境变量</h4><p>解压下载好的JDK安装包<br>解压路径：&#x2F;usr&#x2F;local&#x2F;java&#x2F;</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置Java环境变量</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/local/java/jdk1.8.0_221</span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$JAVA_HOME</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib:<span class="variable">$CLASSPATH</span></span><br><span class="line"><span class="built_in">export</span> JAVA_PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$&#123;JRE_HOME&#125;</span>/bin</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$&#123;JAVA_PATH&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="配置Maven环境变量"><a href="#配置Maven环境变量" class="headerlink" title="配置Maven环境变量"></a>配置Maven环境变量</h4><p>解压下载好的maven安装包<br>解压路径：&#x2F;usr&#x2F;local&#x2F;maven&#x2F;</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置Maven环境变量</span></span><br><span class="line"></span><br><span class="line">export MAVEN_HOME=/usr/local/maven/apache-maven-3.9.0</span><br><span class="line">export PATH=$&#123;MAVEN_HOME&#125;/bin:$PATH</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Linux：-解决每次重启机器环境变量都需要-source-x2F-etc-x2F-profile-才生效"><a href="#Linux：-解决每次重启机器环境变量都需要-source-x2F-etc-x2F-profile-才生效" class="headerlink" title="Linux： 解决每次重启机器环境变量都需要 source &#x2F;etc&#x2F;profile 才生效"></a>Linux： 解决每次重启机器环境变量都需要 source &#x2F;etc&#x2F;profile 才生效</h4><ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41538097/article/details/107110230#1bashrc_6" >1、将环境变量配置在~&#x2F;.bashrc里面。<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41538097/article/details/107110230#2bashrcsource_etcprofile_24" >2、在~&#x2F;.bashrc里面加一句source &#x2F;etc&#x2F;profile<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<p>.bashrc 文件说明：bash 在每次启动时都会自动载入 bashrc 配置文件中的内容，.bashrc 文件可以执行一些命令以及脚本，有以下两种解决方法解决每次重启机器环境变量都需要 source &#x2F;etc&#x2F;profile 才生效</p>
+<h5 id="1、将环境变量配置在-x2F-bashrc里面。"><a href="#1、将环境变量配置在-x2F-bashrc里面。" class="headerlink" title="1、将环境变量配置在~&#x2F;.bashrc里面。"></a>1、将环境变量配置在~&#x2F;.bashrc里面。</h5><p>~代表当前用户目录，我是root用户登录的，如可以使用如下命令进入</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /root/.bashrc</span><br><span class="line">或</span><br><span class="line">vi ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-添加环境变量"><a href="#2-添加环境变量" class="headerlink" title="2.添加环境变量"></a>2.添加环境变量</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置Java环境变量</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/local/java/jdk1.8.0_221</span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$JAVA_HOME</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib:<span class="variable">$CLASSPATH</span></span><br><span class="line"><span class="built_in">export</span> JAVA_PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$&#123;JRE_HOME&#125;</span>/bin</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$&#123;JAVA_PATH&#125;</span></span><br></pre></td></tr></table></figure>
+
 
             </div>
 
@@ -292,16 +309,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">本文标题</span>：<span class="content">GitLab 部署及管理员账号初始化</span>
+            <span class="type">本文标题</span>：<span class="content">Linux 配置 JDK Maven 环境变量</span>
         </li>
         <li class="post-author">
             <span class="type">本文作者</span>：<span class="content">Blank</span>
         </li>
         <li class="post-time">
-            <span class="type">创建时间</span>：<span class="content">2023-03-18 16:27:30</span>
+            <span class="type">创建时间</span>：<span class="content">2023-03-22 03:13:04</span>
         </li>
         <li class="post-link">
-            <span class="type">本文链接</span>：<span class="content">2023/03/18/GitLab 部署忘记root密码修改/</span>
+            <span class="type">本文链接</span>：<span class="content">2023/03/22/配置Maven环境变量/</span>
         </li>
         <li class="post-license">
             <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
@@ -319,7 +336,7 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/GitLab-%E9%83%A8%E7%BD%B2/">#GitLab 部署</a>&nbsp;
+                            <a href="/tags/JDK-Maven-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">#JDK Maven 环境变量</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -328,29 +345,14 @@
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="/2023/03/19/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E7%9A%84redis%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/"
-                            >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item">宝塔安装的redis开启远程连接</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/03/16/Linux%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP/"
+                               href="/2023/03/22/%E5%AE%89%E8%A3%85Jenkins-%E7%9A%84%E6%96%B9%E5%BC%8F/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Linux 配置静态IP</span>
+                                <span class="post-nav-title-item">安装Jenkins 的方式</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -369,7 +371,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GitLab-%E9%83%A8%E7%BD%B2%E5%8F%8A%E7%AE%A1%E7%90%86%E5%91%98%E8%B4%A6%E5%8F%B7%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">GitLab 部署及管理员账号初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%A6%96%E5%85%88%E7%99%BB%E5%BD%95gitlab%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%89%A7%E8%A1%8C%E4%BB%A5%E4%B8%8B%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.首先登录gitlab服务器执行以下命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E6%9F%A5%E6%89%BE%EF%BC%8C%E7%A1%AE%E5%AE%9A%E7%94%A8%E6%88%B7%E4%B8%BA%E2%80%9Croot%E2%80%9D"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.通过命令查找，确定用户为“root”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%B0%86root%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81%E9%87%8D%E7%BD%AE%E4%B8%BAadmin123"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.将root用户密码重置为admin123!</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E4%BF%9D%E5%AD%98%E9%87%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%EF%BC%8C%E5%B9%B6%E7%BB%93%E6%9D%9F"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.保存重置信息，并结束</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEJava%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">配置Java环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEMaven%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">配置Maven环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%EF%BC%9A-%E8%A7%A3%E5%86%B3%E6%AF%8F%E6%AC%A1%E9%87%8D%E5%90%AF%E6%9C%BA%E5%99%A8%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%83%BD%E9%9C%80%E8%A6%81-source-x2F-etc-x2F-profile-%E6%89%8D%E7%94%9F%E6%95%88"><span class="nav-number">3.</span> <span class="nav-text">Linux： 解决每次重启机器环境变量都需要 source &#x2F;etc&#x2F;profile 才生效</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E5%B0%86%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E5%9C%A8-x2F-bashrc%E9%87%8C%E9%9D%A2%E3%80%82"><span class="nav-number">3.1.</span> <span class="nav-text">1、将环境变量配置在~&#x2F;.bashrc里面。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">3.2.</span> <span class="nav-text">2.添加环境变量</span></a></li></ol></li></ol>
     </div>
 </div>
 

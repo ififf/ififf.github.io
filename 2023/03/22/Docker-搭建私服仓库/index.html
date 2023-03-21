@@ -9,7 +9,7 @@
     
     <title>
         
-            GitLab 部署及管理员账号初始化 |
+            Docker 搭建私服仓库 |
         
         Blankの博客
     </title>
@@ -191,7 +191,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">GitLab 部署及管理员账号初始化</span>
+                <span class="title-hover-animation">Docker 搭建私服仓库</span>
             </div>
 
             
@@ -213,13 +213,13 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-03-18 16:27:30</span>
-        <span class="mobile">2023-03-18 16:27</span>
+        <span class="pc">2023-03-22 03:13:04</span>
+        <span class="mobile">2023-03-22 03:13</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-03-18 16:27:22</span>
+        <span class="pc">2023-03-22 03:13:41</span>
     </span>
     
     
@@ -228,7 +228,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/GitLab/">GitLab</a>&nbsp;
+                        <a href="/categories/Gogs-Gitea-Gitblit/">Gogs Gitea Gitblit</a>&nbsp;
                     </li>
                 
             </ul>
@@ -240,7 +240,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/GitLab-%E9%83%A8%E7%BD%B2/">GitLab 部署</a>&nbsp;
+                        <a href="/tags/Gogs-Gitea-Gitblit-%E9%83%A8%E7%BD%B2/">Gogs Gitea Gitblit 部署</a>&nbsp;
                     </li>
                 
             </ul>
@@ -250,7 +250,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>214 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>224 字</span>
         </span>
     
     
@@ -273,16 +273,20 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h2 id="GitLab-部署及管理员账号初始化"><a href="#GitLab-部署及管理员账号初始化" class="headerlink" title="GitLab 部署及管理员账号初始化"></a>GitLab 部署及管理员账号初始化</h2><h4 id="1-首先登录gitlab服务器执行以下命令："><a href="#1-首先登录gitlab服务器执行以下命令：" class="headerlink" title="1.首先登录gitlab服务器执行以下命令："></a>1.<strong>首先登录gitlab服务器执行以下命令：</strong></h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换到gitlab安装目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /opt/gitlab/bin</span><br><span class="line"></span><br><span class="line">sudo  gitlab-rails console -e production</span><br></pre></td></tr></table></figure>
+                <h1 id="Docker-搭建私服仓库"><a href="#Docker-搭建私服仓库" class="headerlink" title="Docker 搭建私服仓库"></a>Docker 搭建私服仓库</h1><h3 id="1-安装gogs"><a href="#1-安装gogs" class="headerlink" title="1.安装gogs"></a>1.安装gogs</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">需要创建 gogs 数据库</span> </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拉取镜像</span></span><br><span class="line">docker pull gogs/gogs</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建映射文件目录</span></span><br><span class="line">mkdir -p /var/gogs</span><br><span class="line"></span><br><span class="line">docker run --name=gogs --restart always -p 122:22 -p 3000:3000 -/var/gogs:/data gogs/gogs</span><br><span class="line"></span><br><span class="line">docker start gogs</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">踩坑记录 切记http 要填写3000端口 不要更改，不然无法访问</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="2-通过命令查找，确定用户为“root”"><a href="#2-通过命令查找，确定用户为“root”" class="headerlink" title="2.通过命令查找，确定用户为“root”"></a>2.通过命令查找，确定用户为“root”</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以下这两个命令都可以，随便输入一个</span></span><br><span class="line"></span><br><span class="line">user = User.<span class="built_in">where</span>(<span class="built_in">id</span>: 1).first </span><br><span class="line"></span><br><span class="line">user = User.<span class="built_in">where</span>(name: <span class="string">&quot;root&quot;</span>).first</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-将root用户密码重置为admin123"><a href="#3-将root用户密码重置为admin123" class="headerlink" title="3.将root用户密码重置为admin123!"></a>3.将root用户密码重置为admin123!</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入重置密码命令</span></span><br><span class="line"></span><br><span class="line">user.password=<span class="string">&quot;admin123&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 再次确认密码</span></span><br><span class="line"></span><br><span class="line">user.password_confirmation=<span class="string">&quot;admin123&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="4-保存重置信息，并结束"><a href="#4-保存重置信息，并结束" class="headerlink" title="4.保存重置信息，并结束"></a>4.保存重置信息，并结束</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入保存命令，以便使更改信息生效</span></span><br><span class="line"></span><br><span class="line">user.save</span><br><span class="line"></span><br><span class="line"><span class="comment"># 退出修改窗口</span></span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-安装gitea"><a href="#2-安装gitea" class="headerlink" title="2.安装gitea"></a>2.安装gitea</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">需要创建 gitea 数据库</span> </span><br><span class="line">docker pull gitea/gitea</span><br><span class="line"></span><br><span class="line">mkdir -p /var/gitea</span><br><span class="line"></span><br><span class="line">docker run -d --name=gitea --restart always -p 121:22 -p 3000:3000 -v /var/gitea:/data gitea/gitea</span><br><span class="line"></span><br><span class="line">docker start gitea</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">踩坑记录 切记http 要填写3000端口 不要更改，不然无法访问</span></span><br></pre></td></tr></table></figure>
 
-<p>如果看到上面截图中的true ，恭喜你已经成功了，执行 exit 或quit退出当前设置流程即可。</p>
-<p>回到gitlab ,可以通过 root&#x2F;admin123 这一超级管理员账号登录了</p>
+
+
+<h3 id="3-安装gitblit"><a href="#3-安装gitblit" class="headerlink" title="3.安装gitblit"></a>3.安装gitblit</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">docker pull gitblit/gitblit:rpc</span><br><span class="line"></span><br><span class="line">mkdir -p /var/gitblit</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">https访问</span></span><br><span class="line">docker run -d --name gitblit -p 8443:8443 -p 29418:29418 -v /var/gitblit:/data gitblit/gitblit</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">https和http访问</span></span><br><span class="line">docker run -d --name gitblit --restart always -p 8180:8080 -p 8443:8443 -p 9418:9418 -p 29418:29418 -v /var/gitblit:/data gitblit/gitblit</span><br><span class="line"></span><br><span class="line">docker start gitblit</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装MySQL5-7"><a href="#安装MySQL5-7" class="headerlink" title="安装MySQL5.7"></a>安装MySQL5.7</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql:5.7</span><br><span class="line"></span><br><span class="line">docker run --name mysql5.7 -p 13306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7</span><br></pre></td></tr></table></figure>
+
 
             </div>
 
@@ -292,16 +296,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">本文标题</span>：<span class="content">GitLab 部署及管理员账号初始化</span>
+            <span class="type">本文标题</span>：<span class="content">Docker 搭建私服仓库</span>
         </li>
         <li class="post-author">
             <span class="type">本文作者</span>：<span class="content">Blank</span>
         </li>
         <li class="post-time">
-            <span class="type">创建时间</span>：<span class="content">2023-03-18 16:27:30</span>
+            <span class="type">创建时间</span>：<span class="content">2023-03-22 03:13:04</span>
         </li>
         <li class="post-link">
-            <span class="type">本文链接</span>：<span class="content">2023/03/18/GitLab 部署忘记root密码修改/</span>
+            <span class="type">本文链接</span>：<span class="content">2023/03/22/Docker-搭建私服仓库/</span>
         </li>
         <li class="post-license">
             <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
@@ -319,7 +323,7 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/GitLab-%E9%83%A8%E7%BD%B2/">#GitLab 部署</a>&nbsp;
+                            <a href="/tags/Gogs-Gitea-Gitblit-%E9%83%A8%E7%BD%B2/">#Gogs Gitea Gitblit 部署</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -331,13 +335,13 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2023/03/19/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E7%9A%84redis%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/"
+                               href="/2023/03/22/git%20clone%E6%8A%A5%E9%94%99%E2%80%94SSL%E8%AE%A4%E8%AF%81%E5%A4%B1%E8%B4%A5%20/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">宝塔安装的redis开启远程连接</span>
+                                <span class="post-nav-title-item">git clone 推送报错</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             </a>
@@ -347,10 +351,10 @@
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/03/16/Linux%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP/"
+                               href="/2023/03/19/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E7%9A%84redis%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Linux 配置静态IP</span>
+                                <span class="post-nav-title-item">宝塔安装的redis开启远程连接</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -369,7 +373,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GitLab-%E9%83%A8%E7%BD%B2%E5%8F%8A%E7%AE%A1%E7%90%86%E5%91%98%E8%B4%A6%E5%8F%B7%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">GitLab 部署及管理员账号初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%A6%96%E5%85%88%E7%99%BB%E5%BD%95gitlab%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%89%A7%E8%A1%8C%E4%BB%A5%E4%B8%8B%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.首先登录gitlab服务器执行以下命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E6%9F%A5%E6%89%BE%EF%BC%8C%E7%A1%AE%E5%AE%9A%E7%94%A8%E6%88%B7%E4%B8%BA%E2%80%9Croot%E2%80%9D"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.通过命令查找，确定用户为“root”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%B0%86root%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81%E9%87%8D%E7%BD%AE%E4%B8%BAadmin123"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.将root用户密码重置为admin123!</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E4%BF%9D%E5%AD%98%E9%87%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%EF%BC%8C%E5%B9%B6%E7%BB%93%E6%9D%9F"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.保存重置信息，并结束</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%8D%E4%BB%93%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">Docker 搭建私服仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85gogs"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.安装gogs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85gitea"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.安装gitea</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AE%89%E8%A3%85gitblit"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.安装gitblit</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85MySQL5-7"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">安装MySQL5.7</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
 </div>
 

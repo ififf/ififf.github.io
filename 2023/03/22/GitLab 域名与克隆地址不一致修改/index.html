@@ -9,7 +9,7 @@
     
     <title>
         
-            标签: 消息中间件 |
+            gitlab 域名与克隆地址 |
         
         Blankの博客
     </title>
@@ -89,7 +89,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/tags"
                             >
                                 标签
@@ -152,7 +152,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/tags">标签</a>
                 </li>
             
@@ -187,56 +187,175 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="tag-container">
-        <div class="tag-name"><i class="fas fa-tag"></i>&nbsp;消息中间件
-        </div>
-        <div class="tag-post-list">
-            
-<div class="archive-list-container">
-    
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2023</span>
-                <span class="archive-year-post-count">[3]</span>
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">gitlab 域名与克隆地址</span>
             </div>
-            <ul class="article-list">
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/logo.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Blank</span>
+                            
+                                <span class="author-label">Java工程师</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-03-22 11:09:28</span>
+        <span class="mobile">2023-03-22 11:09</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-03-22 11:07:19</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
                 
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2023/02/19/RocketMQ-03/"
-                        >RocketMQ-03</a>
-                        <span class="article-date">02-19</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2023/02/19/RocketMQ-02/"
-                        >RocketMQ-02</a>
-                        <span class="article-date">02-19</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2023/02/19/RocketMQ-01/"
-                        >RocketMQ-01</a>
-                        <span class="article-date">02-19</span>
+                    <li>
+                        <a href="/categories/SSL%E8%AE%A4%E8%AF%81/">SSL认证</a>&nbsp;
                     </li>
                 
             </ul>
-        </section>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/SSL%E8%AE%A4%E8%AF%81/">SSL认证</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>195 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
     
 </div>
 
-        </div>
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h2 id="gitlab-域名与克隆地址不一致修改"><a href="#gitlab-域名与克隆地址不一致修改" class="headerlink" title="gitlab 域名与克隆地址不一致修改"></a>gitlab 域名与克隆地址不一致修改</h2><h4 id="1-gitlab替换https"><a href="#1-gitlab替换https" class="headerlink" title="1.gitlab替换https"></a>1.gitlab替换https</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置gitlab替换https://域名 ,如：&#x27;https://xxx.com&#x27;</span></span><br><span class="line">vim /etc/gitlab/gitlab.rb   </span><br><span class="line"><span class="comment">#打开配置文件</span></span><br><span class="line">external_url <span class="string">&#x27;external_url &#x27;</span>https://192.168.1.12:8089<span class="string">&#x27;  # 注：一定要HTTPS</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-添加ssl-证书"><a href="#2-添加ssl-证书" class="headerlink" title="2.添加ssl 证书"></a>2.添加ssl 证书</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建一个ssl文件 把申请的证书放在这个文件夹里</span></span><br><span class="line"><span class="built_in">mkdir</span> /etc/gitlab/ssl  </span><br><span class="line"><span class="comment">#打开配置文件</span></span><br><span class="line">vim  /etc/gitlab/gitlab.rb  </span><br><span class="line"><span class="comment">#取消注释改为 true</span></span><br><span class="line">nginx[<span class="string">&#x27;redirect_http_to_https&#x27;</span>]= <span class="literal">true</span></span><br><span class="line"><span class="comment">#放置对应的证书名称</span></span><br><span class="line">nginx[<span class="string">&#x27;ssl_certificate&#x27;</span>] = <span class="string">&quot;/etc/gitlab/ssl/xxxx.crt&quot;</span>  </span><br><span class="line"><span class="comment">#放置对应的证书名称</span></span><br><span class="line">nginx[<span class="string">&#x27;ssl_certificate_key&#x27;</span>] = <span class="string">&quot;/etc/gitlab/ssl/xxxx.key&quot;</span> </span><br><span class="line"><span class="comment">#使配置生效</span></span><br><span class="line">gitlab-ctl reconfigure </span><br></pre></td></tr></table></figure>
+
+<h4 id="3-修改clone-地址"><a href="#3-修改clone-地址" class="headerlink" title="3.修改clone 地址"></a>3.修改clone 地址</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /var/opt/gitlab/gitlab-rails/etc/gitlab.yml  <span class="comment">#打开配置文件，参考图修改后重启</span></span><br><span class="line">gitlab-ctl restart  <span class="comment"># 重起生效 # </span></span><br></pre></td></tr></table></figure>
+
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">gitlab 域名与克隆地址</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Blank</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-03-22 11:09:28</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/03/22/GitLab 域名与克隆地址不一致修改/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
     </div>
-
-    <div class="tag-paginator">
-        <div class="paginator">
-    
-
-    
 </div>
 
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/SSL%E8%AE%A4%E8%AF%81/">#SSL认证</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/03/22/Git%20%E6%8E%A8%E9%80%81%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93ssl%E8%AE%A4%E8%AF%81%20/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Git推送报错</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#gitlab-%E5%9F%9F%E5%90%8D%E4%B8%8E%E5%85%8B%E9%9A%86%E5%9C%B0%E5%9D%80%E4%B8%8D%E4%B8%80%E8%87%B4%E4%BF%AE%E6%94%B9"><span class="nav-number">1.</span> <span class="nav-text">gitlab 域名与克隆地址不一致修改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-gitlab%E6%9B%BF%E6%8D%A2https"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.gitlab替换https</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%B7%BB%E5%8A%A0ssl-%E8%AF%81%E4%B9%A6"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.添加ssl 证书</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BF%AE%E6%94%B9clone-%E5%9C%B0%E5%9D%80"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.修改clone 地址</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
     </div>
 </div>
 
@@ -288,6 +407,23 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -387,6 +523,14 @@
 
 
 <div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
     
 </div>
 

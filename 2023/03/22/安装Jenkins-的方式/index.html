@@ -219,7 +219,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-03-25 20:05:34</span>
+        <span class="pc">2023-03-26 00:45:03</span>
     </span>
     
     
@@ -279,39 +279,39 @@
 <p><img  
                      lazyload
                      alt="image"
-                     data-src="https://img-blog.csdnimg.cn/7b553e72b6814811bc7277ccd346c6e7.png#pic_center"
+                     data-src="https://raw.githubusercontent.com/5ober/picgo-imgbed/master/img/202303260042253.png"
                       alt="在这里插入图片描述"
                 ></p>
 <h3 id="Docker安装第一次需要进入容器才能获取密码"><a href="#Docker安装第一次需要进入容器才能获取密码" class="headerlink" title="Docker安装第一次需要进入容器才能获取密码"></a>Docker安装第一次需要进入容器才能获取密码</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/jenkins_home/secrets/initialAdminPassword</span><br></pre></td></tr></table></figure>
 <p><img  
                      lazyload
                      alt="image"
-                     data-src="https://img-blog.csdnimg.cn/82ec8c5025d24e48a78160e29650c126.png#pic_center"
+                     data-src="https://raw.githubusercontent.com/5ober/picgo-imgbed/master/img/202303260042600.png"
                       alt="在这里插入图片描述"
                 ></p>
 <h3 id="接下来登录安装插件"><a href="#接下来登录安装插件" class="headerlink" title="接下来登录安装插件"></a>接下来登录安装插件<img  
                      lazyload
                      alt="image"
-                     data-src="https://img-blog.csdnimg.cn/8cb9750d4ce24e0daf4f19797660cbbf.png#pic_center"
+                     data-src="https://raw.githubusercontent.com/5ober/picgo-imgbed/master/img/202303260043025.png"
                       alt="在这里插入图片描述"
                 ></h3><h3 id="插件安装完注册账号重启登录"><a href="#插件安装完注册账号重启登录" class="headerlink" title="插件安装完注册账号重启登录"></a>插件安装完注册账号重启登录</h3><p><img  
                      lazyload
                      alt="image"
-                     data-src="https://img-blog.csdnimg.cn/108edc3895c6499cb4ecfc61408d7e47.png#pic_center"
+                     data-src="https://raw.githubusercontent.com/5ober/picgo-imgbed/master/img/202303260043634.png"
                       alt="在这里插入图片描述"
                 ></p>
 <h3 id="修改为国内的清华大学官方镜像地址，最终内容如下："><a href="#修改为国内的清华大学官方镜像地址，最终内容如下：" class="headerlink" title="修改为国内的清华大学官方镜像地址，最终内容如下："></a>修改为国内的清华大学官方镜像地址，最终内容如下：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"> # </span><span class="language-bash">找到这个配置文件hudson.model.UpdateCenter.xml</span></span><br><span class="line"></span><br><span class="line">   &lt;?xml version=&#x27;1.1&#x27; encoding=&#x27;UTF-8&#x27;?&gt;</span><br><span class="line">&lt;sites&gt;</span><br><span class="line">  &lt;site&gt;</span><br><span class="line">    &lt;id&gt;default&lt;/id&gt;</span><br><span class="line">    &lt;!--清华镜像--&gt;</span><br><span class="line">    &lt;url&gt;https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json&lt;/url&gt;</span><br><span class="line">    &lt;!--官方镜像</span><br><span class="line">    &lt;url&gt;https://updates.jenkins.io/update-center.json&lt;/url&gt;--&gt;</span><br><span class="line">  &lt;/site&gt;</span><br><span class="line">&lt;/sites&gt;</span><br></pre></td></tr></table></figure>
 <p><img  
                      lazyload
                      alt="image"
-                     data-src="https://img-blog.csdnimg.cn/7dc93d64845541f08430e9304edb6b30.png#pic_center"
+                     data-src="https://raw.githubusercontent.com/5ober/picgo-imgbed/master/img/202303260044969.png"
                       alt="在这里插入图片描述"
                 ></p>
 <h3 id="插件管理高级里更改URL地址"><a href="#插件管理高级里更改URL地址" class="headerlink" title="插件管理高级里更改URL地址"></a>插件管理高级里更改URL地址</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json</span><br></pre></td></tr></table></figure>
 <p><img  
                      lazyload
                      alt="image"
-                     data-src="https://img-blog.csdnimg.cn/94ff41b6e0fa4e71b2d04238793a835e.png#pic_center"
+                     data-src="https://raw.githubusercontent.com/5ober/picgo-imgbed/master/img/202303260044449.png"
                       alt="在这里插入图片描述"
                 ></p>
 <h3 id="配置Maven-Setting-xml路径-Docker安装最好挂载本地Maven"><a href="#配置Maven-Setting-xml路径-Docker安装最好挂载本地Maven" class="headerlink" title="配置Maven Setting.xml路径 Docker安装最好挂载本地Maven"></a>配置Maven Setting.xml路径 Docker安装最好挂载本地Maven</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置文件目录  获取JDK目录</span></span><br><span class="line"></span><br><span class="line">  echo $JAVA_HOME </span><br><span class="line">  /opt/java/openjdk</span><br><span class="line">  /usr/local/java/jdk1.8.0_221</span><br><span class="line">  /usr/local/maven/apache-maven-3.9.0</span><br><span class="line">  /usr/local/maven/apache-maven-3.9.0/conf/settings.xml</span><br></pre></td></tr></table></figure>
@@ -319,25 +319,25 @@
 <p><img  
                      lazyload
                      alt="image"
-                     data-src="https://img-blog.csdnimg.cn/9f21648fcf344d48b2574920db0ad7c6.png#pic_center"
+                     data-src="https://raw.githubusercontent.com/5ober/picgo-imgbed/master/img/202303260044844.png"
                       alt="在这里插入图片描述"
                 ></p>
 <h3 id="配置JDK-容器里自带JDK，也可挂载本地JDK-8"><a href="#配置JDK-容器里自带JDK，也可挂载本地JDK-8" class="headerlink" title="配置JDK 容器里自带JDK，也可挂载本地JDK 8"></a>配置JDK 容器里自带JDK，也可挂载本地JDK 8</h3><p><img  
                      lazyload
                      alt="image"
-                     data-src="https://img-blog.csdnimg.cn/6a96c8b0d8ac48cbb6193fffa44c82bf.png#pic_center"
+                     data-src="https://raw.githubusercontent.com/5ober/picgo-imgbed/master/img/202303260044970.png"
                       alt="在这里插入图片描述"
                 ></p>
 <h3 id="配置Maven本地安装路径"><a href="#配置Maven本地安装路径" class="headerlink" title="配置Maven本地安装路径"></a>配置Maven本地安装路径</h3><p><img  
                      lazyload
                      alt="image"
-                     data-src="https://img-blog.csdnimg.cn/3c36dfd5800f432a8d9c3f8988b2a17d.png#pic_center"
+                     data-src="https://raw.githubusercontent.com/5ober/picgo-imgbed/master/img/202303260044450.png"
                       alt="在这里插入图片描述"
                 ></p>
 <h3 id="最后测试一下构建项目"><a href="#最后测试一下构建项目" class="headerlink" title="最后测试一下构建项目"></a>最后测试一下构建项目</h3><p><img  
                      lazyload
                      alt="image"
-                     data-src="https://img-blog.csdnimg.cn/caed3d33dbd349a9a2baff40cdfe5005.png#pic_center"
+                     data-src="https://raw.githubusercontent.com/5ober/picgo-imgbed/master/img/202303260044072.png"
                       alt="在这里插入图片描述"
                 ></p>
 <h3 id="2-war包安装方式"><a href="#2-war包安装方式" class="headerlink" title="2.war包安装方式"></a>2.war包安装方式</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下载jenkins.war包 安装目录 Java-jar启动</span></span><br><span class="line"></span><br><span class="line">java -jar jenkins.war --httpPort=8081</span><br></pre></td></tr></table></figure>

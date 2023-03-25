@@ -219,7 +219,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-03-25 19:48:16</span>
+        <span class="pc">2023-03-26 00:51:09</span>
     </span>
     
     
@@ -250,12 +250,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>719 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>705 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>3 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>2 分钟</span>
         </span>
     
     
@@ -280,37 +280,35 @@
 <p>然后在用户目录 <code>%USERPROFILE%</code> 下面创建一个配置文件 <code>.wslconfig</code>，按照如下配置方法设置网络，例如：</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[wsl2]</span></span><br><span class="line"><span class="attr">networkingMode</span>=bridged <span class="comment"># 桥接模式</span></span><br><span class="line"><span class="attr">vmSwitch</span>=WSLBridge <span class="comment"># 你想使用的网卡</span></span><br><span class="line"><span class="attr">ipv6</span>=<span class="literal">true</span> <span class="comment"># 启用 IPv6[wsl2]</span></span><br></pre></td></tr></table></figure>
 
-<p><code>wsl --shutdown &amp;&amp; wsl</code> 重启 WSL2，搞定</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --shutdown &amp;&amp; wsl</span><br></pre></td></tr></table></figure>
+
+<p>重启 WSL2，搞定</p>
 <h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wsl --version</span><br><span class="line"><span class="comment"># 版本&gt;1.0即可</span></span><br></pre></td></tr></table></figure>
 
 <p>如果出错，请<a class="link"   target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/wsl/install" >安装最新版本<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><ul>
-<li>.wslconfig<br>用于在 WSL 2 上运行的所有已安装分发版 <strong>全局</strong> 配置设置。</li>
-<li>wsl.conf<br>为 WSL 1 或 WSL 2 上运行的 Linux 发行版配置 每个分发 版的设置。</li>
-</ul>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>.wslconfig<br>用于在 WSL 2 上运行的所有已安装分发版 <strong>全局</strong> 配置设置。</p>
+<p>wsl.conf<br>为 WSL 1 或 WSL 2 上运行的 Linux 发行版配置 每个分发 版的设置。</p>
 <p>这里详细配置介绍请移步 <a class="link"   target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/wsl/wsl-config" >高级设置配置<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="配置WSL2使用外部网络"><a href="#配置WSL2使用外部网络" class="headerlink" title="配置WSL2使用外部网络"></a>配置WSL2使用外部网络</h2><ul>
-<li>使用Hyper-V创建外部网络（其他方式创建也行）</li>
-</ul>
+<h2 id="配置WSL2使用外部网络"><a href="#配置WSL2使用外部网络" class="headerlink" title="配置WSL2使用外部网络"></a>配置WSL2使用外部网络</h2><p>使用Hyper-V创建外部网络（其他方式创建也行）</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看网络交换机名称</span></span><br><span class="line"><span class="built_in">Get-VMSwitch</span> <span class="literal">-SwitchType</span> External</span><br></pre></td></tr></table></figure>
 
 <p><img  
                      lazyload
                      alt="image"
-                     data-src="https://gitee.com/lucky0915/pic-bed/raw/master/img/uTools_1679587233100.png"
+                     data-src="https://raw.githubusercontent.com/5ober/picgo-imgbed/master/img/202303260041736.png"
                       alt="uTools_1679587233100"
                 ></p>
-<ul>
-<li><p>配置 .wslconfig<br>存储在目录中 %UserProfile%，或者 PowerShell 中使用 cd ~ 访问主目录</p>
-</li>
-<li><p>&#96;&#96;&#96;shell<br>[wsl2]<br>networkingMode&#x3D;bridge<br>vmSwitch&#x3D;WSL_Bridge<br>ipv6&#x3D;true<br>#dhcp&#x3D;false<br>memory&#x3D;8GB<br>processors&#x3D;4<br>localhostforwarding&#x3D;true<br>debugConsole&#x3D;false<br>guiApplications&#x3D;true</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">重启 WSL2</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">wsl --shutdown</span><br><span class="line">wsl</span><br><span class="line">ip a</span><br></pre></td></tr></table></figure></li>
-</ul>
+<p>配置 .wslconfig<br>存储在目录中 %UserProfile%，或者 PowerShell 中使用 cd ~ 访问主目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">networkingMode=bridge</span><br><span class="line">vmSwitch=WSL_Bridge</span><br><span class="line">ipv6=true</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">dhcp=<span class="literal">false</span></span></span><br><span class="line">memory=8GB</span><br><span class="line">processors=4</span><br><span class="line">localhostforwarding=true</span><br><span class="line">debugConsole=false</span><br><span class="line">guiApplications=true</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>重启 WSL2</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wsl --shutdown</span><br><span class="line">wsl</span><br><span class="line">ip a</span><br></pre></td></tr></table></figure>
+
 <p>​       可以看到eth0的网络是桥接网络了</p>
 <p><img  
                      lazyload
                      alt="image"
-                     data-src="https://gitee.com/lucky0915/pic-bed/raw/master/img/Snipaste_2023-03-25_17-27-51.png"
+                     data-src="https://raw.githubusercontent.com/5ober/picgo-imgbed/master/img/202303260041657.png"
                       alt="Snipaste_2023-03-25_17-27-51"
                 ></p>
 <p>​		修改DNS禁止自动生成</p>

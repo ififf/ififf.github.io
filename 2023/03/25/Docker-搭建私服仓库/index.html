@@ -219,7 +219,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-03-25 19:42:35</span>
+        <span class="pc">2023-03-26 01:16:30</span>
     </span>
     
     
@@ -278,22 +278,22 @@
 <p><img  
                      lazyload
                      alt="image"
-                     data-src="https://img-blog.csdnimg.cn/4fc497e048ae4888adf4d0c0caf55821.png#pic_center"
-                      alt="在这里插入图片描述"
+                     data-src="https://raw.githubusercontent.com/5ober/picgo-imgbed/master/img/202303260023214.png"
+                      alt="Snipaste_2023-03-25_17-19-43"
                 ></p>
 <h3 id="2-安装gitea"><a href="#2-安装gitea" class="headerlink" title="2.安装gitea"></a>2.安装gitea</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">需要创建 gitea 数据库</span> </span><br><span class="line">docker pull gitea/gitea</span><br><span class="line"></span><br><span class="line">mkdir -p /var/gitea</span><br><span class="line"></span><br><span class="line">docker run -d --name=gitea --restart always -p 121:22 -p 3000:3000 -v /var/gitea:/data gitea/gitea</span><br><span class="line"></span><br><span class="line">docker start gitea</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">踩坑记录 切记http 要填写3000端口 不要更改，不然无法访问</span></span><br></pre></td></tr></table></figure>
 <p><img  
                      lazyload
                      alt="image"
-                     data-src="https://img-blog.csdnimg.cn/b5e9e8165cfa449fbea48f351f6a083c.png#pic_center"
-                      alt="在这里插入图片描述"
+                     data-src="https://raw.githubusercontent.com/5ober/picgo-imgbed/master/img/202303260026608.png"
+                      alt="Snipaste_2023-03-25_17-22-36"
                 ></p>
 <h3 id="3-安装gitblit"><a href="#3-安装gitblit" class="headerlink" title="3.安装gitblit"></a>3.安装gitblit</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">docker pull gitblit/gitblit:rpc</span><br><span class="line"></span><br><span class="line">mkdir -p /var/gitblit</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">https访问</span></span><br><span class="line">docker run -d --name gitblit -p 8443:8443 -p 29418:29418 -v /var/gitblit:/data gitblit/gitblit</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">https和http访问</span></span><br><span class="line">docker run -d --name gitblit --restart always -p 8180:8080 -p 8443:8443 -p 9418:9418 -p 29418:29418 -v /var/gitblit:/data gitblit/gitblit</span><br><span class="line"></span><br><span class="line">docker start gitblit</span><br></pre></td></tr></table></figure>
 <p><img  
                      lazyload
                      alt="image"
-                     data-src="https://img-blog.csdnimg.cn/a98ee79c85d640988eae4b5daa662725.png#pic_center"
-                      alt="在这里插入图片描述"
+                     data-src="https://raw.githubusercontent.com/5ober/picgo-imgbed/master/img/202303260025395.png"
+                      alt="Snipaste_2023-03-25_17-17-40"
                 ></p>
 <h4 id="安装MySQL5-7"><a href="#安装MySQL5-7" class="headerlink" title="安装MySQL5.7"></a>安装MySQL5.7</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql:5.7</span><br><span class="line"></span><br><span class="line">docker run --name mysql5.7 -p 13306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7</span><br></pre></td></tr></table></figure>
 
@@ -361,10 +361,10 @@
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/03/22/GitLab%20%E5%9F%9F%E5%90%8D%E4%B8%8E%E5%85%8B%E9%9A%86%E5%9C%B0%E5%9D%80%E4%B8%8D%E4%B8%80%E8%87%B4%E4%BF%AE%E6%94%B9/"
+                               href="/2023/03/25/Docker-%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%8D%E4%BB%93%E5%BA%93%E6%B5%8B%E8%AF%95/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">gitlab 域名与克隆地址</span>
+                                <span class="post-nav-title-item">Docker 搭建私服仓库</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">

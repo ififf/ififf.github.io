@@ -219,7 +219,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-03-26 00:51:09</span>
+        <span class="pc">2023-03-26 02:35:54</span>
     </span>
     
     
@@ -295,7 +295,7 @@
 <p><img  
                      lazyload
                      alt="image"
-                     data-src="https://raw.githubusercontent.com/5ober/picgo-imgbed/master/img/202303260041736.png"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230326/uTools_1679587233100.6blp5g6ezac0.jpg"
                       alt="uTools_1679587233100"
                 ></p>
 <p>配置 .wslconfig<br>存储在目录中 %UserProfile%，或者 PowerShell 中使用 cd ~ 访问主目录</p>
@@ -308,10 +308,10 @@
 <p><img  
                      lazyload
                      alt="image"
-                     data-src="https://raw.githubusercontent.com/5ober/picgo-imgbed/master/img/202303260041657.png"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230326/Snipaste_2023-03-25_17-27-51.1o5xgami6rds.jpg"
                       alt="Snipaste_2023-03-25_17-27-51"
                 ></p>
-<p>​		修改DNS禁止自动生成</p>
+<p>修改DNS禁止自动生成</p>
 <p>添加 <code>/etc/wsl.conf</code> 加入以下内容</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[boot]</span></span><br><span class="line"><span class="comment"># 启用systemctl命令</span></span><br><span class="line"><span class="attr">systemd</span>=<span class="literal">true</span></span><br><span class="line"><span class="section">[network]</span></span><br><span class="line"><span class="comment"># 取消自动生成resolv.conf文件，这个是关键点</span></span><br><span class="line"><span class="attr">generateResolvConf</span> = <span class="literal">false</span></span><br><span class="line"><span class="comment"># 设置虚拟主机的名称，默认的不好看</span></span><br><span class="line"><span class="comment">#hostname = </span></span><br><span class="line"><span class="section">[user]</span></span><br><span class="line"><span class="comment"># 启动的默认用户，设为root吧，不然以后命令都要加sudo有点麻烦</span></span><br><span class="line"><span class="attr">default</span> = root</span><br></pre></td></tr></table></figure>
 

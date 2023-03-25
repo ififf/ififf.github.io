@@ -9,7 +9,7 @@
     
     <title>
         
-            宝塔安装的redis开启远程连接 |
+            WSL安装图形界面xfce4 |
         
         Blankの博客
     </title>
@@ -191,7 +191,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">宝塔安装的redis开启远程连接</span>
+                <span class="title-hover-animation">WSL安装图形界面xfce4</span>
             </div>
 
             
@@ -213,13 +213,13 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-03-19 16:39:43</span>
-        <span class="mobile">2023-03-19 16:39</span>
+        <span class="pc">2023-03-25 19:58:50</span>
+        <span class="mobile">2023-03-25 19:58</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-03-19 15:58:20</span>
+        <span class="pc">2023-03-25 19:50:16</span>
     </span>
     
     
@@ -228,7 +228,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/Redis/">Redis</a>&nbsp;
+                        <a href="/categories/WSL%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2xfce4/">WSL图形界面xfce4</a>&nbsp;
                     </li>
                 
             </ul>
@@ -240,7 +240,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/Redis%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/">Redis开启远程连接</a>&nbsp;
+                        <a href="/tags/WSL%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2xfce4/">WSL图形界面xfce4</a>&nbsp;
                     </li>
                 
             </ul>
@@ -250,12 +250,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>86 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>584 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>2 分钟</span>
         </span>
     
     
@@ -273,17 +273,93 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h3 id="宝塔安装的Redis开启远程连接"><a href="#宝塔安装的Redis开启远程连接" class="headerlink" title="宝塔安装的Redis开启远程连接"></a>宝塔安装的Redis开启远程连接</h3><p>第一步，打开配置文件&#x2F;www&#x2F;server&#x2F;redis&#x2F;redis.conf</p>
-<p>搜索bind，修改自己的IP地址</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind 192.168.1.16</span><br></pre></td></tr></table></figure>
+                <h1 id="WSL安装图形界面xfce4"><a href="#WSL安装图形界面xfce4" class="headerlink" title="WSL安装图形界面xfce4"></a>WSL安装图形界面xfce4</h1><p>最近想在WSL2里安装一个可视化图形界面，之前装过vcXsrv这种方案，不过最近打不开了，也是尝试了Vnc server 不过容易灰屏，最后在vcXsrv ，Vnc server和 xrdp这3种方案中最终选择了xrdp这种方案，利用Windows的远程连接来连接xfce4桌面</p>
+<h4 id="更新升级软件-可选"><a href="#更新升级软件-可选" class="headerlink" title="更新升级软件 (可选)"></a>更新升级软件 (可选)</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
 
-<p>搜索protected-mode，将保护模式yes改成no</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protected-mode no</span><br></pre></td></tr></table></figure>
+<h4 id="安装桌面环境xfce4"><a href="#安装桌面环境xfce4" class="headerlink" title="安装桌面环境xfce4"></a>安装桌面环境xfce4</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install xfce4 xfce4-goodies</span><br></pre></td></tr></table></figure>
 
-<p>将 requirepass foobared 的 foobared 改为自己需要设置的Redis密码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requirepass sober</span><br></pre></td></tr></table></figure>
+<p><strong>注: <font color=red>display manager</font>选择 <font color=red>gdm3</font> 或<font color=red> lightdm </font>均可。</strong></p>
+<h4 id="设置系统语言"><a href="#设置系统语言" class="headerlink" title="设置系统语言"></a>设置系统语言</h4><p>默认情况下，Linux是没有中文语言包的。我们需要手动下载语言包并配置。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装中文字体</span></span><br><span class="line">sudo apt-get install ttf-wqy-zenhei</span><br></pre></td></tr></table></figure>
 
-<p>最后重启配置</p>
+<p>之后，我们设置系统的语言：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置系统语言</span></span><br><span class="line">sudo dpkg-reconfigure locales</span><br></pre></td></tr></table></figure>
+
+<p>方向键找到中文后<font color=red>zh_CN,UTF-8 UTF-8</font>，按空格：</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://gitee.com/lucky0915/pic-bed/raw/master/img/Snipaste_2023-03-25_16-36-18.png"
+                      alt="Snipaste_2023-03-25_16-36-18"
+                ></p>
+<p>之后再回车确认，然后选择中文：<font color=red>zh_CN,UTF-8 </font></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://gitee.com/lucky0915/pic-bed/raw/master/img/Snipaste_2023-03-25_16-36-39.png"
+                      alt="Snipaste_2023-03-25_16-36-39"
+                ></p>
+<h4 id="安装远程桌面服务xrdp"><a href="#安装远程桌面服务xrdp" class="headerlink" title="安装远程桌面服务xrdp"></a><strong>安装远程桌面服务</strong>xrdp</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install xrdp</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改配置文件xrdp-ini"><a href="#修改配置文件xrdp-ini" class="headerlink" title="修改配置文件xrdp.ini"></a>修改配置文件xrdp.ini</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">复制一份备用</span></span><br><span class="line">sudo cp /etc/xrdp/xrdp.ini /etc/xrdp/xrdp.ini.bak</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置端口-3389-改为-3390，避免和windows的端口冲突"><a href="#配置端口-3389-改为-3390，避免和windows的端口冲突" class="headerlink" title="配置端口 3389 改为 3390，避免和windows的端口冲突"></a>配置端口 3389 改为 3390，避免和windows的端口冲突</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sed -i &#x27;s/3389/3390/g&#x27; /etc/xrdp/xrdp.ini</span><br></pre></td></tr></table></figure>
+
+<h4 id="max-bpp-x3D-32-修改为-128（最大位图深度）"><a href="#max-bpp-x3D-32-修改为-128（最大位图深度）" class="headerlink" title="max_bpp&#x3D;32 修改为 128（最大位图深度）"></a>max_bpp&#x3D;32 修改为 128（最大位图深度）</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sed -i &#x27;s/max_bpp=32/#max_bbp=32\nmax_bpp=128/g&#x27; /etc/xrdp/xrdp.ini</span><br></pre></td></tr></table></figure>
+
+<h4 id="xserverbpp-x3D-24-修改为-128，取消注释"><a href="#xserverbpp-x3D-24-修改为-128，取消注释" class="headerlink" title="xserverbpp&#x3D;24 修改为 128，取消注释"></a>xserverbpp&#x3D;24 修改为 128，取消注释</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sed -i &#x27;s/xservervpp=24/#xservervpp=24\nxserverbpp=128/g&#x27; /etc/xrdp/xrdp.ini</span><br></pre></td></tr></table></figure>
+
+<h4 id="新增配置文件-xsession"><a href="#新增配置文件-xsession" class="headerlink" title="新增配置文件.xsession"></a>新增配置文件.xsession</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">告诉系统: 开启桌面环境的时候用xfce4-session</span></span><br><span class="line">sudo echo xfce4-session &gt; ~/.xsession</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置sesman-ini"><a href="#配置sesman-ini" class="headerlink" title="配置sesman.ini"></a>配置sesman.ini</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/xrdp/sesman.ini</span><br></pre></td></tr></table></figure>
+
+<p>将 <strong><font color=red>KillDisconnected</font></strong> 的值修改为 **<font color=red>true</font>**保存退出</p>
+<h4 id="修改配置startwm-sh"><a href="#修改配置startwm-sh" class="headerlink" title="修改配置startwm.sh"></a>修改配置startwm.sh</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/xrdp/startwm.sh</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释掉末尾亮行，并添加一行 <font color=red>startxfce4</font></strong> </p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://gitee.com/lucky0915/pic-bed/raw/master/img/Snipaste_2023-03-25_16-09-11.png"
+                      alt="Snipaste_2023-03-25_16-09-11"
+                ></p>
+<h4 id="启用-xrdp-服务"><a href="#启用-xrdp-服务" class="headerlink" title="启用 xrdp 服务"></a>启用 xrdp 服务</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/xrdp start</span><br></pre></td></tr></table></figure>
+
+<h3 id="远程桌面链接"><a href="#远程桌面链接" class="headerlink" title="远程桌面链接"></a>远程桌面链接</h3><p>按下 <strong>Windows+R</strong> 键，输入 <strong>mstsc</strong> 打开远程桌面连接</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://gitee.com/lucky0915/pic-bed/raw/master/img/Snipaste_2023-03-25_15-55-02.png"
+                      alt="Snipaste_2023-03-25_15-55-02"
+                ></p>
+<p>IP为本机即 localhost，端口为配置的<strong>3390</strong>，IP 也可以使用 ip a 或 ifconfig命令查到的 eth0 inet 地址</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://gitee.com/lucky0915/pic-bed/raw/master/img/Snipaste_2023-03-23_20-02-11.png"
+                      alt="Snipaste_2023-03-23_20-02-11"
+                ></p>
+<p>连接后进入登录页面，用户名和密码填写 WSL 的用户名和密码。注：不要使用 <strong>root</strong>用户登录</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://gitee.com/lucky0915/pic-bed/raw/master/img/Snipaste_2023-03-25_16-30-57.png"
+                      alt="Snipaste_2023-03-25_16-30-57"
+                ></p>
+<p>登录成功进入xfce4桌面</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://gitee.com/lucky0915/pic-bed/raw/master/img/Snipaste_2023-03-25_15-54-37.png"
+                      alt="Snipaste_2023-03-25_15-54-37"
+                ></p>
+<h4 id="停止-xrdp-服务"><a href="#停止-xrdp-服务" class="headerlink" title="停止 xrdp 服务"></a>停止 xrdp 服务</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/xrdp stop</span><br></pre></td></tr></table></figure>
+
+<p>不使用时执行停止命令就行</p>
+<h4 id="卸载-xrdp-服务"><a href="#卸载-xrdp-服务" class="headerlink" title="卸载 xrdp 服务"></a>卸载 xrdp 服务</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge xrdp</span><br></pre></td></tr></table></figure>
+
+<p><strong><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/w47_csdn/article/details/129107705" >参考 Xrdp 方式连接<i class="fas fa-external-link-alt"></i></a></strong></p>
+<p><strong><a class="link"   target="_blank" rel="noopener" href="https://www.mintimate.cn/2021/05/15/installVNC/#%F0%9F%98%8B%E5%88%9D%E5%A7%8B%E5%8C%96tightvncserver" >参考VNC server方式连接<i class="fas fa-external-link-alt"></i></a></strong></p>
 
             </div>
 
@@ -293,16 +369,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">本文标题</span>：<span class="content">宝塔安装的redis开启远程连接</span>
+            <span class="type">本文标题</span>：<span class="content">WSL安装图形界面xfce4</span>
         </li>
         <li class="post-author">
             <span class="type">本文作者</span>：<span class="content">Blank</span>
         </li>
         <li class="post-time">
-            <span class="type">创建时间</span>：<span class="content">2023-03-19 16:39:43</span>
+            <span class="type">创建时间</span>：<span class="content">2023-03-25 19:58:50</span>
         </li>
         <li class="post-link">
-            <span class="type">本文链接</span>：<span class="content">2023/03/19/宝塔安装的redis开启远程连接/</span>
+            <span class="type">本文链接</span>：<span class="content">2023/03/25/WSL安装桌面环境xfce4/</span>
         </li>
         <li class="post-license">
             <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
@@ -320,7 +396,7 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/Redis%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/">#Redis开启远程连接</a>&nbsp;
+                            <a href="/tags/WSL%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2xfce4/">#WSL图形界面xfce4</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -332,13 +408,13 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2023/03/22/%E5%AE%89%E8%A3%85Jenkins-%E7%9A%84%E6%96%B9%E5%BC%8F/"
+                               href="/2023/03/25/WSL%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81IP/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">安装Jenkins 的方式</span>
+                                <span class="post-nav-title-item">WSL设置静态IP</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             </a>
@@ -348,10 +424,10 @@
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/03/18/GitLab%20%E9%83%A8%E7%BD%B2%E5%BF%98%E8%AE%B0root%E5%AF%86%E7%A0%81%E4%BF%AE%E6%94%B9/"
+                               href="/2023/03/25/Docker-%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%8D%E4%BB%93%E5%BA%93/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">GitLab 部署及管理员账号初始化</span>
+                                <span class="post-nav-title-item">Docker 搭建私服仓库</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -370,7 +446,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E7%9A%84Redis%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">宝塔安装的Redis开启远程连接</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WSL%E5%AE%89%E8%A3%85%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2xfce4"><span class="nav-number">1.</span> <span class="nav-text">WSL安装图形界面xfce4</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E5%8D%87%E7%BA%A7%E8%BD%AF%E4%BB%B6-%E5%8F%AF%E9%80%89"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">更新升级软件 (可选)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83xfce4"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">安装桌面环境xfce4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%B3%BB%E7%BB%9F%E8%AF%AD%E8%A8%80"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">设置系统语言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1xrdp"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">安装远程桌面服务xrdp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6xrdp-ini"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">修改配置文件xrdp.ini</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%AB%AF%E5%8F%A3-3389-%E6%94%B9%E4%B8%BA-3390%EF%BC%8C%E9%81%BF%E5%85%8D%E5%92%8Cwindows%E7%9A%84%E7%AB%AF%E5%8F%A3%E5%86%B2%E7%AA%81"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">配置端口 3389 改为 3390，避免和windows的端口冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#max-bpp-x3D-32-%E4%BF%AE%E6%94%B9%E4%B8%BA-128%EF%BC%88%E6%9C%80%E5%A4%A7%E4%BD%8D%E5%9B%BE%E6%B7%B1%E5%BA%A6%EF%BC%89"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">max_bpp&#x3D;32 修改为 128（最大位图深度）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xserverbpp-x3D-24-%E4%BF%AE%E6%94%B9%E4%B8%BA-128%EF%BC%8C%E5%8F%96%E6%B6%88%E6%B3%A8%E9%87%8A"><span class="nav-number">1.0.0.8.</span> <span class="nav-text">xserverbpp&#x3D;24 修改为 128，取消注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-xsession"><span class="nav-number">1.0.0.9.</span> <span class="nav-text">新增配置文件.xsession</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEsesman-ini"><span class="nav-number">1.0.0.10.</span> <span class="nav-text">配置sesman.ini</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AEstartwm-sh"><span class="nav-number">1.0.0.11.</span> <span class="nav-text">修改配置startwm.sh</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E7%94%A8-xrdp-%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.0.0.12.</span> <span class="nav-text">启用 xrdp 服务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E9%93%BE%E6%8E%A5"><span class="nav-number">1.0.1.</span> <span class="nav-text">远程桌面链接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%9C%E6%AD%A2-xrdp-%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">停止 xrdp 服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD-xrdp-%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">卸载 xrdp 服务</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
 </div>
 

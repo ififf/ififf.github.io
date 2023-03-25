@@ -219,7 +219,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-03-19 21:46:31</span>
+        <span class="pc">2023-03-25 20:02:29</span>
     </span>
     
     
@@ -250,7 +250,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>214 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>191 字</span>
         </span>
     
     
@@ -277,17 +277,20 @@
 
 
 
-<h3 id="Rocky-9-0-NetworkManager-配置文件位置（ens160网卡名称）"><a href="#Rocky-9-0-NetworkManager-配置文件位置（ens160网卡名称）" class="headerlink" title="Rocky 9.0 NetworkManager 配置文件位置（ens160网卡名称）"></a>Rocky 9.0 NetworkManager 配置文件位置（ens160网卡名称）</h3><p>修改网卡配置文件</p>
-<p>vim &#x2F;etc&#x2F;NetworkManager&#x2F;system-connections&#x2F;ens160.nmconnection</p>
-<p>[ipv4]</p>
-<p> &#x2F;&#x2F;添加ip&#x2F;子网掩码,网关</p>
-<p>address1&#x3D;192.168.1.30&#x2F;24,192.168.1.254 </p>
-<p>&#x2F;&#x2F;添加dns地址（多个用;隔开）</p>
-<p>dns&#x3D;8.8.8.8;114.114.114.114;                </p>
-<p>may-fail&#x3D;false</p>
-<p>method&#x3D;manual</p>
-<h4 id="重新加载配置文件"><a href="#重新加载配置文件" class="headerlink" title="重新加载配置文件"></a>重新加载配置文件</h4><p>nmcli connection load &#x2F;etc&#x2F;NetworkManager&#x2F;system-connections&#x2F;ens160.nmconnectioni</p>
-<h4 id="激活配置文件"><a href="#激活配置文件" class="headerlink" title="激活配置文件"></a>激活配置文件</h4><p>nmcli connection up &#x2F;etc&#x2F;NetworkManager&#x2F;system-connections&#x2F;ens160.nmconnection</p>
+<h3 id="Rocky-9-0-NetworkManager-配置文件位置（ens160网卡名称）"><a href="#Rocky-9-0-NetworkManager-配置文件位置（ens160网卡名称）" class="headerlink" title="Rocky 9.0 NetworkManager 配置文件位置（ens160网卡名称）"></a>Rocky 9.0 NetworkManager 配置文件位置（ens160网卡名称）</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">修改网卡配置文件</span><br><span class="line"></span><br><span class="line">vim /etc/NetworkManager/system-connections/ens160.nmconnection</span><br><span class="line"></span><br><span class="line">[ipv4]</span><br><span class="line"></span><br><span class="line"> //添加ip/子网掩码,网关</span><br><span class="line"></span><br><span class="line">address1=192.168.1.30/24,192.168.1.254 </span><br><span class="line"></span><br><span class="line">//添加dns地址（多个用;隔开）</span><br><span class="line"></span><br><span class="line">dns=8.8.8.8;114.114.114.114;                </span><br><span class="line"></span><br><span class="line">may-fail=false</span><br><span class="line"></span><br><span class="line">method=manual</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="重新加载配置文件"><a href="#重新加载配置文件" class="headerlink" title="重新加载配置文件"></a>重新加载配置文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli connection load /etc/NetworkManager/system-connections/ens160.nmconnectioni</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="激活配置文件"><a href="#激活配置文件" class="headerlink" title="激活配置文件"></a>激活配置文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli connection up /etc/NetworkManager/system-connections/ens160.nmconnection</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 
             </div>
 

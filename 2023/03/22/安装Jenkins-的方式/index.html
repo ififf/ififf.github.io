@@ -219,7 +219,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-03-22 02:59:40</span>
+        <span class="pc">2023-03-25 20:05:34</span>
     </span>
     
     
@@ -250,12 +250,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>358 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>519 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>2 分钟</span>
         </span>
     
     
@@ -273,11 +273,76 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h1 id="安装Jenkins-的方式"><a href="#安装Jenkins-的方式" class="headerlink" title="安装Jenkins 的方式"></a>安装Jenkins 的方式</h1><h3 id="1-Docker安装"><a href="#1-Docker安装" class="headerlink" title="1.Docker安装"></a>1.Docker安装</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 常见Linux本地目录并赋权</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">mkdir</span> -p /var/jenkins_data</span><br><span class="line"><span class="built_in">chmod</span> 777 /var/jenkins_data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拉取镜像 目前  对应 jenkins 官方 2.332.3</span></span><br><span class="line"></span><br><span class="line">docker pull jenkinsci/blueocean:1.25.3   </span><br><span class="line"></span><br><span class="line"><span class="comment"># 对应 jenkins 官方 2.346.1 LTS 支持JDK8-11-17 </span></span><br><span class="line"></span><br><span class="line">docker pull jenkinsci/blueocean:1.25.5   </span><br><span class="line"></span><br><span class="line"><span class="comment"># 一定要挂载Maven和JDK8 自带JDK11也可以用</span></span><br><span class="line"></span><br><span class="line">docker run \</span><br><span class="line">  -u root \</span><br><span class="line">  -d \</span><br><span class="line">  --name jenkins \</span><br><span class="line">  --restart always \</span><br><span class="line">  -p 8090:8080 \</span><br><span class="line">  -p 8091:50000 \</span><br><span class="line">  -v /var/jenkins_data:/var/jenkins_home \</span><br><span class="line">  -v /usr/local/java/jdk1.8.0_221:/usr/local/java/jdk1.8.0_221 \</span><br><span class="line">  -v /usr/local/maven/apache-maven-3.9.0:/usr/local/maven/apache-maven-3.9.0 \</span><br><span class="line">   jenkinsci/blueocean:1.25.5</span><br><span class="line"></span><br><span class="line">   <span class="comment"># 进入容器获取密码</span></span><br><span class="line"></span><br><span class="line">   <span class="built_in">cat</span> /var/jenkins_home/secrets/initialAdminPassword</span><br><span class="line"></span><br><span class="line">   <span class="comment"># 配置文件目录  获取JDK目录</span></span><br><span class="line"></span><br><span class="line">   <span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span> </span><br><span class="line">   /opt/java/openjdk</span><br><span class="line">   /usr/local/java/jdk1.8.0_221</span><br><span class="line">   /usr/local/maven/apache-maven-3.9.0</span><br><span class="line">   /usr/local/maven/apache-maven-3.9.0/conf/settings.xml</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="comment"># 修改为国内的清华大学官方镜像地址，最终内容如下：</span></span><br><span class="line"></span><br><span class="line">   <span class="comment"># 找到这个配置文件hudson.model.UpdateCenter.xml</span></span><br><span class="line"></span><br><span class="line">   &lt;?xml version=<span class="string">&#x27;1.1&#x27;</span> encoding=<span class="string">&#x27;UTF-8&#x27;</span>?&gt;</span><br><span class="line">&lt;sites&gt;</span><br><span class="line">  &lt;site&gt;</span><br><span class="line">    &lt;<span class="built_in">id</span>&gt;default&lt;/id&gt;</span><br><span class="line">    &lt;!--清华镜像--&gt;</span><br><span class="line">    &lt;url&gt;https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json&lt;/url&gt;</span><br><span class="line">    &lt;!--官方镜像</span><br><span class="line">    &lt;url&gt;https://updates.jenkins.io/update-center.json&lt;/url&gt;--&gt;</span><br><span class="line">  &lt;/site&gt;</span><br><span class="line">&lt;/sites&gt;</span><br><span class="line">	<span class="comment">#插件管理高级里更改URL地址</span></span><br><span class="line">    https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json</span><br></pre></td></tr></table></figure>
+                <h1 id="安装Jenkins-的方式"><a href="#安装Jenkins-的方式" class="headerlink" title="安装Jenkins 的方式"></a>安装Jenkins 的方式</h1><p>Jenkins 是一个可扩展的持续集成（CI）平台。它只是一个平台，真正运作的都是插件。<br>Jenkins的主要作用：持续的监控软件版本发布&#x2F;测试项目。<br>监控外部定时调用执行的工作。</p>
+<p><strong>接下来记录一下所踩得的坑 !</strong></p>
+<h3 id="1-Docker安装"><a href="#1-Docker安装" class="headerlink" title="1.Docker安装"></a>1.Docker安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建Linux本地目录并赋权</span></span><br><span class="line"></span><br><span class="line">mkdir -p /var/jenkins_data</span><br><span class="line">chmod 777 /var/jenkins_data</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拉取镜像 目前  对应 jenkins 官方 2.332.3</span></span><br><span class="line"></span><br><span class="line">docker pull jenkinsci/blueocean:1.25.3   </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">对应 jenkins 官方 2.346.1 LTS 支持JDK8-11-17</span> </span><br><span class="line"></span><br><span class="line">docker pull jenkinsci/blueocean:1.25.5   </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">一定要挂载Maven和JDK8 自带JDK11也可以用</span></span><br><span class="line"></span><br><span class="line">docker run \</span><br><span class="line">  -u root \</span><br><span class="line">  -d \</span><br><span class="line">  --name jenkins \</span><br><span class="line">  --restart always \</span><br><span class="line">  -p 8090:8080 \</span><br><span class="line">  -p 8091:50000 \</span><br><span class="line">  -v /var/jenkins_data:/var/jenkins_home \</span><br><span class="line">  -v /usr/local/java/jdk1.8.0_221:/usr/local/java/jdk1.8.0_221 \</span><br><span class="line">  -v /usr/local/maven/apache-maven-3.9.0:/usr/local/maven/apache-maven-3.9.0 \</span><br><span class="line">   jenkinsci/blueocean:1.25.5</span><br></pre></td></tr></table></figure>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://img-blog.csdnimg.cn/7b553e72b6814811bc7277ccd346c6e7.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<h3 id="Docker安装第一次需要进入容器才能获取密码"><a href="#Docker安装第一次需要进入容器才能获取密码" class="headerlink" title="Docker安装第一次需要进入容器才能获取密码"></a>Docker安装第一次需要进入容器才能获取密码</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/jenkins_home/secrets/initialAdminPassword</span><br></pre></td></tr></table></figure>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://img-blog.csdnimg.cn/82ec8c5025d24e48a78160e29650c126.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<h3 id="接下来登录安装插件"><a href="#接下来登录安装插件" class="headerlink" title="接下来登录安装插件"></a>接下来登录安装插件<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://img-blog.csdnimg.cn/8cb9750d4ce24e0daf4f19797660cbbf.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></h3><h3 id="插件安装完注册账号重启登录"><a href="#插件安装完注册账号重启登录" class="headerlink" title="插件安装完注册账号重启登录"></a>插件安装完注册账号重启登录</h3><p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://img-blog.csdnimg.cn/108edc3895c6499cb4ecfc61408d7e47.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<h3 id="修改为国内的清华大学官方镜像地址，最终内容如下："><a href="#修改为国内的清华大学官方镜像地址，最终内容如下：" class="headerlink" title="修改为国内的清华大学官方镜像地址，最终内容如下："></a>修改为国内的清华大学官方镜像地址，最终内容如下：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"> # </span><span class="language-bash">找到这个配置文件hudson.model.UpdateCenter.xml</span></span><br><span class="line"></span><br><span class="line">   &lt;?xml version=&#x27;1.1&#x27; encoding=&#x27;UTF-8&#x27;?&gt;</span><br><span class="line">&lt;sites&gt;</span><br><span class="line">  &lt;site&gt;</span><br><span class="line">    &lt;id&gt;default&lt;/id&gt;</span><br><span class="line">    &lt;!--清华镜像--&gt;</span><br><span class="line">    &lt;url&gt;https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json&lt;/url&gt;</span><br><span class="line">    &lt;!--官方镜像</span><br><span class="line">    &lt;url&gt;https://updates.jenkins.io/update-center.json&lt;/url&gt;--&gt;</span><br><span class="line">  &lt;/site&gt;</span><br><span class="line">&lt;/sites&gt;</span><br></pre></td></tr></table></figure>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://img-blog.csdnimg.cn/7dc93d64845541f08430e9304edb6b30.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<h3 id="插件管理高级里更改URL地址"><a href="#插件管理高级里更改URL地址" class="headerlink" title="插件管理高级里更改URL地址"></a>插件管理高级里更改URL地址</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json</span><br></pre></td></tr></table></figure>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://img-blog.csdnimg.cn/94ff41b6e0fa4e71b2d04238793a835e.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<h3 id="配置Maven-Setting-xml路径-Docker安装最好挂载本地Maven"><a href="#配置Maven-Setting-xml路径-Docker安装最好挂载本地Maven" class="headerlink" title="配置Maven Setting.xml路径 Docker安装最好挂载本地Maven"></a>配置Maven Setting.xml路径 Docker安装最好挂载本地Maven</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置文件目录  获取JDK目录</span></span><br><span class="line"></span><br><span class="line">  echo $JAVA_HOME </span><br><span class="line">  /opt/java/openjdk</span><br><span class="line">  /usr/local/java/jdk1.8.0_221</span><br><span class="line">  /usr/local/maven/apache-maven-3.9.0</span><br><span class="line">  /usr/local/maven/apache-maven-3.9.0/conf/settings.xml</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-war包安装方式"><a href="#2-war包安装方式" class="headerlink" title="2.war包安装方式"></a>2.war包安装方式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 下载jenkins.war包 安装目录 Java-jar启动</span><br><span class="line"></span><br><span class="line">java -jar jenkins.war --httpPort=8081</span><br></pre></td></tr></table></figure>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://img-blog.csdnimg.cn/9f21648fcf344d48b2574920db0ad7c6.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<h3 id="配置JDK-容器里自带JDK，也可挂载本地JDK-8"><a href="#配置JDK-容器里自带JDK，也可挂载本地JDK-8" class="headerlink" title="配置JDK 容器里自带JDK，也可挂载本地JDK 8"></a>配置JDK 容器里自带JDK，也可挂载本地JDK 8</h3><p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://img-blog.csdnimg.cn/6a96c8b0d8ac48cbb6193fffa44c82bf.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<h3 id="配置Maven本地安装路径"><a href="#配置Maven本地安装路径" class="headerlink" title="配置Maven本地安装路径"></a>配置Maven本地安装路径</h3><p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://img-blog.csdnimg.cn/3c36dfd5800f432a8d9c3f8988b2a17d.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<h3 id="最后测试一下构建项目"><a href="#最后测试一下构建项目" class="headerlink" title="最后测试一下构建项目"></a>最后测试一下构建项目</h3><p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://img-blog.csdnimg.cn/caed3d33dbd349a9a2baff40cdfe5005.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<h3 id="2-war包安装方式"><a href="#2-war包安装方式" class="headerlink" title="2.war包安装方式"></a>2.war包安装方式</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下载jenkins.war包 安装目录 Java-jar启动</span></span><br><span class="line"></span><br><span class="line">java -jar jenkins.war --httpPort=8081</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-安装版jenkins看链接"><a href="#3-安装版jenkins看链接" class="headerlink" title="3.安装版jenkins看链接"></a>3.安装版jenkins看链接</h3><p><a class="link"   target="_blank" rel="noopener" href="https://developer.aliyun.com/article/885497" >https://developer.aliyun.com/article/885497<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="3-安装版jenkins看链接"><a href="#3-安装版jenkins看链接" class="headerlink" title="3.安装版jenkins看链接"></a>3.安装版jenkins看链接</h3><p><a class="link"   target="_blank" rel="noopener" href="https://developer.aliyun.com/article/885497" >安装版Jenkins教程<i class="fas fa-external-link-alt"></i></a></p>
 
             </div>
 
@@ -342,10 +407,10 @@
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/03/22/Docker-%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%8D%E4%BB%93%E5%BA%93/"
+                               href="/2023/03/19/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E7%9A%84redis%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Docker 搭建私服仓库</span>
+                                <span class="post-nav-title-item">宝塔安装的redis开启远程连接</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -364,7 +429,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Jenkins-%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">安装Jenkins 的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Docker%E5%AE%89%E8%A3%85"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.Docker安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-war%E5%8C%85%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.war包安装方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AE%89%E8%A3%85%E7%89%88jenkins%E7%9C%8B%E9%93%BE%E6%8E%A5"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.安装版jenkins看链接</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Jenkins-%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">安装Jenkins 的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Docker%E5%AE%89%E8%A3%85"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.Docker安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker%E5%AE%89%E8%A3%85%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%9C%80%E8%A6%81%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8%E6%89%8D%E8%83%BD%E8%8E%B7%E5%8F%96%E5%AF%86%E7%A0%81"><span class="nav-number">1.0.2.</span> <span class="nav-text">Docker安装第一次需要进入容器才能获取密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E7%99%BB%E5%BD%95%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="nav-number">1.0.3.</span> <span class="nav-text">接下来登录安装插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E5%AE%8C%E6%B3%A8%E5%86%8C%E8%B4%A6%E5%8F%B7%E9%87%8D%E5%90%AF%E7%99%BB%E5%BD%95"><span class="nav-number">1.0.4.</span> <span class="nav-text">插件安装完注册账号重启登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BA%E5%9B%BD%E5%86%85%E7%9A%84%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E5%AE%98%E6%96%B9%E9%95%9C%E5%83%8F%E5%9C%B0%E5%9D%80%EF%BC%8C%E6%9C%80%E7%BB%88%E5%86%85%E5%AE%B9%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">1.0.5.</span> <span class="nav-text">修改为国内的清华大学官方镜像地址，最终内容如下：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86%E9%AB%98%E7%BA%A7%E9%87%8C%E6%9B%B4%E6%94%B9URL%E5%9C%B0%E5%9D%80"><span class="nav-number">1.0.6.</span> <span class="nav-text">插件管理高级里更改URL地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEMaven-Setting-xml%E8%B7%AF%E5%BE%84-Docker%E5%AE%89%E8%A3%85%E6%9C%80%E5%A5%BD%E6%8C%82%E8%BD%BD%E6%9C%AC%E5%9C%B0Maven"><span class="nav-number">1.0.7.</span> <span class="nav-text">配置Maven Setting.xml路径 Docker安装最好挂载本地Maven</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEJDK-%E5%AE%B9%E5%99%A8%E9%87%8C%E8%87%AA%E5%B8%A6JDK%EF%BC%8C%E4%B9%9F%E5%8F%AF%E6%8C%82%E8%BD%BD%E6%9C%AC%E5%9C%B0JDK-8"><span class="nav-number">1.0.8.</span> <span class="nav-text">配置JDK 容器里自带JDK，也可挂载本地JDK 8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEMaven%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84"><span class="nav-number">1.0.9.</span> <span class="nav-text">配置Maven本地安装路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8B%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.0.10.</span> <span class="nav-text">最后测试一下构建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-war%E5%8C%85%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F"><span class="nav-number">1.0.11.</span> <span class="nav-text">2.war包安装方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AE%89%E8%A3%85%E7%89%88jenkins%E7%9C%8B%E9%93%BE%E6%8E%A5"><span class="nav-number">1.0.12.</span> <span class="nav-text">3.安装版jenkins看链接</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 

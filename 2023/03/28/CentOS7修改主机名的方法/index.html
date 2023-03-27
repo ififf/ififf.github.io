@@ -9,7 +9,7 @@
     
     <title>
         
-            MQTT协议中文版 |
+            Linux 系统修改主机名 |
         
         Blankの博客
     </title>
@@ -191,7 +191,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">MQTT协议中文版</span>
+                <span class="title-hover-animation">Linux 系统修改主机名</span>
             </div>
 
             
@@ -213,13 +213,13 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-02-19 00:00:00</span>
-        <span class="mobile">2023-02-19 00:00</span>
+        <span class="pc">2023-03-28 00:00:00</span>
+        <span class="mobile">2023-03-28 00:00</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-03-16 19:47:55</span>
+        <span class="pc">2023-03-28 01:45:51</span>
     </span>
     
     
@@ -228,7 +228,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/MQTT%E5%8D%8F%E8%AE%AE%E4%B8%AD%E6%96%87%E7%89%88/">MQTT协议中文版</a>&nbsp;
+                        <a href="/categories/Linux-%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%9C%BA%E5%90%8D/">Linux 修改主机名</a>&nbsp;
                     </li>
                 
             </ul>
@@ -240,7 +240,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/MQTT%E5%8D%8F%E8%AE%AE/">MQTT协议</a>&nbsp;
+                        <a href="/tags/Linux-%E7%B3%BB%E7%BB%9F%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%9C%BA%E5%90%8D/">Linux 系统修改主机名</a>&nbsp;
                     </li>
                 
             </ul>
@@ -250,7 +250,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>582 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>687 字</span>
         </span>
     
     
@@ -273,100 +273,30 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <hr>
-<h1 id="MQTT协议中文版"><a href="#MQTT协议中文版" class="headerlink" title="MQTT协议中文版"></a>MQTT协议中文版</h1><p>by <a class="link"   target="_blank" rel="noopener" href="https://github.com/mcxiaoke" >mcxiaoke<i class="fas fa-external-link-alt"></i></a></p>
-<p><strong>最新版本: v1.0.5 2019.10.30</strong></p>
-<h2 id="文档地址"><a href="#文档地址" class="headerlink" title="文档地址"></a>文档地址</h2><ul>
-<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/mcxiaoke/mqtt-monitor/" >MQTT Monitor<i class="fas fa-external-link-alt"></i></a></li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://blog.mcxiaoke.com/mqtt/" >MQTT项目文档<i class="fas fa-external-link-alt"></i></a></li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://mcxiaoke.gitbook.io/mqtt/" >GitBook阅读<i class="fas fa-external-link-alt"></i></a></li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/mcxiaoke/mqtt/wiki" >Wiki文档地址<i class="fas fa-external-link-alt"></i></a></li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://www.gitbook.com/book/mcxiaoke/mqtt-cn/details" >PDF和ePub下载<i class="fas fa-external-link-alt"></i></a></li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/mcxiaoke/mqtt" >中文翻译项目<i class="fas fa-external-link-alt"></i></a></li>
-</ul>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>MQTT是一个客户端服务端架构的发布&#x2F;订阅模式的消息传输协议。它的设计思想是轻巧、开放、简单、规范，易于实现。这些特点使得它对很多场景来说都是很好的选择，特别是对于受限的环境如机器与机器的通信（M2M）以及物联网环境（IoT）。</p>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><strong>发现任何翻译问题或格式问题欢迎提PR帮忙完善。</strong></p>
-<ul>
-<li>说明</li>
-<li>前言</li>
-<li>目录</li>
-<li>第一章 - MQTT介绍</li>
-<li>第二章 – MQTT控制报文格式</li>
-<li>第三章 – MQTT控制报文<ul>
-<li>3.1 CONNECT – 连接服务端</li>
-<li>3.2 CONNACK – 确认连接请求</li>
-<li>3.3 PUBLISH – 发布消息</li>
-<li>3.4 PUBACK –发布确认</li>
-<li>3.5 PUBREC – 发布收到（QoS 2，第一步）</li>
-<li>3.6 PUBREL – 发布释放（QoS 2，第二步）</li>
-<li>3.7 PUBCOMP – 发布完成（QoS 2，第三步）</li>
-<li>3.8 SUBSCRIBE - 订阅主题</li>
-<li>3.9 SUBACK – 订阅确认</li>
-<li>3.10 UNSUBSCRIBE –取消订阅</li>
-<li>3.11 UNSUBACK – 取消订阅确认</li>
-<li>3.12 PINGREQ – 心跳请求</li>
-<li>3.13 PINGRESP – 心跳响应</li>
-<li>3.14 DISCONNECT –断开连接</li>
-</ul>
-</li>
-<li>第四章 – 操作行为</li>
-<li>第五章 – 安全</li>
-<li>第六章 – 使用WebSocket</li>
-<li>第七章 – 一致性目标</li>
-<li>附录B - 强制性规范声明</li>
-</ul>
-<hr>
-<h2 id="旧版文档"><a href="#旧版文档" class="headerlink" title="旧版文档"></a>旧版文档</h2><blockquote>
-<p>已过期，建议使用GitBook版本 最新版本: v1.0.1 2015.10.22</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>文档</th>
-<th>连接</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>中文版 HTML</td>
-<td><a class="link"   target="_blank" rel="noopener" href="http://mcxiaoke.github.io/mqtt/protocol/MQTT-3.1.1-CN.html" >MQTT 3.1.1 中文版<i class="fas fa-external-link-alt"></i></a></td>
-</tr>
-<tr>
-<td>中文版 PDF</td>
-<td><a class="link"   target="_blank" rel="noopener" href="http://mcxiaoke.github.io/mqtt/protocol/MQTT-3.1.1-CN.pdf" >MQTT 3.1.1 中文版<i class="fas fa-external-link-alt"></i></a></td>
-</tr>
-<tr>
-<td>英文版 HTML</td>
-<td><a class="link"   target="_blank" rel="noopener" href="http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.html" >MQTT Version 3.1.1<i class="fas fa-external-link-alt"></i></a></td>
-</tr>
-<tr>
-<td>英文版 PDF</td>
-<td><a class="link"   target="_blank" rel="noopener" href="http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.pdf" >MQTT Version 3.1.1<i class="fas fa-external-link-alt"></i></a></td>
-</tr>
-</tbody></table>
-<h2 id="许可协议"><a href="#许可协议" class="headerlink" title="许可协议"></a>许可协议</h2><ul>
-<li><a class="link"   target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode" >署名-非商业性使用-相同方式共享 4.0 国际<i class="fas fa-external-link-alt"></i></a></li>
-</ul>
-<hr>
-<h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h2><ul>
-<li>Blog: <a class="link"   target="_blank" rel="noopener" href="http://blog.mcxiaoke.com/" >http://blog.mcxiaoke.com<i class="fas fa-external-link-alt"></i></a></li>
-<li>Github: <a class="link"   target="_blank" rel="noopener" href="https://github.com/mcxiaoke" >https://github.com/mcxiaoke<i class="fas fa-external-link-alt"></i></a></li>
-<li>Email: <a class="link"   href="mailto:github#mcxiaoke.com" >github@mcxiaoke.com<i class="fas fa-external-link-alt"></i></a></li>
-</ul>
-<h2 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h2><ul>
-<li>MQTT Monitor: <a class="link"   target="_blank" rel="noopener" href="https://github.com/mcxiaoke/mqtt-monitor" >https://github.com/mcxiaoke/mqtt-monitor<i class="fas fa-external-link-alt"></i></a></li>
-<li>Rx文档中文翻译: <a class="link"   target="_blank" rel="noopener" href="https://github.com/mcxiaoke/RxDocs" >https://github.com/mcxiaoke/RxDocs<i class="fas fa-external-link-alt"></i></a></li>
-<li>MQTT协议中文版: <a class="link"   target="_blank" rel="noopener" href="https://github.com/mcxiaoke/mqtt" >https://github.com/mcxiaoke/mqtt<i class="fas fa-external-link-alt"></i></a></li>
-<li>Awesome-Kotlin: <a class="link"   target="_blank" rel="noopener" href="https://github.com/mcxiaoke/awesome-kotlin" >https://github.com/mcxiaoke/awesome-kotlin<i class="fas fa-external-link-alt"></i></a></li>
-<li>Kotlin-Koi: <a class="link"   target="_blank" rel="noopener" href="https://github.com/mcxiaoke/kotlin-koi" >https://github.com/mcxiaoke/kotlin-koi<i class="fas fa-external-link-alt"></i></a></li>
-<li>Next公共组件库: <a class="link"   target="_blank" rel="noopener" href="https://github.com/mcxiaoke/Android-Next" >https://github.com/mcxiaoke/Android-Next<i class="fas fa-external-link-alt"></i></a></li>
-<li>PackerNg极速打包: <a class="link"   target="_blank" rel="noopener" href="https://github.com/mcxiaoke/packer-ng-plugin" >https://github.com/mcxiaoke/packer-ng-plugin<i class="fas fa-external-link-alt"></i></a></li>
-<li>Gradle渠道打包: <a class="link"   target="_blank" rel="noopener" href="https://github.com/mcxiaoke/gradle-packer-plugin" >https://github.com/mcxiaoke/gradle-packer-plugin<i class="fas fa-external-link-alt"></i></a></li>
-<li>EventBus实现xBus: <a class="link"   target="_blank" rel="noopener" href="https://github.com/mcxiaoke/xBus" >https://github.com/mcxiaoke/xBus<i class="fas fa-external-link-alt"></i></a></li>
-<li>蘑菇饭App: <a class="link"   target="_blank" rel="noopener" href="https://github.com/mcxiaoke/minicat" >https://github.com/mcxiaoke/minicat<i class="fas fa-external-link-alt"></i></a></li>
-<li>饭否客户端: <a class="link"   target="_blank" rel="noopener" href="https://github.com/mcxiaoke/fanfouapp-opensource" >https://github.com/mcxiaoke/fanfouapp-opensource<i class="fas fa-external-link-alt"></i></a></li>
-<li>Volley镜像: <a class="link"   target="_blank" rel="noopener" href="https://github.com/mcxiaoke/android-volley" >https://github.com/mcxiaoke/android-volley<i class="fas fa-external-link-alt"></i></a></li>
-</ul>
-<hr>
+                <h1 id="CentOS7修改主机名的三种方法"><a href="#CentOS7修改主机名的三种方法" class="headerlink" title="CentOS7修改主机名的三种方法"></a>CentOS7修改主机名的三种方法</h1><p>在CentOS7中，有三种定义的主机名:</p>
+<h4 id="静态的（Static-hostname）"><a href="#静态的（Static-hostname）" class="headerlink" title="静态的（Static hostname）"></a>静态的（Static hostname）</h4><p>“静态”主机名也称为内核主机名，是系统在启动时从&#x2F;etc&#x2F;hostname自动初始化的主机名。</p>
+<h4 id="瞬态的（Tansient-hostname）"><a href="#瞬态的（Tansient-hostname）" class="headerlink" title="瞬态的（Tansient hostname）"></a>瞬态的（Tansient hostname）</h4><p>“瞬态”主机名是在系统运行时临时分配的主机名，例如，通过DHCP或mDNS服务器分配。</p>
+<h4 id="灵活的（Pretty-hostname）"><a href="#灵活的（Pretty-hostname）" class="headerlink" title="灵活的（Pretty hostname）"></a>灵活的（Pretty hostname）</h4><p>“灵活”主机名也有人叫做“别名”主机名。<br>“灵活”主机名则允许使用自由形式（包括特殊&#x2F;空白字符）的主机名，以展示给终端用户（如xh01@f5）。<br>“静态”主机名和“瞬态”主机名都遵从作为互联网域名同样的字符限制规则。</p>
+<p>在CentOS 7中，有个叫<strong>hostnamectl</strong>的命令行工具，它允许你查看或修改与主机名相关的配置。</p>
+<h3 id="查看主机名"><a href="#查看主机名" class="headerlink" title="查看主机名:"></a>查看主机名:</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//查看一下当前主机名的情况，查看全部三种主机名</span><br><span class="line">hostnamectl   </span><br><span class="line"></span><br><span class="line">//或者，查看全部三种主机名</span><br><span class="line">hostnamectl status</span><br><span class="line"></span><br><span class="line">//只查看静态、瞬态或灵活主机名，分别使用--static，--transient或--pretty选项</span><br><span class="line">[root@xh00 ~]# hostnamectl --static</span><br><span class="line"></span><br><span class="line">xh00</span><br><span class="line">[root@xh00 ~]# hostnamectl --transient</span><br><span class="line"></span><br><span class="line">xh01</span><br><span class="line">[root@xh00 ~]# hostnamectl --pretty</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//或者，查看到的是瞬态的（Tansient hostname）</span><br><span class="line">hostname</span><br><span class="line"></span><br><span class="line">//或者查看主机名配置文件，查看到的是静态的（Static hostname）</span><br><span class="line">cat /etc/hostname</span><br></pre></td></tr></table></figure>
+
+<p>查看当前Linux操作系统相关信息（内核版本号、硬件架构、主机名称和操作系统类型等）:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">uname -a			//查看到的是瞬态的（Tansient hostname）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cat /etc/redhat-release		//查看操作系统环境</span><br></pre></td></tr></table></figure>
+
+<h3 id="centos7系统永久更改主机名（hostname）的几种方法"><a href="#centos7系统永久更改主机名（hostname）的几种方法" class="headerlink" title="centos7系统永久更改主机名（hostname）的几种方法"></a>centos7系统永久更改主机名（hostname）的几种方法</h3><p>在使用centos7系统vps或服务器时，一般都会有一个主机名（hostname），都是主机开通时系统默认分配的。虽然主机名的用处不是很大，不更改也没啥事，但如果看着不顺眼的话，也是可以更改的。下面简单介绍下centos7永久更改主机名的简单方法。</p>
+<p>首先查看当前的主机名hostname，方法有两种：</p>
+<p>1、打开一个终端，在命令提示符中可以看到主机名，主机名通常位于“@”符号后；</p>
+<p>2、在终端输入hostname指令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname</span><br></pre></td></tr></table></figure>
+
+<p>其次，更改主机名需要root权限，这里切到root账户（用sudo也可以），如果已经是root用户就不用切换了。</p>
+<h4 id="1、方法一：使用hostnamectl命令"><a href="#1、方法一：使用hostnamectl命令" class="headerlink" title="1、方法一：使用hostnamectl命令"></a>1、方法一：使用hostnamectl命令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">我们可以通过命令“hostnamectl set-hostname 主机名”来永久修改主机名。</span><br><span class="line"></span><br><span class="line">[root@centos701 ~]# hostnamectl set-hostname centos701</span><br><span class="line">[root@centos701 ~]# hostname</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2、方法二：修改主机名文件"><a href="#2、方法二：修改主机名文件" class="headerlink" title="2、方法二：修改主机名文件"></a>2、方法二：修改主机名文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">除了方法一，还可以通过修改主机名文件（/etc/hostname）来永久修改主机名。</span><br><span class="line"></span><br><span class="line">[root@centos701 ~]# gedit /etc/hostname</span><br><span class="line">centos701</span><br><span class="line">~</span><br></pre></td></tr></table></figure>
+
+<p>最后都要重新启动才能生效</p>
 
             </div>
 
@@ -376,16 +306,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">本文标题</span>：<span class="content">MQTT协议中文版</span>
+            <span class="type">本文标题</span>：<span class="content">Linux 系统修改主机名</span>
         </li>
         <li class="post-author">
             <span class="type">本文作者</span>：<span class="content">Blank</span>
         </li>
         <li class="post-time">
-            <span class="type">创建时间</span>：<span class="content">2023-02-19 00:00:00</span>
+            <span class="type">创建时间</span>：<span class="content">2023-03-28 00:00:00</span>
         </li>
         <li class="post-link">
-            <span class="type">本文链接</span>：<span class="content">2023/02/19/MQTT协议中文版/</span>
+            <span class="type">本文链接</span>：<span class="content">2023/03/28/CentOS7修改主机名的方法/</span>
         </li>
         <li class="post-license">
             <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
@@ -403,7 +333,7 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/MQTT%E5%8D%8F%E8%AE%AE/">#MQTT协议</a>&nbsp;
+                            <a href="/tags/Linux-%E7%B3%BB%E7%BB%9F%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%9C%BA%E5%90%8D/">#Linux 系统修改主机名</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -412,29 +342,14 @@
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="/2023/02/19/Java%20%E5%9F%BA%E7%A1%80-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"
-                            >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item">Java基础-面向对象</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/02/19/RocketMQ-02/"
+                               href="/2023/03/28/Neofetch%EF%BC%9A%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%AD%E6%98%BE%E7%A4%BA%20Linux%20%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">RocketMQ-02</span>
+                                <span class="post-nav-title-item">Neofetch终端显示 Linux 系统信息</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -453,7 +368,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MQTT%E5%8D%8F%E8%AE%AE%E4%B8%AD%E6%96%87%E7%89%88"><span class="nav-number">1.</span> <span class="nav-text">MQTT协议中文版</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E5%9C%B0%E5%9D%80"><span class="nav-number">1.1.</span> <span class="nav-text">文档地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.2.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-number">1.3.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A7%E7%89%88%E6%96%87%E6%A1%A3"><span class="nav-number">1.4.</span> <span class="nav-text">旧版文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.5.</span> <span class="nav-text">许可协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F"><span class="nav-number">1.6.</span> <span class="nav-text">联系方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.7.</span> <span class="nav-text">开源项目</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CentOS7%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%9C%BA%E5%90%8D%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">CentOS7修改主机名的三种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E7%9A%84%EF%BC%88Static-hostname%EF%BC%89"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">静态的（Static hostname）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9E%AC%E6%80%81%E7%9A%84%EF%BC%88Tansient-hostname%EF%BC%89"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">瞬态的（Tansient hostname）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%81%B5%E6%B4%BB%E7%9A%84%EF%BC%88Pretty-hostname%EF%BC%89"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">灵活的（Pretty hostname）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="nav-number">1.0.1.</span> <span class="nav-text">查看主机名:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#centos7%E7%B3%BB%E7%BB%9F%E6%B0%B8%E4%B9%85%E6%9B%B4%E6%94%B9%E4%B8%BB%E6%9C%BA%E5%90%8D%EF%BC%88hostname%EF%BC%89%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">1.0.2.</span> <span class="nav-text">centos7系统永久更改主机名（hostname）的几种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8hostnamectl%E5%91%BD%E4%BB%A4"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">1、方法一：使用hostnamectl命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%9C%BA%E5%90%8D%E6%96%87%E4%BB%B6"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">2、方法二：修改主机名文件</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
 </div>
 

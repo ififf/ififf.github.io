@@ -219,7 +219,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-03-28 01:45:51</span>
+        <span class="pc">2023-03-28 02:14:59</span>
     </span>
     
     
@@ -278,10 +278,10 @@
 <h4 id="瞬态的（Tansient-hostname）"><a href="#瞬态的（Tansient-hostname）" class="headerlink" title="瞬态的（Tansient hostname）"></a>瞬态的（Tansient hostname）</h4><p>“瞬态”主机名是在系统运行时临时分配的主机名，例如，通过DHCP或mDNS服务器分配。</p>
 <h4 id="灵活的（Pretty-hostname）"><a href="#灵活的（Pretty-hostname）" class="headerlink" title="灵活的（Pretty hostname）"></a>灵活的（Pretty hostname）</h4><p>“灵活”主机名也有人叫做“别名”主机名。<br>“灵活”主机名则允许使用自由形式（包括特殊&#x2F;空白字符）的主机名，以展示给终端用户（如xh01@f5）。<br>“静态”主机名和“瞬态”主机名都遵从作为互联网域名同样的字符限制规则。</p>
 <p>在CentOS 7中，有个叫<strong>hostnamectl</strong>的命令行工具，它允许你查看或修改与主机名相关的配置。</p>
-<h3 id="查看主机名"><a href="#查看主机名" class="headerlink" title="查看主机名:"></a>查看主机名:</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//查看一下当前主机名的情况，查看全部三种主机名</span><br><span class="line">hostnamectl   </span><br><span class="line"></span><br><span class="line">//或者，查看全部三种主机名</span><br><span class="line">hostnamectl status</span><br><span class="line"></span><br><span class="line">//只查看静态、瞬态或灵活主机名，分别使用--static，--transient或--pretty选项</span><br><span class="line">[root@xh00 ~]# hostnamectl --static</span><br><span class="line"></span><br><span class="line">xh00</span><br><span class="line">[root@xh00 ~]# hostnamectl --transient</span><br><span class="line"></span><br><span class="line">xh01</span><br><span class="line">[root@xh00 ~]# hostnamectl --pretty</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//或者，查看到的是瞬态的（Tansient hostname）</span><br><span class="line">hostname</span><br><span class="line"></span><br><span class="line">//或者查看主机名配置文件，查看到的是静态的（Static hostname）</span><br><span class="line">cat /etc/hostname</span><br></pre></td></tr></table></figure>
+<h3 id="查看主机名"><a href="#查看主机名" class="headerlink" title="查看主机名:"></a>查看主机名:</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//查看一下当前主机名的情况，查看全部三种主机名</span><br><span class="line">hostnamectl   </span><br><span class="line"></span><br><span class="line">//或者，查看全部三种主机名</span><br><span class="line">hostnamectl status</span><br><span class="line"></span><br><span class="line">//只查看静态、瞬态或灵活主机名，分别使用--static，--transient或--pretty选项</span><br><span class="line">[root@xh00 ~]# hostnamectl --static</span><br><span class="line"></span><br><span class="line">xh00</span><br><span class="line">[root@xh00 ~]# hostnamectl --transient</span><br><span class="line"></span><br><span class="line">xh01</span><br><span class="line">[root@xh00 ~]# hostnamectl --pretty</span><br><span class="line"></span><br><span class="line">//或者，查看到的是瞬态的（Tansient hostname）</span><br><span class="line">hostname</span><br><span class="line"></span><br><span class="line">//或者查看主机名配置文件，查看到的是静态的（Static hostname）</span><br><span class="line">cat /etc/hostname</span><br></pre></td></tr></table></figure>
 
 <p>查看当前Linux操作系统相关信息（内核版本号、硬件架构、主机名称和操作系统类型等）:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">uname -a			//查看到的是瞬态的（Tansient hostname）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cat /etc/redhat-release		//查看操作系统环境</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uname -a			//查看到的是瞬态的（Tansient hostname）</span><br><span class="line"></span><br><span class="line">cat /etc/redhat-release		//查看操作系统环境</span><br></pre></td></tr></table></figure>
 
 <h3 id="centos7系统永久更改主机名（hostname）的几种方法"><a href="#centos7系统永久更改主机名（hostname）的几种方法" class="headerlink" title="centos7系统永久更改主机名（hostname）的几种方法"></a>centos7系统永久更改主机名（hostname）的几种方法</h3><p>在使用centos7系统vps或服务器时，一般都会有一个主机名（hostname），都是主机开通时系统默认分配的。虽然主机名的用处不是很大，不更改也没啥事，但如果看着不顺眼的话，也是可以更改的。下面简单介绍下centos7永久更改主机名的简单方法。</p>
 <p>首先查看当前的主机名hostname，方法有两种：</p>
@@ -290,7 +290,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname</span><br></pre></td></tr></table></figure>
 
 <p>其次，更改主机名需要root权限，这里切到root账户（用sudo也可以），如果已经是root用户就不用切换了。</p>
-<h4 id="1、方法一：使用hostnamectl命令"><a href="#1、方法一：使用hostnamectl命令" class="headerlink" title="1、方法一：使用hostnamectl命令"></a>1、方法一：使用hostnamectl命令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">我们可以通过命令“hostnamectl set-hostname 主机名”来永久修改主机名。</span><br><span class="line"></span><br><span class="line">[root@centos701 ~]# hostnamectl set-hostname centos701</span><br><span class="line">[root@centos701 ~]# hostname</span><br></pre></td></tr></table></figure>
+<h4 id="1、方法一：使用hostnamectl命令"><a href="#1、方法一：使用hostnamectl命令" class="headerlink" title="1、方法一：使用hostnamectl命令"></a>1、方法一：使用hostnamectl命令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">我们可以通过命令“hostnamectl set-hostname 主机名”来永久修改主机名。</span><br><span class="line"></span><br><span class="line">[root@centos701 ~]# hostnamectl set-hostname CentOS</span><br><span class="line">[root@centos701 ~]# hostname</span><br></pre></td></tr></table></figure>
 
 
 
@@ -341,6 +341,21 @@
 
             
                 <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/03/29/Webmind%E7%9A%84%20%E5%AE%89%E8%A3%85%E5%92%8C%E5%8D%B8%E8%BD%BD%20/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Webmin的安装和卸载</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
                     
                     
                         <div class="article-next">

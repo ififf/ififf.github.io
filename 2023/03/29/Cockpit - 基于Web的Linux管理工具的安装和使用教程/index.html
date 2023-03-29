@@ -9,6 +9,8 @@
     
     <title>
         
+            Cockpit的安装教程 |
+        
         Blankの博客
     </title>
     
@@ -189,7 +191,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation"></span>
+                <span class="title-hover-animation">Cockpit的安装教程</span>
             </div>
 
             
@@ -211,27 +213,49 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-02-21 00:57:05</span>
-        <span class="mobile">2023-02-21 00:57</span>
+        <span class="pc">2023-03-29 00:00:00</span>
+        <span class="mobile">2023-03-29 00:00</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-02-21 00:29:32</span>
+        <span class="pc">2023-03-29 13:58:11</span>
     </span>
     
     
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Cockpit%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Cockpit安装教程</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Linux-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Cockpit/">Linux 服务器管理工具Cockpit</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>294 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>995 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>3 分钟</span>
         </span>
     
     
@@ -249,32 +273,82 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h1 id="4-二维数组中的查找"><a href="#4-二维数组中的查找" class="headerlink" title="4. 二维数组中的查找"></a>4. 二维数组中的查找</h1><h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a class="link"   target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/abc3fe2ce8e146608e868a70efebf62e?tpId=13&tqId=11154&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking&from=cyc_github" >牛客网<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二维数组，其每一行从左到右递增排序，从上到下也是递增排序。给定一个数，判断这个数是否在该二维数组中。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Consider the following matrix:</span><br><span class="line">[</span><br><span class="line">  [1,   4,  7, 11, 15],</span><br><span class="line">  [2,   5,  8, 12, 19],</span><br><span class="line">  [3,   6,  9, 16, 22],</span><br><span class="line">  [10, 13, 14, 17, 24],</span><br><span class="line">  [18, 21, 23, 26, 30]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">Given target = 5, return true.</span><br><span class="line">Given target = 20, return false.</span><br></pre></td></tr></table></figure>
+                <h3 id="Cockpit-基于Web的Linux管理工具的安装和使用教程"><a href="#Cockpit-基于Web的Linux管理工具的安装和使用教程" class="headerlink" title="Cockpit - 基于Web的Linux管理工具的安装和使用教程"></a>Cockpit - 基于Web的Linux管理工具的安装和使用教程</h3><h3 id="一、基本介绍"><a href="#一、基本介绍" class="headerlink" title="一、基本介绍"></a>一、基本介绍</h3><h4 id="1，什么是-Cockpit？"><a href="#1，什么是-Cockpit？" class="headerlink" title="1，什么是 Cockpit？"></a>1，什么是 Cockpit？</h4><p>（1）<strong>Cockpit</strong> 是一个免费且开源的基于 <strong>web</strong> 的 <strong>Linux</strong> 服务器管理工具并且在 <strong>CentOS 8</strong> 和 <strong>RHEL  8</strong> 中，<strong>Cockpit</strong> 更是成为其默认服务器管理工具。</p>
+<p>（2）通过 <strong>Cockpit</strong> 提供的友好的 <strong>Web</strong> 前端界面可以轻松地监视和管理我们的 <strong>GNU</strong>&#x2F;<strong>Linux</strong> 服务器，执行诸如存储管理、网络配置、检查日志、虚拟机管理等任务。</p>
+<h4 id="2，Cockpit-的功能和特点"><a href="#2，Cockpit-的功能和特点" class="headerlink" title="2，Cockpit 的功能和特点"></a>2，Cockpit 的功能和特点</h4><ul>
+<li><strong>Cockpit</strong> 使用 <strong>systemd</strong> 完成从运行守护进程到服务几乎所有的功能</li>
+<li>集中式管理，通过一个会话窗口管理网络中的所有 <strong>Linux</strong> 服务器</li>
+<li>创建和管理 <strong>KVM</strong>、<strong>oVirt</strong> 虚拟机</li>
+<li>包括 <strong>LVM</strong> 在内的存储配置</li>
+<li>基本的网络配置管理</li>
+<li>用户 <strong>user account</strong> 管理</li>
+<li>基于 <strong>web</strong> 的终端</li>
+<li>图形化的系统性能展示</li>
+<li>使用 <strong>sosreport</strong> 收集系统配置和诊断信息</li>
+<li>支持 <strong>Debian</strong>、<strong>Redhat</strong>、<strong>CentOS</strong>、<strong>Fedora</strong>、<strong>Atomic</strong>、<strong>Arch</strong> <strong>Linux</strong> 和 <strong>Ubuntu</strong></li>
+</ul>
+<p>更多的Cockpit控制台扩展插件请查看官方列表：<a class="link"   target="_blank" rel="noopener" href="https://cockpit-project.org/applications.html" >https://cockpit-project.org/applications.html<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="二、安装配置"><a href="#二、安装配置" class="headerlink" title="二、安装配置"></a>二、安装配置</h3><h4 id="1，安装-dnf"><a href="#1，安装-dnf" class="headerlink" title="1，安装 dnf"></a>1，安装 dnf</h4><p>  我们需要使用 <strong>dnf</strong> 命令安装 <strong>Cockpit</strong>，但 <strong>CentOS 7</strong> 并不包含该命令，需要按照如下步骤进行安装。而对于 <strong>CentOS 8</strong> 自带了 <strong>dnf</strong>，则可以跳过此步骤。</p>
+<p>（1）所以首先执行如下命令安装并启用 <strong>epel-release</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br></pre></td></tr></table></figure>
 
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>要求时间复杂度 O(M + N)，空间复杂度 O(1)。其中 M 为行数，N 为 列数。</p>
-<p>该二维数组中的一个数，小于它的数一定在其左边，大于它的数一定在其下边。因此，从右上角开始查找，就可以根据 target 和当前元素的大小关系来缩小查找区间，当前元素的查找区间为左下角的所有元素。</p>
-<div align="center"> <img  
+<p>（2）接着执行如下命令安装 <strong>dnf</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install dnf</span><br></pre></td></tr></table></figure>
+
+<p>（3）安装完毕后执行如下命令查看是否安装成功：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf --version</span><br></pre></td></tr></table></figure>
+
+<h4 id="2，安装-Cockpit"><a href="#2，安装-Cockpit" class="headerlink" title="2，安装 Cockpit"></a>2，安装 Cockpit</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">安装kvm</span><br><span class="line"></span><br><span class="line">yum install qemu-kvm libvirt libvirt-daemon virt-install virt-manager libvirt-dbus</span><br><span class="line">systemctl start libvirtd.service</span><br><span class="line"></span><br><span class="line">注意：如果访问虚拟机，点击虚拟机Create VM按钮是灰色的，就表示没有安装virt-install包</span><br></pre></td></tr></table></figure>
+
+<p>（1）首先执行如下命令安装 <strong>Cockpit</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install cockpit cockpit-machines</span><br></pre></td></tr></table></figure>
+
+<p>（2）安装完毕后执行如下命令启动 <strong>Cockpit</strong> 服务并设置为自动启动：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start cockpit.socket</span><br><span class="line">systemctl enable cockpit.socket</span><br></pre></td></tr></table></figure>
+
+<p>（3）接着执行如下命令查看是否启动成功：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status cockpit.socket</span><br></pre></td></tr></table></figure>
+
+<p>（4）由于 <strong>Cockpit</strong> 默认使用的是 <strong>9090</strong> 端口，执行如下命令打开这个端口：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --add-port=9090/tcp</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<p>  (5) 修改默认端口（可选）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">默认cockpit使用的是9090端口，所以我这里将9090端口改成9290</span></span><br><span class="line"></span><br><span class="line">sed -i s#9090#9290# /usr/lib/systemd/system/cockpit.socket</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改完成后重启服务并添加开机自启</span></span><br><span class="line"></span><br><span class="line">systemctl restart cockpit.socket</span><br><span class="line">systemctl enable cockpit.socket</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="三、使用说明"><a href="#三、使用说明" class="headerlink" title="三、使用说明"></a>三、使用说明</h4><p>浏览器访问 <strong>http:&#x2F;&#x2F;服务器IP:9090</strong>，打开 <strong>Cockpit</strong> 的 <strong>Web</strong> 界面，输入用户密码后登录。</p>
+<p><img  
                      lazyload
                      alt="image"
-                     data-src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/35a8c711-0dc0-4613-95f3-be96c6c6e104.gif"
-                      width="400px"
-                > </div><br>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">Find</span><span class="params">(<span class="type">int</span> target, <span class="type">int</span>[][] matrix)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (matrix == <span class="literal">null</span> || matrix.length == <span class="number">0</span> || matrix[<span class="number">0</span>].length == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="type">int</span> <span class="variable">rows</span> <span class="operator">=</span> matrix.length, cols = matrix[<span class="number">0</span>].length;</span><br><span class="line">    <span class="type">int</span> <span class="variable">r</span> <span class="operator">=</span> <span class="number">0</span>, c = cols - <span class="number">1</span>; <span class="comment">// 从右上角开始</span></span><br><span class="line">    <span class="keyword">while</span> (r &lt;= rows - <span class="number">1</span> &amp;&amp; c &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (target == matrix[r][c])</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (target &gt; matrix[r][c])</span><br><span class="line">            r++;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            c--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-<div align="center"><img  width="320px" 
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230329/Snipaste_2023-03-29_13-38-37.6d0pb3gpjj00.jpg"
+                      alt="Snipaste_2023-03-29_13-38-37"
+                ></p>
+<p>登录后首先展示的是系统概览界面，从这里可以快速查看系统的各项信息，如性能使用情况、系统信息、配置等等。</p>
+<p><img  
                      lazyload
                      alt="image"
-                     data-src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/githubio/公众号二维码-2.png"
-                     
-                ></img></div>
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230329/Snipaste_2023-03-29_13-39-03.zodpsk8h7ow.jpg"
+                      alt="Snipaste_2023-03-29_13-39-03"
+                ></p>
+<h4 id="虚拟机的使用"><a href="#虚拟机的使用" class="headerlink" title="虚拟机的使用"></a>虚拟机的使用</h4><p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230329/Snipaste_2023-03-29_13-39-47.7jo8ywffv1s0.jpg"
+                      alt="Snipaste_2023-03-29_13-39-47"
+                ></p>
+<h5 id="1、创建网桥"><a href="#1、创建网桥" class="headerlink" title="1、创建网桥"></a>1、创建网桥</h5><p>以前我们都是手动创建桥，有了cockpit直接在页面点一点就创建好了。</p>
+<p>在网络中点击添加网桥，设置名称br0，选择ens192上网的端口，最后点击确定就创建成功了</p>
+<h5 id="2、修改默认kvm存储池"><a href="#2、修改默认kvm存储池" class="headerlink" title="2、修改默认kvm存储池"></a>2、修改默认kvm存储池</h5><p>注意：kvm存储池默认存放在&#x2F;var&#x2F;lib&#x2F;libvirt&#x2F;images，也就是说，你所创建的虚拟机会生成在该目录下，建议挂载大磁盘空间，单独存放。</p>
+<p>修改kvm存储池方法有很多种，我这里使用ln软连接来实现，我这里将libvirt整个目录软链存放在&#x2F;data&#x2F;kvm下。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data/kvm</span><br><span class="line">mv /var/lib/libvirt /data/kvm/</span><br><span class="line">ln -sv /data/kvm/libvirt /var/lib/libvirt</span><br></pre></td></tr></table></figure>
+
+<h5 id="3、创建镜像目录上传镜像"><a href="#3、创建镜像目录上传镜像" class="headerlink" title="3、创建镜像目录上传镜像"></a>3、创建镜像目录上传镜像</h5><p>我这里单独创建个目录用于存放ISO镜像包。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data/iso</span><br></pre></td></tr></table></figure>
+
+<p>我这里上传了一个CentOS-7.9-x86_64-Minimal-2009.iso镜像包</p>
+<h5 id="4、创建虚拟机"><a href="#4、创建虚拟机" class="headerlink" title="4、创建虚拟机"></a>4、创建虚拟机</h5><p>登录web控制台，点击虚拟机，右上角点击Create VM</p>
+<p>接下来就是系统安装的流程了，没什么可讲的。</p>
 
             </div>
 
@@ -284,16 +358,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">本文标题</span>：<span class="content"></span>
+            <span class="type">本文标题</span>：<span class="content">Cockpit的安装教程</span>
         </li>
         <li class="post-author">
             <span class="type">本文作者</span>：<span class="content">Blank</span>
         </li>
         <li class="post-time">
-            <span class="type">创建时间</span>：<span class="content">2023-02-21 00:57:05</span>
+            <span class="type">创建时间</span>：<span class="content">2023-03-29 00:00:00</span>
         </li>
         <li class="post-link">
-            <span class="type">本文链接</span>：<span class="content">2023/02/21/4. 二维数组中的查找/</span>
+            <span class="type">本文链接</span>：<span class="content">2023/03/29/Cockpit - 基于Web的Linux管理工具的安装和使用教程/</span>
         </li>
         <li class="post-license">
             <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
@@ -308,33 +382,26 @@
             
 
             
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Linux-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Cockpit/">#Linux 服务器管理工具Cockpit</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
 
             
                 <div class="article-nav">
-                    
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="/2023/02/21/3.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/"
-                            >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item"></span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                            </a>
-                        </div>
                     
                     
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/02/20/Java%20%E5%B9%B6%E5%8F%91%20-%20%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/"
+                               href="/2023/03/29/Webmind%E7%9A%84%20%E5%AE%89%E8%A3%85%E5%92%8C%E5%8D%B8%E8%BD%BD%20/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Java 并发 - 理论基础</span>
+                                <span class="post-nav-title-item">Webmin的安装和卸载</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -353,7 +420,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="nav-number">1.</span> <span class="nav-text">4. 二维数组中的查找</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5"><span class="nav-number">1.1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.2.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">1.3.</span> <span class="nav-text">解题思路</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cockpit-%E5%9F%BA%E4%BA%8EWeb%E7%9A%84Linux%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">Cockpit - 基于Web的Linux管理工具的安装和使用教程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">一、基本介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%EF%BC%8C%E4%BB%80%E4%B9%88%E6%98%AF-Cockpit%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">1，什么是 Cockpit？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%EF%BC%8CCockpit-%E7%9A%84%E5%8A%9F%E8%83%BD%E5%92%8C%E7%89%B9%E7%82%B9"><span class="nav-number">2.2.</span> <span class="nav-text">2，Cockpit 的功能和特点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">二、安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%EF%BC%8C%E5%AE%89%E8%A3%85-dnf"><span class="nav-number">3.1.</span> <span class="nav-text">1，安装 dnf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%EF%BC%8C%E5%AE%89%E8%A3%85-Cockpit"><span class="nav-number">3.2.</span> <span class="nav-text">2，安装 Cockpit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E"><span class="nav-number">3.3.</span> <span class="nav-text">三、使用说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.4.</span> <span class="nav-text">虚拟机的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BA%E7%BD%91%E6%A1%A5"><span class="nav-number">3.4.1.</span> <span class="nav-text">1、创建网桥</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4kvm%E5%AD%98%E5%82%A8%E6%B1%A0"><span class="nav-number">3.4.2.</span> <span class="nav-text">2、修改默认kvm存储池</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81%E5%88%9B%E5%BB%BA%E9%95%9C%E5%83%8F%E7%9B%AE%E5%BD%95%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F"><span class="nav-number">3.4.3.</span> <span class="nav-text">3、创建镜像目录上传镜像</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4%E3%80%81%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">3.4.4.</span> <span class="nav-text">4、创建虚拟机</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 

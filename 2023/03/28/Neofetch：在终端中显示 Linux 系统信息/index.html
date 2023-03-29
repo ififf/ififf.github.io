@@ -219,7 +219,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-03-28 01:46:05</span>
+        <span class="pc">2023-03-28 02:15:59</span>
     </span>
     
     
@@ -347,24 +347,24 @@
 
 
 
-<h2 id="Rocky-Linux-EL9-or-EL8-安装Neofetch"><a href="#Rocky-Linux-EL9-or-EL8-安装Neofetch" class="headerlink" title="Rocky Linux EL9 or EL8 安装Neofetch"></a>Rocky Linux EL9 or EL8 安装Neofetch</h2><p>1.更新Rocky Linux</p>
+<h2 id="Rocky-Linux-EL9-or-EL8-安装Neofetch"><a href="#Rocky-Linux-EL9-or-EL8-安装Neofetch" class="headerlink" title="Rocky Linux EL9 or EL8 安装Neofetch"></a>Rocky Linux EL9 or EL8 安装Neofetch</h2><p>1、更新Rocky Linux</p>
 <p>在安装Neofetch之前，更新软件包列表以确保安装的是最新版本是很重要的。要执行此操作，请打开终端并输入以下命令。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf upgrade --refresh</span><br></pre></td></tr></table></figure>
 
-<p>2.导入EPEL存储库</p>
+<p>2、导入EPEL存储库</p>
 <p>在Rocky Linux上导入Extra Packages for Enterprise Linux（EPEL）存储库非常简单。EPEL存储库提供了默认Rocky Linux存储库中未包含的其他软件包。以下命令将演示如何做到这一点，但请确保为Rocky Linux发行版使用正确的命令。</p>
 <p>为Rocky Linux 9导入EPEL</p>
 <p>首先，启用CRB。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf config-manager --set-enabled crb</span><br></pre></td></tr></table></figure>
 
-<p>3.接下来，使用以下（dnf）terminal命令安装EPEL。</p>
+<p>3、接下来，使用以下（dnf）terminal命令安装EPEL。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install \</span><br><span class="line"></span><br><span class="line">https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm \</span><br><span class="line"></span><br><span class="line">https://dl.fedoraproject.org/pub/epel/epel-next-release-latest-9.noarch.rpm</span><br></pre></td></tr></table></figure>
 
 <p>为Rocky Linux 8导入EPEL</p>
 <p>Rocky Linux 8的命令与9的命令相同，只是Enterprise Linux 8版本的路径不同。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install \</span><br><span class="line"></span><br><span class="line">https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm \</span><br><span class="line"></span><br><span class="line">https://dl.fedoraproject.org/pub/epel/epel-next-release-latest-8.noarch.rpm</span><br></pre></td></tr></table></figure>
 
-<p>步骤4：安装Neofetch</p>
+<p>4、安装Neofetch</p>
 <p>接下来，我们可以通过输入以下命令来安装Neofetch。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install neofetch -y</span><br></pre></td></tr></table></figure>
 
@@ -378,7 +378,7 @@
                      data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230328/neofetch-command-example-on-rocky-linux-9-or-8.6ha7i2j6b300.jpg"
                       alt="neofetch-command-example-on-rocky-linux-9-or-8"
                 ></p>
-<p>步骤5：其他命令和提示</p>
+<p>5、其他命令和提示</p>
 <p>更新Neofetch</p>
 <p>Neofetch可以使用标准的更新或升级命令从您的终端进行更新。最好的方法是使用一体式命令全面检查系统的升级情况，如果有Neofetch的话，它将包括在内。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf upgrade --refresh</span><br></pre></td></tr></table></figure>

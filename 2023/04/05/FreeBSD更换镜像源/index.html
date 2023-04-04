@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Blank">
+    
+    <title>
+        
+            FreeBSD 换源方式 |
+        
+        Blankの博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo.jpg","favicon":"/images/logo.jpg","avatar":"/images/logo.jpg","font_size":"18px","font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":true},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"5ober","github_admins":"5ober","repository":"hexo-blog-comments","client_id":"40d85a7b36388c0b5094","client_secret":"6c7eab92d24b6f1bdfbcdf077c73e86841b35d5e","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["Trainee","Engineer","Java工程师"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Blankの博客" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.jpg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Blankの博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">FreeBSD 换源方式</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/logo.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Blank</span>
+                            
+                                <span class="author-label">Java工程师</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-04-05 00:00:00</span>
+        <span class="mobile">2023-04-05 00:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-04-05 01:38:32</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/FreeBSD-%E6%8D%A2%E6%BA%90%E6%96%B9%E5%BC%8F/">FreeBSD 换源方式</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/FreeBSD-%E6%8D%A2%E6%BA%90%E6%96%B9%E5%BC%8F/">FreeBSD 换源方式</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.4k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>6 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h2 id="FreeBSD-换源方式"><a href="#FreeBSD-换源方式" class="headerlink" title="FreeBSD 换源方式"></a>FreeBSD 换源方式</h2><p>FreeBSD 有四类源：pkg、ports、portsnap、update。</p>
+<p><strong>对于失去安全支持的版本，请参考最后一节。</strong></p>
+<p><strong>本文对于一个源列出了多个镜像站，无需全部配置，只需选择其一即可。</strong></p>
+<p><strong>目前境内没有官方镜像站，以下均为非官方镜像站。</strong></p>
+<h3 id="pkg-源-pkg-源提供二进制安装包"><a href="#pkg-源-pkg-源提供二进制安装包" class="headerlink" title="pkg 源:pkg 源提供二进制安装包"></a>pkg 源:pkg 源提供二进制安装包</h3><p>pkg 的下载路径是 <code>/var/cache/pkg/</code></p>
+<p>FreeBSD 中 pkg 源分为系统级和用户级两个配置文件。不建议直接修改 <code>/etc/pkg/FreeBSD.conf</code> ,因为该文件会随着基本系统的更新而发生改变。</p>
+<p>创建用户级源目录:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /usr/local/etc/pkg/repos</span><br></pre></td></tr></table></figure>
+
+<h3 id="网易开源镜像站"><a href="#网易开源镜像站" class="headerlink" title="网易开源镜像站"></a>网易开源镜像站</h3><p>创建用户级源文件:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ee /usr/local/etc/pkg/repos/163.conf</span><br></pre></td></tr></table></figure>
+
+<p>写入以下内容:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">163: &#123;  </span><br><span class="line">url: &quot;pkg+http://mirrors.163.com/freebsd-pkg/$&#123;ABI&#125;/quarterly&quot;,  </span><br><span class="line">mirror_type: &quot;srv&quot;,  </span><br><span class="line">signature_type: &quot;none&quot;,  </span><br><span class="line">fingerprints: &quot;/usr/share/keys/pkg&quot;,  </span><br><span class="line">enabled: yes</span><br><span class="line">&#125;</span><br><span class="line">FreeBSD: &#123; enabled: no &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>故障排除</strong></p>
+<p><strong>若要获取滚动更新的包，请将 <code>quarterly</code> 修改为 <code>latest</code>。二者区别见 FreeBSD 手册。请注意, <code>CURRENT</code> 版本只有 <code>latest</code>：</strong></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;&#x27; &#x27;s/quarterly/latest/g&#x27; /etc/pkg/FreeBSD.conf</span><br></pre></td></tr></table></figure>
+
+<p><strong>若要使用 https,请先安装 <code>security/ca_root_nss</code> ,并将 <code>http</code> 修改为 <code>https</code>,最后使用命令 <code># pkg update -f</code> 刷新缓存即可,下同。</strong></p>
+<h3 id="中国科学技术大学开源软件镜像站"><a href="#中国科学技术大学开源软件镜像站" class="headerlink" title="中国科学技术大学开源软件镜像站"></a>中国科学技术大学开源软件镜像站</h3><p>创建用户级源文件:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ee /usr/local/etc/pkg/repos/ustc.conf</span><br></pre></td></tr></table></figure>
+
+<p>写入以下内容:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ustc: &#123;  </span><br><span class="line">url: &quot;pkg+http://mirrors.ustc.edu.cn/freebsd-pkg/$&#123;ABI&#125;/quarterly&quot;,  </span><br><span class="line">mirror_type: &quot;srv&quot;,  </span><br><span class="line">signature_type: &quot;none&quot;,  </span><br><span class="line">fingerprints: &quot;/usr/share/keys/pkg&quot;,  </span><br><span class="line">enabled: yes</span><br><span class="line">&#125;</span><br><span class="line">FreeBSD: &#123; enabled: no &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="南京大学开源镜像站"><a href="#南京大学开源镜像站" class="headerlink" title="南京大学开源镜像站"></a>南京大学开源镜像站</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ee /usr/local/etc/pkg/repos/nju.conf</span><br></pre></td></tr></table></figure>
+
+<p>写入以下内容:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nju: &#123;  </span><br><span class="line">url: &quot;pkg+http://mirrors.nju.edu.cn/freebsd-pkg/$&#123;ABI&#125;/quarterly&quot;,  </span><br><span class="line">mirror_type: &quot;srv&quot;,  </span><br><span class="line">signature_type: &quot;none&quot;,  </span><br><span class="line">fingerprints: &quot;/usr/share/keys/pkg&quot;,  </span><br><span class="line">enabled: yes</span><br><span class="line">&#125;</span><br><span class="line">FreeBSD: &#123; enabled: no &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="北京交通大学镜像站"><a href="#北京交通大学镜像站" class="headerlink" title="北京交通大学镜像站"></a>北京交通大学镜像站</h3><p>创建用户级源文件:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ee /usr/local/etc/pkg/repos/bjtu.conf</span><br></pre></td></tr></table></figure>
+
+<p>写入以下内容:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">bjtu: &#123;</span><br><span class="line">  url: &quot;pkg+http://mirror.bjtu.edu.cn/reverse/freebsd-pkg/$&#123;ABI&#125;/quarterly&quot;,</span><br><span class="line">  mirror_type: &quot;srv&quot;,</span><br><span class="line">  signature_type: &quot;none&quot;,</span><br><span class="line">  fingerprints: &quot;/usr/share/keys/pkg&quot;,</span><br><span class="line">  enabled: yes</span><br><span class="line">&#125;</span><br><span class="line">FreeBSD: &#123; enabled: no &#125;</span><br></pre></td></tr></table></figure>
+
+<p>若要获取滚动更新的包,请将<code>quarterly</code>修改为<code>latest</code>.请注意,<code>CURRENT</code>版本只有<code>latest</code>.</p>
+<p>若要使用https,请先安装security&#x2F;ca_root_nss,并将<code>http</code>修改为<code>https</code>,最后使用命令</p>
+<p><code>pkg update -f</code>刷新缓存即可.</p>
+<h3 id="ports源-提供源码方式安装软件的包管理器"><a href="#ports源-提供源码方式安装软件的包管理器" class="headerlink" title="ports源:提供源码方式安装软件的包管理器"></a>ports源:提供源码方式安装软件的包管理器</h3><p>ports 下载路径是 <code>/usr/ports/distfiles</code></p>
+<blockquote>
+<p><strong>警告</strong></p>
+<p>只有 freebsd.cn 镜像站的 ports 镜像是完整的，其余的大概只镜像了不到十分之一。请优先考虑使用 FreeBSD.cn。见 <a class="link"   target="_blank" rel="noopener" href="https://github.com/ustclug/discussions/issues/408" >https://github.com/ustclug/discussions/issues/408open in new window<i class="fas fa-external-link-alt"></i></a>。</p>
+</blockquote>
+<h3 id="FreeBSD-cn"><a href="#FreeBSD-cn" class="headerlink" title="FreeBSD.cn"></a>FreeBSD.cn</h3><p>创建或修改文件 <code> ee /etc/make.conf</code></p>
+<p>写入以下内容（注意结尾的 &#x2F; 是必须的！下同）:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MASTER_SITE_OVERRIDE?=http://ports.freebsd.cn/ports-distfiles/$&#123;DIST_SUBDIR&#125;/</span><br></pre></td></tr></table></figure>
+
+<h3 id="网易开源镜像站-1"><a href="#网易开源镜像站-1" class="headerlink" title="网易开源镜像站"></a>网易开源镜像站</h3><p>创建或修改文件 <code> ee /etc/make.conf</code></p>
+<p>写入以下内容:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MASTER_SITE_OVERRIDE?=http://mirrors.163.com/freebsd-ports/distfiles/$&#123;DIST_SUBDIR&#125;/</span><br></pre></td></tr></table></figure>
+
+<h3 id="中国科学技术大学开源软件镜像站-1"><a href="#中国科学技术大学开源软件镜像站-1" class="headerlink" title="中国科学技术大学开源软件镜像站"></a>中国科学技术大学开源软件镜像站</h3><p>创建或修改文件 <code> ee /etc/make.conf</code></p>
+<p>写入以下内容:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MASTER_SITE_OVERRIDE?=http://mirrors.ustc.edu.cn/freebsd-ports/distfiles/$&#123;DIST_SUBDIR&#125;/</span><br></pre></td></tr></table></figure>
+
+<h3 id="北京交通大学开源软件镜像站"><a href="#北京交通大学开源软件镜像站" class="headerlink" title="北京交通大学开源软件镜像站"></a>北京交通大学开源软件镜像站</h3><p>创建或修改文件<code>ee /etc/make.conf</code></p>
+<p>写入以下内容:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MASTER_SITE_OVERRIDE?=http://mirror.bjtu.edu.cn/reverse/freebsd-pkg/ports-distfiles/</span><br></pre></td></tr></table></figure>
+
+<h2 id="portsnap-源-打包的-ports文件"><a href="#portsnap-源-打包的-ports文件" class="headerlink" title="portsnap 源:打包的 ports文件"></a>portsnap 源:打包的 ports文件</h2><h3 id="FreeBSD-cn-1"><a href="#FreeBSD-cn-1" class="headerlink" title="FreeBSD.cn"></a>FreeBSD.cn</h3><p>编辑 portsnap 配置文件 <code># ee /etc/portsnap.conf</code> :</p>
+<p>将 <code>SERVERNAME=portsnap.FreeBSD.org</code> 修改为 <code>SERVERNAME=portsnap.FreeBSD.cn</code></p>
+<p><strong>获取 portsnap 更新</strong></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">portsnap auto #同时支持命令行和 cron</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">portsnap fetch extract</span><br></pre></td></tr></table></figure>
+
+<p><strong>故障排除</strong></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Snapshot appears to have been created more than one day into the future!</span><br><span class="line">(Is the system clock correct?)</span><br><span class="line">Cowardly refusing to proceed any further.</span><br></pre></td></tr></table></figure>
+
+<p>需要同步时间。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ntpdate ntp.api.bz</span><br></pre></td></tr></table></figure>
+
+<h2 id="reebsd-update-源-提供基本系统更新"><a href="#reebsd-update-源-提供基本系统更新" class="headerlink" title="reebsd-update 源:提供基本系统更新"></a>reebsd-update 源:提供基本系统更新</h2><p>注意：只有一级架构的 release 版本才提供该源。也就是说 current 和 stable 是没有的。 关于架构的支持等级说明请看：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.freebsd.org/platforms" >https://www.freebsd.org/platforms<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="FreeBSD-cn-2"><a href="#FreeBSD-cn-2" class="headerlink" title="FreeBSD.cn"></a>FreeBSD.cn</h3><p>编辑 <code>ee /etc/freebsd-update.conf</code> 文件:</p>
+<p>将 <code>ServerName update.FreeBSD.org</code> 修改为 <code>ServerName update.FreeBSD.cn</code></p>
+<p><strong>例:从 FreeBSD 12 升级到 13.0</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">freebsd-update -r 13.0-RELEASE upgrade</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="北京交通大学FreeBSD-镜像使用帮助"><a href="#北京交通大学FreeBSD-镜像使用帮助" class="headerlink" title="北京交通大学FreeBSD 镜像使用帮助"></a>北京交通大学FreeBSD 镜像使用帮助</h2><h3 id="pkg-源-pkg源提供二进制安装包"><a href="#pkg-源-pkg源提供二进制安装包" class="headerlink" title="pkg 源:pkg源提供二进制安装包."></a>pkg 源:pkg源提供二进制安装包.</h3><p>FreeBSD中pkg源分为系统级和用户级两个源.不建议直接修改&#x2F;etc&#x2F;pkg&#x2F;FreeBSD.conf,因为该文件会随着基本系统的更新而发生改变.</p>
+<p>创建用户级源目录:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /usr/local/etc/pkg/repos</span><br></pre></td></tr></table></figure>
+
+<p>创建用户级源文件:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ee /usr/local/etc/pkg/repos/bjtu.conf</span><br></pre></td></tr></table></figure>
+
+<p>写入以下内容:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">bjtu: &#123;</span><br><span class="line">  url: &quot;pkg+http://mirror.bjtu.edu.cn/reverse/freebsd-pkg/$&#123;ABI&#125;/quarterly&quot;,</span><br><span class="line">  mirror_type: &quot;srv&quot;,</span><br><span class="line">  signature_type: &quot;none&quot;,</span><br><span class="line">  fingerprints: &quot;/usr/share/keys/pkg&quot;,</span><br><span class="line">  enabled: yes</span><br><span class="line">&#125;</span><br><span class="line">FreeBSD: &#123; enabled: no &#125;</span><br></pre></td></tr></table></figure>
+
+<p>若要获取滚动更新的包,请将<code>quarterly</code>修改为<code>latest</code>.请注意,<code>CURRENT</code>版本只有<code>latest</code>.</p>
+<p>若要使用https,请先安装security&#x2F;ca_root_nss,并将<code>http</code>修改为<code>https</code>,最后使用命令<code>#pkg update -f</code>刷新缓存即可.</p>
+<h3 id="ports源-提供源码方式安装软件的包管理器-1"><a href="#ports源-提供源码方式安装软件的包管理器-1" class="headerlink" title="ports源:提供源码方式安装软件的包管理器"></a>ports源:提供源码方式安装软件的包管理器</h3><p>创建或修改文件<code>#ee /etc/make.conf</code>:</p>
+<p>写入以下内容:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MASTER_SITE_OVERRIDE?=http://mirror.bjtu.edu.cn/reverse/freebsd-pkg/ports-distfiles/</span><br></pre></td></tr></table></figure>
+
+<h3 id="portsnap源-打包的ports文件"><a href="#portsnap源-打包的ports文件" class="headerlink" title="portsnap源:打包的ports文件"></a>portsnap源:打包的ports文件</h3><p>编辑portsnap配置文件 <code>#ee /etc/portsnap.conf</code> :</p>
+<p>将<code>SERVERNAME=portsnap.FreeBSD.org</code> 修改为<code>SERVERNAME=freebsd-portsnap.mirror.bjtulug.org</code></p>
+<p>获取portsnap更新:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">portsnap fetch extract</span><br></pre></td></tr></table></figure>
+
+<h3 id="freebsd-update源-提供基本系统更新"><a href="#freebsd-update源-提供基本系统更新" class="headerlink" title="freebsd-update源:提供基本系统更新"></a>freebsd-update源:提供基本系统更新</h3><p>编辑<code>#ee /etc/freebsd-update.conf</code> 文件:</p>
+<p>将<code>ServerName update.FreeBSD.org</code> 修改为<code>ServerName freebsd-update.mirror.bjtulug.org</code></p>
+<p>例:从FreeBSD 11升级到12.0</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">freebsd-update -r 12.0-RELEASE upgrade</span><br></pre></td></tr></table></figure>
+
+
+
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">FreeBSD 换源方式</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Blank</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-04-05 00:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/04/05/FreeBSD更换镜像源/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/FreeBSD-%E6%8D%A2%E6%BA%90%E6%96%B9%E5%BC%8F/">#FreeBSD 换源方式</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/04/05/FreeBSD%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B%E4%B8%8Esudo%E5%AE%89%E8%A3%85/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">FreeBSD压缩解压与sudo安装</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/04/05/FreeBSD%E5%9B%BE%E8%A7%A3%E5%AE%89%E8%A3%85/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">FreeBSD图解安装</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#FreeBSD-%E6%8D%A2%E6%BA%90%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">FreeBSD 换源方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pkg-%E6%BA%90-pkg-%E6%BA%90%E6%8F%90%E4%BE%9B%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E8%A3%85%E5%8C%85"><span class="nav-number">1.1.</span> <span class="nav-text">pkg 源:pkg 源提供二进制安装包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E6%98%93%E5%BC%80%E6%BA%90%E9%95%9C%E5%83%8F%E7%AB%99"><span class="nav-number">1.2.</span> <span class="nav-text">网易开源镜像站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%A4%A7%E5%AD%A6%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E9%95%9C%E5%83%8F%E7%AB%99"><span class="nav-number">1.3.</span> <span class="nav-text">中国科学技术大学开源软件镜像站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E5%BC%80%E6%BA%90%E9%95%9C%E5%83%8F%E7%AB%99"><span class="nav-number">1.4.</span> <span class="nav-text">南京大学开源镜像站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6%E9%95%9C%E5%83%8F%E7%AB%99"><span class="nav-number">1.5.</span> <span class="nav-text">北京交通大学镜像站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ports%E6%BA%90-%E6%8F%90%E4%BE%9B%E6%BA%90%E7%A0%81%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8"><span class="nav-number">1.6.</span> <span class="nav-text">ports源:提供源码方式安装软件的包管理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FreeBSD-cn"><span class="nav-number">1.7.</span> <span class="nav-text">FreeBSD.cn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E6%98%93%E5%BC%80%E6%BA%90%E9%95%9C%E5%83%8F%E7%AB%99-1"><span class="nav-number">1.8.</span> <span class="nav-text">网易开源镜像站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%A4%A7%E5%AD%A6%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E9%95%9C%E5%83%8F%E7%AB%99-1"><span class="nav-number">1.9.</span> <span class="nav-text">中国科学技术大学开源软件镜像站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E9%95%9C%E5%83%8F%E7%AB%99"><span class="nav-number">1.10.</span> <span class="nav-text">北京交通大学开源软件镜像站</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#portsnap-%E6%BA%90-%E6%89%93%E5%8C%85%E7%9A%84-ports%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">portsnap 源:打包的 ports文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FreeBSD-cn-1"><span class="nav-number">2.1.</span> <span class="nav-text">FreeBSD.cn</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reebsd-update-%E6%BA%90-%E6%8F%90%E4%BE%9B%E5%9F%BA%E6%9C%AC%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%96%B0"><span class="nav-number">3.</span> <span class="nav-text">reebsd-update 源:提供基本系统更新</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FreeBSD-cn-2"><span class="nav-number">3.1.</span> <span class="nav-text">FreeBSD.cn</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%97%E4%BA%AC%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6FreeBSD-%E9%95%9C%E5%83%8F%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9"><span class="nav-number">4.</span> <span class="nav-text">北京交通大学FreeBSD 镜像使用帮助</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pkg-%E6%BA%90-pkg%E6%BA%90%E6%8F%90%E4%BE%9B%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E8%A3%85%E5%8C%85"><span class="nav-number">4.1.</span> <span class="nav-text">pkg 源:pkg源提供二进制安装包.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ports%E6%BA%90-%E6%8F%90%E4%BE%9B%E6%BA%90%E7%A0%81%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8-1"><span class="nav-number">4.2.</span> <span class="nav-text">ports源:提供源码方式安装软件的包管理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#portsnap%E6%BA%90-%E6%89%93%E5%8C%85%E7%9A%84ports%E6%96%87%E4%BB%B6"><span class="nav-number">4.3.</span> <span class="nav-text">portsnap源:打包的ports文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#freebsd-update%E6%BA%90-%E6%8F%90%E4%BE%9B%E5%9F%BA%E6%9C%AC%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%96%B0"><span class="nav-number">4.4.</span> <span class="nav-text">freebsd-update源:提供基本系统更新</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Blank</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://github.com/5ober">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

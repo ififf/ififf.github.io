@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Blank">
+    
+    <title>
+        
+            FreeBSD图解安装 |
+        
+        Blankの博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo.jpg","favicon":"/images/logo.jpg","avatar":"/images/logo.jpg","font_size":"18px","font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":true},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"5ober","github_admins":"5ober","repository":"hexo-blog-comments","client_id":"40d85a7b36388c0b5094","client_secret":"6c7eab92d24b6f1bdfbcdf077c73e86841b35d5e","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["Trainee","Engineer","Java工程师"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Blankの博客" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.jpg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Blankの博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">FreeBSD图解安装</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/logo.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Blank</span>
+                            
+                                <span class="author-label">Java工程师</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-04-05 00:00:00</span>
+        <span class="mobile">2023-04-05 00:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-04-05 02:24:15</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/FreeBSD%E5%9B%BE%E8%A7%A3%E5%AE%89%E8%A3%85/">FreeBSD图解安装</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/FreeBSD%E5%9B%BE%E8%A7%A3%E5%AE%89%E8%A3%85/">FreeBSD图解安装</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>920 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>3 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h2 id="FreeBSD图解安装"><a href="#FreeBSD图解安装" class="headerlink" title="FreeBSD图解安装"></a>FreeBSD图解安装</h2><p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/%E5%AE%89%E8%A3%851.76fl21pbz740.webp"
+                      alt="安装1"
+                ></p>
+<p>推荐等待十秒即可自动进入，也可以直接回车进入。</p>
+<table>
+<thead>
+<tr>
+<th align="center">选项</th>
+<th align="center">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ACPI Support</td>
+<td align="center">ACPI 支持。有很多教程说有问题就关闭他，实际上是胡扯。关闭了反而问题会更多</td>
+</tr>
+<tr>
+<td align="center">Safe Mode</td>
+<td align="center">安全模式</td>
+</tr>
+<tr>
+<td align="center">Single User</td>
+<td align="center">单用户模式，找回 root 密码或修复磁盘时会用到</td>
+</tr>
+<tr>
+<td align="center">Verbose</td>
+<td align="center">啰嗦模式，显示更多输出</td>
+</tr>
+</tbody></table>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.1xk5if68ng8w.webp"
+                      alt="image"
+                ></p>
+<p>选择 <code>install</code>,按下<code>回车键</code>进行安装。</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.4apfp2uent40.webp"
+                      alt="image"
+                ></p>
+<p>这里是设置键盘，直接回车即可。</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.1z1maaqi8xj4.webp"
+                      alt="image"
+                ></p>
+<p>此处是设置主机名。<strong>严禁直接回车，设置主机名为空，否则后果自负。</strong></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.19z3j01lc44g.webp"
+                      alt="image"
+                ></p>
+<p>推荐：只选 <code>src</code> 以及 <code>lib32</code>。部分显卡驱动或其他程序需要 <code>src</code>，经测试 <code>lib32</code> 后天安装无效。不推荐选 <code>ports</code>，因为即使选了 <code>ports</code> 也不会安装的，还是空的。</p>
+<p><strong>严禁全选，全选部分组件会使用网络进行安装。</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">选项</th>
+<th align="center">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">base-dbg</td>
+<td align="center">激活调试符号的基础工具，如 cat、ls 等</td>
+</tr>
+<tr>
+<td align="center">kernel-dbg</td>
+<td align="center">激活内核和模块的调试符号</td>
+</tr>
+<tr>
+<td align="center">lib32-dbg</td>
+<td align="center">用于在激活调试符号的 64 位版本的 FreeBSD 上运行 32 位应用程序的兼容库</td>
+</tr>
+<tr>
+<td align="center">lib32</td>
+<td align="center">用于在 64 位版本的 FreeBSD 上运行 32 位应用程序的兼容库</td>
+</tr>
+<tr>
+<td align="center">ports</td>
+<td align="center">ports</td>
+</tr>
+<tr>
+<td align="center">src</td>
+<td align="center">系统源代码</td>
+</tr>
+<tr>
+<td align="center">tests</td>
+<td align="center">测试工具</td>
+</tr>
+</tbody></table>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.b8427sn6ck8.webp"
+                      alt="image"
+                ></p>
+<p>推荐：文件分区详解在第 6 章。这里推荐选择 auto ZFS&#x2F;UFS，一般来说内存小于 8GB 的应该选择 UFS，内存 8G 及以上的应该选用 ZFS。允许手动分区解压 txz 文件以自定义。</p>
+<blockquote>
+<p>注意：如果使用手动分区一直提示分区表损坏（corrupted）或类似字样，请先退出重启进入 shell 模式，刷新分区表：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># gpart recover ada0</span><br></pre></td></tr></table></figure>
+
+<p>你在手动安装的时候可以判断是哪块硬盘，以确定 ada0 这个参数是多少。</p>
+<p>刷新后，输入 <code>bsdinstall</code> 即可进入安装模式。</p>
+<p>原因详情见 <a class="link"   target="_blank" rel="noopener" href="https://handbook.bsdcn.org/di-18-zhang-cun-chu/18.3.-tiao-zheng-he-zeng-jia-ci-pan-da-xiao.html" >FreeBSD 手册open in new window<i class="fas fa-external-link-alt"></i></a>，但是我认为这是一个 bug。</p>
+</blockquote>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.33qv10ze09a0.webp"
+                      alt="image"
+                ></p>
+<p>现代计算机应该选择 GPT+UEFI。较老的计算机（比如 2013 年以前的）应该选择保持与图片一致的选项（GPT(BIOS)）。</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.7klj2v91zvc0.webp"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.37kiiwbl5mk0.webp"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.4qu6d0ske4k0.webp"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.3xmogs20khg0.webp"
+                      alt="image"
+                ></p>
+<p>此处输入 root 密码，密码不会显示在屏幕上，且要求重复输入两次以确认一致性。密码强度默认无要求。</p>
+<p>设置网卡IP</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.5t9hwrt04z40.webp"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.4nc1lg18xfo0.webp"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.1ub6eiiljf6o.webp"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.b6mw2qwcbls.webp"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.1i4wxasrpm1s.webp"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.5s7l7680c8w0.webp"
+                      alt="image"
+                ></p>
+<p>保持 DHCP 获取的 DNS 即可，也可以使用其他 DNS。</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.2nbs63oyzp40.webp"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.2y351a76b920.webp"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.4yq1qryc4t80.webp"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.6ongxnzwzk00.webp"
+                      alt="image"
+                ></p>
+<p>!<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.15g1hx2glkww.webp"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.1nrcu4eonijk.webp"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.1xoae0id4tts.webp"
+                      alt="image"
+                ></p>
+<p><strong>严禁全选</strong></p>
+<p>不要选<code>local_unbound</code>，会影响 DNS，见 <a class="link"   target="_blank" rel="noopener" href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=262290" >https://bugs.freebsd.org/bugzilla/show_bug.cgi?id&#x3D;262290open in new window<i class="fas fa-external-link-alt"></i></a>。</p>
+<p>虚拟机不需要选 <code>powerd</code>。</p>
+<table>
+<thead>
+<tr>
+<th align="center">选项</th>
+<th align="center">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">local_unbound</td>
+<td align="center">启用 DNS 本地非绑定。这是基本系统预置的 unbound，仅用于本地缓存转发解析器使用。注意：如果开启，你的系统将不会正确联网，需要手动配置 DNS。如果你不知道这是什么不建议开启</td>
+</tr>
+<tr>
+<td align="center">sshd</td>
+<td align="center">开启 ssh 服务</td>
+</tr>
+<tr>
+<td align="center">moused</td>
+<td align="center">在 tty 界面显示鼠标</td>
+</tr>
+<tr>
+<td align="center">ntpdate</td>
+<td align="center">启用启动时的自动时钟同步功能</td>
+</tr>
+<tr>
+<td align="center">ntpd</td>
+<td align="center">用于自动时钟同步的网络时间协议（NTP）守护程序</td>
+</tr>
+<tr>
+<td align="center">powerd</td>
+<td align="center">电源管理</td>
+</tr>
+<tr>
+<td align="center">dumpdev</td>
+<td align="center">启用崩溃转储，用于调试系统</td>
+</tr>
+</tbody></table>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.1jnk8hln8wn4.webp"
+                      alt="image"
+                ></p>
+<p>推荐选择：这里是安全增强选择，应该选择 <code>disable_sendmail</code>，如果不禁止这个服务会使你在每次开机的时候卡上几分钟，而且这个服务本身没什么用，发邮件用的。</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.4htqk7rgo5c0.webp"
+                      alt="image"
+                ></p>
+<p>这个菜单选项是用来创建普通用户的。root 敢死队可以无视之。需要注意的是，最好将该用户其加入 wheel 组，其他参数可以保持默认设置不变。在 FreeBSD 14 及以后，所有用户的 shell 都被统一为了 sh。</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.25p308hz509s.webp"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.1z7migv97v1c.webp"
+                      alt="image"
+                ></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230405/image.1z7migv97v1c.webp"
+                      alt="image"
+                ></p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">FreeBSD图解安装</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Blank</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-04-05 00:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/04/05/FreeBSD图解安装/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/FreeBSD%E5%9B%BE%E8%A7%A3%E5%AE%89%E8%A3%85/">#FreeBSD图解安装</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/04/05/FreeBSD%E6%9B%B4%E6%8D%A2%E9%95%9C%E5%83%8F%E6%BA%90/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">FreeBSD 换源方式</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/04/05/FreeBSD%E5%AE%89%E8%A3%85Gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">FreeBSD安装Gnome桌面环境</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#FreeBSD%E5%9B%BE%E8%A7%A3%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">FreeBSD图解安装</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Blank</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://github.com/5ober">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

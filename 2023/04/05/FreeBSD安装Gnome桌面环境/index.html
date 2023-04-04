@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Blank">
+    
+    <title>
+        
+            FreeBSD安装Gnome桌面环境 |
+        
+        Blankの博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo.jpg","favicon":"/images/logo.jpg","avatar":"/images/logo.jpg","font_size":"18px","font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":true},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"5ober","github_admins":"5ober","repository":"hexo-blog-comments","client_id":"40d85a7b36388c0b5094","client_secret":"6c7eab92d24b6f1bdfbcdf077c73e86841b35d5e","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["Trainee","Engineer","Java工程师"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Blankの博客" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.jpg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Blankの博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">FreeBSD安装Gnome桌面环境</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/logo.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Blank</span>
+                            
+                                <span class="author-label">Java工程师</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-04-05 00:00:00</span>
+        <span class="mobile">2023-04-05 00:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-04-05 01:42:14</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/FreeBSD%E5%AE%89%E8%A3%85Gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/">FreeBSD安装Gnome桌面环境</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/FreeBSD%E5%AE%89%E8%A3%85Gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/">FreeBSD安装Gnome桌面环境</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.1k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h2 id="FreeBSD安装Gnome桌面环境"><a href="#FreeBSD安装Gnome桌面环境" class="headerlink" title="FreeBSD安装Gnome桌面环境"></a>FreeBSD安装Gnome桌面环境</h2><h3 id="配置-SSH允许-root-ssh"><a href="#配置-SSH允许-root-ssh" class="headerlink" title="配置 SSH允许 root ssh"></a>配置 SSH允许 root ssh</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ee /etc/ssh/sshd_config    #（删去前边的 #，并将 yes 或 no 修改为如下）</span><br><span class="line"></span><br><span class="line">PermitRootLogin yes          #允许 root 登录 </span><br><span class="line">PasswordAuthentication yes   #（可选）设置是否使用普通密码验证，如果不设置此参数则使用 PAM 认证登录，安全性更高</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>提示：删去前边的 <code>#</code> 是什么意思？<code>#</code> 在 UNIX 当中一般是起到一个注释作用，相当于 C 语言里面的 <code>//</code>。意味着后边的文字只起到说明作用，不起实际作用。</p>
+</blockquote>
+<blockquote>
+<p><strong>故障排除</strong></p>
+<p>如果你实在是找不到 <code>PasswordAuthentication no</code>，请你看看你改的究竟是 <code>/etc/ssh/</code>ssh<em><strong>d</strong></em><code>_config</code> 还是 <code>/etc/ssh/</code><strong>ssh</strong><code>_config</code>。<strong>sshd</strong> 才是我们真正要改的文件。</p>
+</blockquote>
+<h3 id="开启-SSH-服务"><a href="#开启-SSH-服务" class="headerlink" title="开启 SSH 服务"></a>开启 SSH 服务</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">service sshd restart</span></span><br></pre></td></tr></table></figure>
+
+<p>如果提示找不到 <code>sshd</code>,请执行下一命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">sysrc sshd_enable=<span class="string">&quot;YES&quot;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>然后再</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">service sshd restart</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="显卡驱动以及虚拟机增强工具"><a href="#显卡驱动以及虚拟机增强工具" class="headerlink" title="显卡驱动以及虚拟机增强工具"></a>显卡驱动以及虚拟机增强工具</h3><h3 id="显卡驱动"><a href="#显卡驱动" class="headerlink" title="显卡驱动"></a>显卡驱动</h3><p>VMware 自动缩放屏幕请安装显卡驱动和虚拟机增强工具，即：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install xf86-video-vmware open-vm-tools xf86-input-vmmouse</span><br></pre></td></tr></table></figure>
+
+<p>安装完毕后无需任何多余配置即可实现屏幕自动缩放。</p>
+<blockquote>
+<p>请勿做多余配置，比如去修改创建 <code>xorg.conf</code>，这会造成虚拟机卡死等问题。</p>
+</blockquote>
+<blockquote>
+<p>wayland 下也需要安装该驱动。即使 wayland 暂不可用。</p>
+</blockquote>
+<blockquote>
+<p>如果屏幕显示不正常（过大），请尝试：编辑虚拟机设置——&gt;硬件、设备——&gt;显示器——&gt;监视器、指定监视器设置——&gt;任意监视器的最大分辨率，设置为主机的分辨率或者略低于主机分辨率均可。</p>
+</blockquote>
+<h3 id="虚拟机增强工具"><a href="#虚拟机增强工具" class="headerlink" title="虚拟机增强工具"></a>虚拟机增强工具</h3><p>如果有桌面</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install open-vm-tools xf86-input-vmmouse</span><br></pre></td></tr></table></figure>
+
+<p>如果没有桌面：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install open-vm-tools-nox11</span><br></pre></td></tr></table></figure>
+
+<p>具体配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ee /boot/loader.conf</span><br></pre></td></tr></table></figure>
+
+<p>写入</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fusefs_load=&quot;YES&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="共享文件夹（可选）"><a href="#共享文件夹（可选）" class="headerlink" title="共享文件夹（可选）"></a>共享文件夹（可选）</h3><p>请先安装虚拟机增强工具。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vmhgfs-fuse .host:/selfsharefold /mnt/hgfs</span><br></pre></td></tr></table></figure>
+
+<p>查看共享文件夹</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /mnt/hgfs</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="安装Gnome"><a href="#安装Gnome" class="headerlink" title="安装Gnome"></a>安装Gnome</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">正常安装</span></span><br><span class="line">pkg install xorg gnome noto-sc xdg-user-dirs</span><br></pre></td></tr></table></figure>
+
+<p>解释:</p>
+<table>
+<thead>
+<tr>
+<th align="center">软件</th>
+<th align="center">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">xorg</td>
+<td align="center">X11</td>
+</tr>
+<tr>
+<td align="center">gnome</td>
+<td align="center">Gnome 主程序</td>
+</tr>
+<tr>
+<td align="center">noto-sc</td>
+<td align="center">思源黑体——简体中文</td>
+</tr>
+<tr>
+<td align="center">xdg-user-dirs</td>
+<td align="center">用于创建用户家目录的子目录</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>精简安装（仅限经验丰富的用户）</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install xorg-minimal gnome-lite wqy-fonts xdg-user-dirs</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装谷歌 系统管理 终端 gedit</span></span><br><span class="line">pkg install chromium gnome-system-monitor gnome-console gedit </span><br></pre></td></tr></table></figure>
+
+<p>如果安装了完整版本也可以使用 pkg 包管理器卸载自带的游戏软件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg delete gnome-2048 gnome-klotski gnome-tetravex gnome-mines gnome-taquin gnome-sudoku gnome-robots gnome-nibbles lightsoff tali quadrapassel swell-foop gnome-mahjongg five-or-more iagno aisleriot four-in-a-row</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ee /etc/fstab</span><br></pre></td></tr></table></figure>
+
+<p>添加内容如下:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proc                    /proc   procfs  rw              0       0</span><br></pre></td></tr></table></figure>
+
+<p>设置gnome-session输入以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">% </span><span class="language-bash"><span class="built_in">echo</span> <span class="string">&quot;/usr/local/bin/gnome-session&quot;</span> &gt; ~/.xinitrc</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置启动项："><a href="#配置启动项：" class="headerlink" title="配置启动项："></a>配置启动项：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ee /etc/rc.conf</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加</span></span><br><span class="line">dbus_enable=&quot;YES&quot;</span><br><span class="line">hald_enable=&quot;YES&quot;</span><br><span class="line">gdm_enable=&quot;YES&quot;</span><br><span class="line">gnome_enable=&quot;YES&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="中文化GNOME-界面"><a href="#中文化GNOME-界面" class="headerlink" title="中文化GNOME 界面"></a>中文化GNOME 界面</h3><blockquote>
+<p>本小节配置参数与用户 shell 无关，即使是 csh 也该如此配置。</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ee /usr/local/etc/gdm/locale.conf</span><br></pre></td></tr></table></figure>
+
+<p>添加以下内容：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LANG=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_CTYPE=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_MESSAGES=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">LC_ALL=&quot;zh_CN.UTF-8&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="中文输入法"><a href="#中文输入法" class="headerlink" title="中文输入法"></a>中文输入法</h3><p>gnome 捆绑的输入法面板是 <code>ibus</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pkg install zh-ibus-libpinyin </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装好运行初始化命令</span> </span><br><span class="line">ibus-setup</span><br></pre></td></tr></table></figure>
+
+<p>安装输入法(这里只装拼音输入法</p>
+<p>运行ibus-setup重启系统,还要在系统设置—–&gt;区域与语言—&gt;输入源加入中文输入法</p>
+<h3 id="终端显示中文（文件用户根目录）"><a href="#终端显示中文（文件用户根目录）" class="headerlink" title="终端显示中文（文件用户根目录）"></a>终端显示中文（文件用户根目录）</h3><blockquote>
+<p>此处对用户 shell 存疑。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ee .cshrc</span><br></pre></td></tr></table></figure>
+
+<p>添加以下内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setenv LANG zh_CN.UTF-8</span><br><span class="line">setenv LC_CTYPE zh_CN.UTF-8</span><br><span class="line">setenv LC_ALL zh_CN.UTF-8</span><br></pre></td></tr></table></figure>
+
+<h2 id="优化系统"><a href="#优化系统" class="headerlink" title="优化系统"></a>优化系统</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install gnome-tweaks</span><br></pre></td></tr></table></figure>
+
+<p>安装其他软件&#x2F;安装字体</p>
+<h3 id="Firefox-与-Chromium-安装"><a href="#Firefox-与-Chromium-安装" class="headerlink" title="Firefox 与 Chromium 安装"></a>Firefox 与 Chromium 安装</h3><h3 id="火狐浏览器"><a href="#火狐浏览器" class="headerlink" title="火狐浏览器"></a>火狐浏览器</h3><h4 id="安装普通版本（更新频繁）："><a href="#安装普通版本（更新频繁）：" class="headerlink" title="安装普通版本（更新频繁）："></a>安装普通版本（更新频繁）：</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install firefox</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/ports/www/firefox</span><br><span class="line">make install clean </span><br></pre></td></tr></table></figure>
+
+<h4 id="安装长期支持版本："><a href="#安装长期支持版本：" class="headerlink" title="安装长期支持版本："></a>安装长期支持版本：</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install firefox-esr</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/ports/www/firefox-esr/ &amp;&amp; make install clean</span><br></pre></td></tr></table></figure>
+
+<h3 id="Chromium（Chromium-不是-chrome，但是启动命令是-chrome）"><a href="#Chromium（Chromium-不是-chrome，但是启动命令是-chrome）" class="headerlink" title="Chromium（Chromium 不是 chrome，但是启动命令是 chrome）"></a>Chromium（Chromium 不是 chrome，但是启动命令是 chrome）</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install chromium</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/ports/www/chromium</span><br><span class="line">make install clean</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装其他软件（可选）"><a href="#安装其他软件（可选）" class="headerlink" title="安装其他软件（可选）"></a>安装其他软件（可选）</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pkg install -y wqy-fonts 字体</span><br><span class="line">pkg install -y smplayer (视频播放器)</span><br><span class="line">pkg install -y zh_CN-libreoffice(中文版办公软件)</span><br><span class="line">pkg install -y gimp(图片处理)</span><br><span class="line">pkg install -y thunderbird(邮件客户端)</span><br><span class="line">pkg install -y transmission (BT下载工具)</span><br><span class="line">pkg install -y system-config-printer(帮助添加打印机)</span><br></pre></td></tr></table></figure>
+
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">FreeBSD安装Gnome桌面环境</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Blank</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-04-05 00:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/04/05/FreeBSD安装Gnome桌面环境/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/FreeBSD%E5%AE%89%E8%A3%85Gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/">#FreeBSD安装Gnome桌面环境</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/04/05/FreeBSD%E5%9B%BE%E8%A7%A3%E5%AE%89%E8%A3%85/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">FreeBSD图解安装</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/04/05/%E8%99%9A%E6%8B%9F%E6%9C%BAVMware%20Tools%E7%9A%84%E5%AE%89%E8%A3%85/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">虚拟机VMware Tools的安装</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#FreeBSD%E5%AE%89%E8%A3%85Gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">FreeBSD安装Gnome桌面环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-SSH%E5%85%81%E8%AE%B8-root-ssh"><span class="nav-number">1.1.</span> <span class="nav-text">配置 SSH允许 root ssh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%90%AF-SSH-%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.2.</span> <span class="nav-text">开启 SSH 服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E4%BB%A5%E5%8F%8A%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A2%9E%E5%BC%BA%E5%B7%A5%E5%85%B7"><span class="nav-number">1.3.</span> <span class="nav-text">显卡驱动以及虚拟机增强工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8"><span class="nav-number">1.4.</span> <span class="nav-text">显卡驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A2%9E%E5%BC%BA%E5%B7%A5%E5%85%B7"><span class="nav-number">1.5.</span> <span class="nav-text">虚拟机增强工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">1.6.</span> <span class="nav-text">共享文件夹（可选）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Gnome"><span class="nav-number">2.</span> <span class="nav-text">安装Gnome</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%90%AF%E5%8A%A8%E9%A1%B9%EF%BC%9A"><span class="nav-number">2.2.</span> <span class="nav-text">配置启动项：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E5%8C%96GNOME-%E7%95%8C%E9%9D%A2"><span class="nav-number">2.3.</span> <span class="nav-text">中文化GNOME 界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95"><span class="nav-number">2.4.</span> <span class="nav-text">中文输入法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%88%E7%AB%AF%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87%EF%BC%88%E6%96%87%E4%BB%B6%E7%94%A8%E6%88%B7%E6%A0%B9%E7%9B%AE%E5%BD%95%EF%BC%89"><span class="nav-number">2.5.</span> <span class="nav-text">终端显示中文（文件用户根目录）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.</span> <span class="nav-text">优化系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Firefox-%E4%B8%8E-Chromium-%E5%AE%89%E8%A3%85"><span class="nav-number">3.1.</span> <span class="nav-text">Firefox 与 Chromium 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%81%AB%E7%8B%90%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number">3.2.</span> <span class="nav-text">火狐浏览器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%99%AE%E9%80%9A%E7%89%88%E6%9C%AC%EF%BC%88%E6%9B%B4%E6%96%B0%E9%A2%91%E7%B9%81%EF%BC%89%EF%BC%9A"><span class="nav-number">3.2.1.</span> <span class="nav-text">安装普通版本（更新频繁）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E9%95%BF%E6%9C%9F%E6%94%AF%E6%8C%81%E7%89%88%E6%9C%AC%EF%BC%9A"><span class="nav-number">3.2.2.</span> <span class="nav-text">安装长期支持版本：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chromium%EF%BC%88Chromium-%E4%B8%8D%E6%98%AF-chrome%EF%BC%8C%E4%BD%86%E6%98%AF%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4%E6%98%AF-chrome%EF%BC%89"><span class="nav-number">3.3.</span> <span class="nav-text">Chromium（Chromium 不是 chrome，但是启动命令是 chrome）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%85%B6%E4%BB%96%E8%BD%AF%E4%BB%B6%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">3.4.</span> <span class="nav-text">安装其他软件（可选）</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Blank</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://github.com/5ober">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

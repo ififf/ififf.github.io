@@ -219,7 +219,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-04-05 01:36:16</span>
+        <span class="pc">2023-04-05 19:15:21</span>
     </span>
     
     
@@ -250,7 +250,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>278 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>282 字</span>
         </span>
     
     
@@ -275,7 +275,7 @@
 
                 <h2 id="Deepin和UOS系统远程ssh配置"><a href="#Deepin和UOS系统远程ssh配置" class="headerlink" title="Deepin和UOS系统远程ssh配置"></a>Deepin和UOS系统远程ssh配置</h2><p>UOS系统安装后，默认是无法远程使用ssh远程登陆服务器的，本文介绍使用ssh远程登陆服务器的安装及配置方式。</p>
 <p>一、检查系统是否安装的有ssh服务，命令如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -e | grep ssh</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep ssh</span><br></pre></td></tr></table></figure>
 
 <p>如无任何输出信息，则表示没有安装或者启用ssh服务。</p>
 <p>二、如果没有ssh安装openssh</p>
@@ -291,13 +291,14 @@
 <p>1、查看服务器ip地址，命令：ifconfig</p>
 <p>2、使用本地电脑远程ssh客户端连接服务器</p>
 <p>这时需要修改ssh配置文件（文件路径：&#x2F;etc&#x2F;ssh&#x2F;sshd_config），修改方式如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/ssh/sshd-config</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
 
 <p>打开文件后一直往下拉，找到如下图所示位置：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LoginGraceTime 2m</span><br><span class="line"></span><br><span class="line">PermitRootLogin yes</span><br><span class="line"></span><br><span class="line">StrictModes yes</span><br></pre></td></tr></table></figure>
 
 <p>修改完成后保存退出，然后重启ssh服务，重启ssh服务命令如下：</p>
-<p>sudo service ssh restart</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh restart</span><br><span class="line"></span><br><span class="line">sudo /etc/init.d/ssh restart</span><br></pre></td></tr></table></figure>
+
 <p>重启后即可使用ssh客户端登陆服务器了</p>
 
             </div>

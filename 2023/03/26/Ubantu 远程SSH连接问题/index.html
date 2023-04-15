@@ -219,7 +219,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-03-26 22:13:48</span>
+        <span class="pc">2023-04-05 19:17:18</span>
     </span>
     
     
@@ -250,7 +250,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>309 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>314 字</span>
         </span>
     
     
@@ -293,11 +293,11 @@
 <p>找到PermitRootLogin without-password 修改为PermitRootLogin yes （本人遇到过）<br><img  
                      lazyload
                      alt="image"
-                     data-src="https://cdn.staticaly.com/gh/5ober/chart-bed@main/20230326/Snipaste_2023-03-26_20-37-03.5utpxp88ww80.jpg"
+                     data-src="https://gitee.com/lucky0915/pic-bed/raw/master/img/202303262044797.png"
                       alt="Snipaste_2023-03-26_20-37-03"
                 ></p>
 <p>五、重启SSH服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service ssh restart</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service ssh restart</span><br><span class="line">sudo /etc/init.d/ssh restart</span><br></pre></td></tr></table></figure>
 
 <p>即可通过winscp 、putty使用ROOT权限远程登录。</p>
 <p>启用root用户：sudo passwd root &#x2F;&#x2F;修改密码后就启用了。</p>

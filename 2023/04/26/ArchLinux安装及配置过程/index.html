@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Blank">
+    
+    <title>
+        
+            ArchLinux安装及配置过程 |
+        
+        Blankの博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo.jpg","favicon":"/images/logo.jpg","avatar":"/images/logo.jpg","font_size":"18px","font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":true},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"5ober","github_admins":"5ober","repository":"hexo-blog-comments","client_id":"40d85a7b36388c0b5094","client_secret":"6c7eab92d24b6f1bdfbcdf077c73e86841b35d5e","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["Trainee","Engineer","Java工程师"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Blankの博客" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.jpg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Blankの博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">ArchLinux安装及配置过程</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/logo.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Blank</span>
+                            
+                                <span class="author-label">Java工程师</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-04-26 00:00:00</span>
+        <span class="mobile">2023-04-26 00:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-04-26 01:29:07</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/ArchLinux/">ArchLinux</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Linux/">Linux</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.4k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>5 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h2 id="ArchLinux安装及配置过程"><a href="#ArchLinux安装及配置过程" class="headerlink" title="ArchLinux安装及配置过程"></a>ArchLinux安装及配置过程</h2><h4 id="1、安装前准备工作"><a href="#1、安装前准备工作" class="headerlink" title="1、安装前准备工作"></a>1、安装前准备工作</h4><p>安装手册地址：<a class="link"   target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Installation_guide" >https://wiki.archlinux.org/index.php/Installation_guide<i class="fas fa-external-link-alt"></i></a><br>在“编辑虚拟机的设置”设置中打开“选项”选项卡，点选高级，在固件类型中选择UEFI并确定。<br>网络设置中选择NAT模式，这样只要主机能上网，虚拟机将自动配置上网。<br>光驱选择下载好的镜像文件<br>保存设置后开启虚拟机。</p>
+<h4 id="2、进行安装配置"><a href="#2、进行安装配置" class="headerlink" title="2、进行安装配置"></a>2、进行安装配置</h4><p>启动成功后进入了命令行模式。<br>对系统磁盘进行分区<br>一种建议的分区例子</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l //查看磁盘情况</span><br><span class="line">fdisk /dev/sda  //输入m可以看到指令说明，p看分区情况</span><br><span class="line">    g           //输入g建立一个gpt的磁盘</span><br><span class="line">    n           //新建分区：boot +512M；swap+1G；/mnt 剩下的空间</span><br><span class="line">    w           //保存分区表退出</span><br><span class="line">mkfs.fat -F32 /dev/sda1	//格式boot分区为fat32格式</span><br><span class="line">mkfs.ext4 /dev/sda2			//格式化mnt分区为linux的ext4格式</span><br><span class="line">mkswap /dev/sda3       		//初始化swap分区</span><br><span class="line">swapon /dev/sda3</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="选择并编辑镜像源"><a href="#选择并编辑镜像源" class="headerlink" title="选择并编辑镜像源"></a>选择并编辑镜像源</h5><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/pacman.conf	//编辑pacman配置文件</span><br><span class="line">    Color           			 	//去掉<span class="comment">#号似的pacman具有颜色提醒的功能</span></span><br><span class="line">    :w                				//保存配置</span><br><span class="line">    <span class="section">[core]</span>            				//找到这行下的列表，/etc/pacman.d/mirrorlist输入gf命令可以直接跳转编辑这个镜像源文件</span><br><span class="line">vim /etc/pacman.d/mirrorlist		//或者直接在命令行中编辑此文件</span><br><span class="line">    qa    						//vim宏编辑技巧，qa开始录制宏，宏名为a</span><br><span class="line">    		gg		    		//到最开始一行</span><br><span class="line">    		/^\n+Enter  		//找到第一个空行进入</span><br><span class="line">      	/China+Enter  //找到China所在行</span><br><span class="line">      	Shift+v     		//尽量可视行编辑模式</span><br><span class="line">      	j           			//选择China行及下面一行</span><br><span class="line">      	d           			//剪切这两行</span><br><span class="line">      	gg          			//到最开始一行</span><br><span class="line">      	/^\n+Enter 		 //找到第一个空行进入</span><br><span class="line">      	k           //上移一行</span><br><span class="line">      	p           //粘贴剪切的两行</span><br><span class="line">      	q           //退出宏录制</span><br><span class="line">    @a      		//多次执行录制的宏a，将所有的中国镜像源放在最开始</span><br><span class="line">    :wq     	//保存退出</span><br></pre></td></tr></table></figure>
+
+<h5 id="挂载分区并安装linux"><a href="#挂载分区并安装linux" class="headerlink" title="挂载分区并安装linux"></a>挂载分区并安装linux</h5><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sda2 /mnt  //挂载mnt分区</span><br><span class="line">mkdir /mnt/boot       //建立boot目录</span><br><span class="line">mount /dev/sda1 /mnt/boot   //挂载boot分区</span><br><span class="line">pacstrap /mnt base linux linux-firmware //安装linux</span><br><span class="line">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab      //设置linux</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="配置安装好的linux"><a href="#配置安装好的linux" class="headerlink" title="配置安装好的linux"></a>配置安装好的linux</h5><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">arch-chroot /mnt              //进入安装好的系统</span><br><span class="line">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime    //选择中国上海作为时区</span><br><span class="line">hwclock --systohc  		   //同步系统时间</span><br><span class="line">pacman -S vim   		      //安装文本编辑器</span><br><span class="line">vim /etc/locale.gen  		 //编辑语言</span><br><span class="line">  en_US.UTF-8 UTF-8 		 //将注释<span class="comment">#号去掉,保存退出</span></span><br><span class="line">locale-gen     				   //生成本地化文件</span><br><span class="line">vim /mnt/etc/locale.conf	  //编辑语言选择</span><br><span class="line">  <span class="attr">LANG</span>=en_US.UTF-<span class="number">8</span>		  //选择语言，保存退出</span><br><span class="line">vim /etc/vconsole.conf		 //键盘配置</span><br><span class="line">  <span class="comment">#KEYMAP=us 				//键盘设置，默认就是us  对于所支持的可以在命令行中输入</span></span><br><span class="line">  <span class="comment">#keycode 1 = Caps_Lock</span></span><br><span class="line">  <span class="comment">#keycode 58 = Escape    //这两行可以将Esc和CapsLock两个键互换</span></span><br><span class="line">vim /etc/hostname 		  //编辑网络名字文件  </span><br><span class="line">  arch       						   //取网络名字arch</span><br><span class="line">vim /etc/hosts				  //网络设置</span><br><span class="line">  127.0.0.1	  localhost</span><br><span class="line">  ::1	      	localhost</span><br><span class="line">  127.0.1.1	  arch.localdomain	arch    //使用上一步设置的网络名字arch</span><br><span class="line">passwd  					  //更改root密码</span><br><span class="line">pacman -S grub efibootmgr intel-ucode os-prober  //安装一个BootLoader</span><br><span class="line">mkdir /boot/grub 						//创建一个文件夹</span><br><span class="line">grub-mkconfig &gt; /boot/grub/grub.cfg //生成启动配置文件到文件夹</span><br><span class="line">uname -m  								  //确认一下系统的架构，目前多数是x86_64</span><br><span class="line">grub-install <span class="attr">--target</span>=x<span class="number">86_64</span>-efi --efi-directory=/boot</span><br><span class="line">pacman -S wpa_supplicant dhcpcd 	 // **重要** 安装好网络部件wpa_supplicant及动态分配ip工具dhcpcd，其他软件可以在之后有网络进行按需安装</span><br><span class="line">exit  		  //回到之前的系统</span><br><span class="line">reboot 		 //安装好后可以进行重启</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3、重启后配置linux的用户及联网功能"><a href="#3、重启后配置linux的用户及联网功能" class="headerlink" title="3、重启后配置linux的用户及联网功能"></a>3、重启后配置linux的用户及联网功能</h4><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">用root登入系统继续配置linux</span><br><span class="line">df -lh   //查看系统安装磁盘容量信息</span><br><span class="line">ip link //查看网络连接状况</span><br><span class="line">ip link set ens33 up  //打开虚拟机的网卡</span><br><span class="line">dhcpcd  //运行动态分配ip</span><br><span class="line">ping jd.com  //连接百度进行上网测试</span><br><span class="line">ip addr //其作用类似于ifconfig</span><br><span class="line">ip route //其作用显示当前实际在使用的网卡端口状态和路由网关信息</span><br><span class="line">pacman -S netctl  //安装网络管理软件来管理网卡</span><br><span class="line">                  //参考地址https://wiki.archlinux.org/index.php/Netctl<span class="comment">#Basic_method</span></span><br><span class="line">cp /etc/netctl/examples/ehternet-dhcp /etc/netctl/my_dhcp_profile    //将例子中的有线连接配置文件复制到目录下并改名为my_dhcp_profile</span><br><span class="line">vim /etc/netctl/my_dhcp_profile  //修改配置文件</span><br><span class="line">  <span class="attr">Interface</span>=ens33   //配置连接网络名</span><br><span class="line">  <span class="attr">Connection</span>=ethernet   //为有线连接</span><br><span class="line">  <span class="attr">IP</span>=dhcp   //自动分配ip地址</span><br><span class="line">netctl start my_dhcp_profile  //启动网络连接服务</span><br><span class="line">netctl enable my_dhcp_profile //设置开机启动网络连接服务</span><br><span class="line">pacman -S openssh //安装openssh服务</span><br><span class="line">systemctl start sshd.service //启动openssh服务</span><br><span class="line">systemctl enable sshd.service //设置开机启动ssh服务</span><br><span class="line">vim /etc/ssh/sshd_config //编辑sshd配置文件</span><br><span class="line"></span><br><span class="line">  <span class="comment"># Authentication:   //运行root用户进行ssh登入</span></span><br><span class="line">  LoginGraceTime 2m  //将注释<span class="comment">#号去掉</span></span><br><span class="line">  <span class="comment">#PermitRootLogin prohibit-password</span></span><br><span class="line">  PermitRootLogin yes   //添加一行</span><br><span class="line">  StrictModes yes      //将注释<span class="comment">#号去掉</span></span><br><span class="line">useradd -m -G wheel winnerwood //添加一个用户在wheel用户组中</span><br><span class="line">passwd winnerwood  //给这个用户添加密码</span><br><span class="line"></span><br><span class="line">***</span><br><span class="line">ln -s /usr/bin/vim /usr/bin/vi //编辑管理员权限时候可以用vim替代vi命令</span><br><span class="line">visudo  //编辑sudo文件</span><br><span class="line"><span class="comment">#%wheel ALL=(ALL) ALL //将注释#去掉，让这个组中用户可以执行任何命令。保存退出</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4、安装一些常用软件"><a href="#4、安装一些常用软件" class="headerlink" title="4、安装一些常用软件"></a>4、安装一些常用软件</h4><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">安装软件</span><br><span class="line">采用新建的用户winnerwood进行操作</span><br><span class="line">sudo pacman -Syyu  //更新一下系统</span><br><span class="line">sudo pacman -S man //manual命令</span><br><span class="line">sudo pacman -S base-devel  //软件开发工具集</span><br><span class="line">sudo pacman -S neofetch   //显示计算机信息的软件</span><br><span class="line">neofetch        //观察运行效果</span><br><span class="line"><span class="comment"># 键盘输入上屏</span></span><br><span class="line">sudo pacman -S screenkey</span><br><span class="line"><span class="comment"># i3 窗口管理器</span></span><br><span class="line">sudo pacman -S i3 </span><br><span class="line"><span class="comment">#文件管理器 polybar</span></span><br><span class="line">sudo pacman -S ranger  </span><br><span class="line">//安装oh-my-zsh</span><br><span class="line">sudo pacman -S zsh  //安装zsh的shell</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">ArchLinux安装及配置过程</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Blank</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-04-26 00:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/04/26/ArchLinux安装及配置过程/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Linux/">#Linux</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/04/26/Archlinux%E5%AE%89%E8%A3%85open-vm-tools%E8%BD%AF%E4%BB%B6/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item"></span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/04/26/ArchLinux%E9%85%8D%E7%BD%AE/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">ArchLinux配置</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ArchLinux%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">ArchLinux安装及配置过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85%E5%89%8D%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.0.1.</span> <span class="nav-text">1、安装前准备工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E8%BF%9B%E8%A1%8C%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE"><span class="nav-number">1.0.2.</span> <span class="nav-text">2、进行安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%B9%B6%E7%BC%96%E8%BE%91%E9%95%9C%E5%83%8F%E6%BA%90"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">选择并编辑镜像源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8C%82%E8%BD%BD%E5%88%86%E5%8C%BA%E5%B9%B6%E5%AE%89%E8%A3%85linux"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">挂载分区并安装linux</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%AE%89%E8%A3%85%E5%A5%BD%E7%9A%84linux"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">配置安装好的linux</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E9%87%8D%E5%90%AF%E5%90%8E%E9%85%8D%E7%BD%AElinux%E7%9A%84%E7%94%A8%E6%88%B7%E5%8F%8A%E8%81%94%E7%BD%91%E5%8A%9F%E8%83%BD"><span class="nav-number">1.0.3.</span> <span class="nav-text">3、重启后配置linux的用户及联网功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E5%AE%89%E8%A3%85%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6"><span class="nav-number">1.0.4.</span> <span class="nav-text">4、安装一些常用软件</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Blank</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://github.com/5ober">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

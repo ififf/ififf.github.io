@@ -219,7 +219,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-04-05 19:15:21</span>
+        <span class="pc">2023-05-04 03:29:33</span>
     </span>
     
     
@@ -250,7 +250,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>282 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>304 字</span>
         </span>
     
     
@@ -297,7 +297,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LoginGraceTime 2m</span><br><span class="line"></span><br><span class="line">PermitRootLogin yes</span><br><span class="line"></span><br><span class="line">StrictModes yes</span><br></pre></td></tr></table></figure>
 
 <p>修改完成后保存退出，然后重启ssh服务，重启ssh服务命令如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh restart</span><br><span class="line"></span><br><span class="line">sudo /etc/init.d/ssh restart</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh restart</span><br><span class="line"></span><br><span class="line">sudo /etc/init.d/ssh restart</span><br><span class="line"></span><br><span class="line">systemctl status sshd.service</span><br><span class="line">systemctl start sshd.service</span><br><span class="line">systemctl restart sshd.service</span><br><span class="line">systemctl enable sshd.service</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">systemctl enable systemd-networkd</span><br><span class="line">systemctl disable systemd-resolved.service</span><br><span class="line"></span><br><span class="line">systemctl disable systemd-networkd</span><br></pre></td></tr></table></figure>
 
 <p>重启后即可使用ssh客户端登陆服务器了</p>
 
@@ -348,13 +348,13 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2023/04/16/%E9%85%8D%E7%BD%AEMaven%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"
+                               href="/2023/04/26/%EF%BC%A4%EF%BC%B7%EF%BC%AD%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%E5%99%A8%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">Linux 配置 JDK Maven 环境变量</span>
+                                <span class="post-nav-title-item">DWM 窗口管理器安装及配置</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             </a>

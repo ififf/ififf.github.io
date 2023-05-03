@@ -9,7 +9,7 @@
     
     <title>
         
-            zsh及oh my zsh配置 |
+            CentOS 8 更换yum源 |
         
         Blankの博客
     </title>
@@ -191,7 +191,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">zsh及oh my zsh配置</span>
+                <span class="title-hover-animation">CentOS 8 更换yum源</span>
             </div>
 
             
@@ -213,13 +213,13 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-04-26 00:00:00</span>
-        <span class="mobile">2023-04-26 00:00</span>
+        <span class="pc">2023-05-04 00:00:00</span>
+        <span class="mobile">2023-05-04 00:00</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-04-26 01:25:56</span>
+        <span class="pc">2023-05-04 03:22:27</span>
     </span>
     
     
@@ -228,7 +228,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/zsh%E5%8F%8Aomz-%E9%85%8D%E7%BD%AE/">zsh及omz 配置</a>&nbsp;
+                        <a href="/categories/CentOS-8-%E6%9B%B4%E6%8D%A2yum%E6%BA%90/">CentOS 8 更换yum源</a>&nbsp;
                     </li>
                 
             </ul>
@@ -240,7 +240,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/zsh%E5%8F%8Aomz-%E9%85%8D%E7%BD%AE/">zsh及omz 配置</a>&nbsp;
+                        <a href="/tags/CentOS-8-%E6%9B%B4%E6%8D%A2yum%E6%BA%90/">CentOS 8 更换yum源</a>&nbsp;
                     </li>
                 
             </ul>
@@ -250,12 +250,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>500 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>305 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>2 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>1 分钟</span>
         </span>
     
     
@@ -273,47 +273,29 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h3 id="zsh及oh-my-zsh配置"><a href="#zsh及oh-my-zsh配置" class="headerlink" title="zsh及oh my zsh配置"></a>zsh及oh my zsh配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">先安装zsh</span></span><br><span class="line"></span><br><span class="line">ArchLinux</span><br><span class="line">sudo pacman -S zsh</span><br><span class="line"></span><br><span class="line">Ubuntu</span><br><span class="line">sudo apt install zsh</span><br><span class="line"></span><br><span class="line">cat /etc/shells</span><br><span class="line"></span><br><span class="line">chsh -s /bin/bash</span><br><span class="line"></span><br><span class="line">chsh -s /bin/zsh 命令将 zsh 设置为系统默认 shell</span><br><span class="line"></span><br><span class="line">echo $SHELL</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装oh my zsh</span></span><br><span class="line">sh -c &quot;$(curl -fsSL https://gitee.com/caiguang_cc/ohmyzsh/raw/master/tools/install.sh)&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">卸载oh my zsh</span></span><br><span class="line">sh -c &quot;$(curl -fsSL https://gitee.com/caiguang_cc/ohmyzsh/raw/master/tools/uninstall.sh)&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">zsh omz 配置</span><br><span class="line"></span><br><span class="line">gedit ~/.zshrc</span><br><span class="line">source ~/.zshrc</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">主题</span> </span><br><span class="line">dpoggi</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">插件</span></span><br><span class="line">history</span><br><span class="line">extract</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="omz配置"><a href="#omz配置" class="headerlink" title="omz配置"></a>omz配置</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/yaocccc/omz</span><br><span class="line"></span><br><span class="line"> echo &quot;source ~/.config/omz/omz.zsh&quot; &gt;&gt; ~/.zshrc</span><br><span class="line"></span><br><span class="line">请自行安装fd</span><br><span class="line">On macOS: brew install fd</span><br><span class="line"></span><br><span class="line">On Arch Linux: sudo pacman -S fd</span><br><span class="line"></span><br><span class="line">On Ubuntu: apt install fd-find &amp;&amp; ln -s $(which fdfind)</span><br><span class="line">On Debian: sudo apt-get install fd-find &amp;&amp; ln -s $(which fdfind) ~/.local/bin/fd</span><br><span class="line"></span><br><span class="line">请自行安装fzf</span><br><span class="line">git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf</span><br><span class="line">~/.fzf/install</span><br><span class="line"></span><br><span class="line">sudo pacman -S lua</span><br><span class="line">sudo apt install lua5.4</span><br></pre></td></tr></table></figure>
+                <h2 id="CentOS-8-更换yum源"><a href="#CentOS-8-更换yum源" class="headerlink" title="CentOS 8 更换yum源"></a>CentOS 8 更换yum源</h2><h5 id="1-背景"><a href="#1-背景" class="headerlink" title="1.背景"></a>1.背景</h5><h5 id="新装了Centos8操作系统，安装yum-update时报错。"><a href="#新装了Centos8操作系统，安装yum-update时报错。" class="headerlink" title="新装了Centos8操作系统，安装yum-update时报错。"></a>新装了Centos8操作系统，安装yum-update时报错。</h5><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[root@CentOS yum.repos.d]</span><span class="comment"># yum update</span></span><br><span class="line">CentOS Linux 8 - AppStream          31  B/s |  38  B     00:01    </span><br><span class="line">Error: Failed to download metadata for repo &#x27;appstream&#x27;: Cannot prepare internal mirrorlist: No URLs in mirrorlist</span><br></pre></td></tr></table></figure>
 
 
 
-<ol>
-<li><p>z.lua</p>
-<blockquote>
-<p><code>z keyword</code><br>按使用频率跳转到keyword关联目录<br>例如 <code>z zsh</code> 可快速跳转到 <code>~/.config/zsh</code> 目录</p>
-</blockquote>
+<h5 id="2-问题分析"><a href="#2-问题分析" class="headerlink" title="2.问题分析"></a>2.问题分析</h5><h5 id="经查询，CentOS8操作系统版本生命周期结束，Linux社区不再维护，需要还源。"><a href="#经查询，CentOS8操作系统版本生命周期结束，Linux社区不再维护，需要还源。" class="headerlink" title="经查询，CentOS8操作系统版本生命周期结束，Linux社区不再维护，需要还源。"></a>经查询，CentOS8操作系统版本生命周期结束，Linux社区不再维护，需要还源。</h5><h5 id="3-解决办法"><a href="#3-解决办法" class="headerlink" title="3.解决办法"></a>3.解决办法</h5><h5 id="将yum源换为国内流行的阿里云"><a href="#将yum源换为国内流行的阿里云" class="headerlink" title="将yum源换为国内流行的阿里云"></a>将yum源换为国内流行的阿里云</h5><ol>
+<li><p>备份</p>
+  <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/yum.repos.d/ &amp;&amp; mkdir backup &amp;&amp; mv *repo backup/</span><br><span class="line">或</span><br><span class="line">sudo rename &#x27;.repo&#x27; &#x27;.repo.bak&#x27; /etc/yum.repos.d/*.repo </span><br><span class="line">返原备份</span><br><span class="line">sudo rename &#x27;.repo.bak&#x27; &#x27;.repo&#x27; /etc/yum.repos.d/*.repo .bak </span><br></pre></td></tr></table></figure></li>
+</ol>
+<ol start="2">
+<li>从阿里云下载从阿里云下载</li>
+</ol>
+   <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo wget https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo -O /etc/yum.repos.d/Centos-vault-8.5.2111.repo</span><br><span class="line">sudo wget https://mirrors.aliyun.com/repo/epel-archive-8.repo -O /etc/yum.repos.d/epel-archive-8.repo</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>替换源链接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;s/mirrors.cloud.aliyuncs.com/mirrors.aliyun.com/g&#x27;  /etc/yum.repos.d/Centos-vault-8.5.2111.repo </span><br><span class="line">sed -i &#x27;s/mirrors.cloud.aliyuncs.com/mirrors.aliyun.com/g&#x27;  /etc/yum.repos.d/epel-archive-8.repo</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>extract</p>
-<blockquote>
-<p><code>extract xxx</code> 或 <code>x xxx</code><br>extract一个压缩文件<br>可根据不同压缩文件类型进行解压 无需记忆长解压指令</p>
-</blockquote>
+<li><p>清除并更新缓存</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum clean all &amp;&amp; yum makecache</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>zsh-autosuggestions</p>
-<blockquote>
-<p>输入命令时从history中找到最符合的命令<br><right> 使用该 suggestion</p>
-</blockquote>
-</li>
-<li><p>zsh-syntax-highlighting</p>
-<blockquote>
-<p>高亮输入命令</p>
-</blockquote>
-</li>
-<li><p>fzf-tab</p>
-<blockquote>
-<p>tab时使用fzf进行候选选择</p>
-</blockquote>
-</li>
-<li><p>常用git命令支持(非插件)</p>
-<blockquote>
-<p><code>gco</code> &#x3D; <code>git checkout</code><br><code>gpo</code> &#x3D; <code>git push origin &lt;当前分支&gt;</code><br><code>gpl</code> &#x3D; <code>git pull origin &lt;当前分支&gt;</code><br><code>gd</code> &#x3D; <code>git diff</code><br><code>gs</code> &#x3D; <code>git status</code><br><code>gss</code> &#x3D; <code>更简洁的 git status</code><br><code>gam</code> &#x3D; <code>git add all 并 git commit -m &#39;内容&#39;</code>, e.g. <code>git commit update readme</code><br><code>gll</code> &#x3D; <code>简洁打印 git log</code>, 默认展示10条 若想展示更多 <code>gll 100</code><br><code>glll</code> &#x3D; <code>详细打印 git log</code>, 默认展示10条 若想展示更多 <code>glll 100</code></p>
-<blockquote>
-<p>展示 glll效果如下 PS: 实际使用带颜色 可自行根据 <a class="link"   target="_blank" rel="noopener" href="https://github.com/yaocccc/omz/blob/master/config/git.zsh" >此文件:git.zsh<i class="fas fa-external-link-alt"></i></a> 内容配置对应颜色</p>
-<p>$ glll<br>* e797da3 2022-12-14 15:18 user1: fix: 透传减轻下游负载<br>* ed8a8ba 2022-12-14 14:41 user1: fix: 查询时透传id<br>* 7c2799b 2022-12-13 19:04 user1: Merge branch ‘abc’ into ‘master’<br>|<br>| * 3f2441b 2022-12-13 19:01 user1: fix: 修复安全隐患 |&#x2F;<br>* 70a46da 2022-12-13 18:27 user2: Merge branch ‘fix&#x2F;abcd’ into ‘master’</p>
-</blockquote>
-</blockquote>
-</li>
+<li><p>验证</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update</span><br></pre></td></tr></table></figure>
+
+<h3 id="开启-fastestmirror-功能"><a href="#开启-fastestmirror-功能" class="headerlink" title="开启 fastestmirror 功能"></a>开启 fastestmirror 功能</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/dnf/dnf.conf </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">在文件的最后插入并保持</span> </span><br><span class="line">fastestmirror=1</span><br></pre></td></tr></table></figure></li>
 </ol>
 
             </div>
@@ -324,16 +306,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">本文标题</span>：<span class="content">zsh及oh my zsh配置</span>
+            <span class="type">本文标题</span>：<span class="content">CentOS 8 更换yum源</span>
         </li>
         <li class="post-author">
             <span class="type">本文作者</span>：<span class="content">Blank</span>
         </li>
         <li class="post-time">
-            <span class="type">创建时间</span>：<span class="content">2023-04-26 00:00:00</span>
+            <span class="type">创建时间</span>：<span class="content">2023-05-04 00:00:00</span>
         </li>
         <li class="post-link">
-            <span class="type">本文链接</span>：<span class="content">2023/04/26/zsh及oh my zsh配置/</span>
+            <span class="type">本文链接</span>：<span class="content">2023/05/04/CentOS 8 更换yum源/</span>
         </li>
         <li class="post-license">
             <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
@@ -351,7 +333,7 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/zsh%E5%8F%8Aomz-%E9%85%8D%E7%BD%AE/">#zsh及omz 配置</a>&nbsp;
+                            <a href="/tags/CentOS-8-%E6%9B%B4%E6%8D%A2yum%E6%BA%90/">#CentOS 8 更换yum源</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -363,13 +345,13 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2023/04/26/Nona%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/"
+                               href="/2023/05/04/Anolis%20OS%E6%9B%B4%E6%96%B0Linux%20%E5%86%85%E6%A0%B8/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">nano语法高亮拼写检查</span>
+                                <span class="post-nav-title-item">Anolis OS更新Linux 内核</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             </a>
@@ -379,10 +361,10 @@
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/04/26/%EF%BC%A4%EF%BC%B7%EF%BC%AD%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%E5%99%A8%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE/"
+                               href="/2023/05/04/Linux%20%E9%85%8D%E7%BD%AE%20JDK%20Maven%20%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">DWM 窗口管理器安装及配置</span>
+                                <span class="post-nav-title-item">Linux 配置 JDK Maven 环境变量</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -401,7 +383,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#zsh%E5%8F%8Aoh-my-zsh%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">zsh及oh my zsh配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#omz%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">omz配置</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS-8-%E6%9B%B4%E6%8D%A2yum%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text">CentOS 8 更换yum源</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E8%83%8C%E6%99%AF"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1.背景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B0%E8%A3%85%E4%BA%86Centos8%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%AE%89%E8%A3%85yum-update%E6%97%B6%E6%8A%A5%E9%94%99%E3%80%82"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">新装了Centos8操作系统，安装yum-update时报错。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">2.问题分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%8F%E6%9F%A5%E8%AF%A2%EF%BC%8CCentOS8%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%89%88%E6%9C%AC%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%BB%93%E6%9D%9F%EF%BC%8CLinux%E7%A4%BE%E5%8C%BA%E4%B8%8D%E5%86%8D%E7%BB%B4%E6%8A%A4%EF%BC%8C%E9%9C%80%E8%A6%81%E8%BF%98%E6%BA%90%E3%80%82"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">经查询，CentOS8操作系统版本生命周期结束，Linux社区不再维护，需要还源。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">3.解决办法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%86yum%E6%BA%90%E6%8D%A2%E4%B8%BA%E5%9B%BD%E5%86%85%E6%B5%81%E8%A1%8C%E7%9A%84%E9%98%BF%E9%87%8C%E4%BA%91"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">将yum源换为国内流行的阿里云</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%90%AF-fastestmirror-%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.</span> <span class="nav-text">开启 fastestmirror 功能</span></a></li></ol></li></ol>
     </div>
 </div>
 

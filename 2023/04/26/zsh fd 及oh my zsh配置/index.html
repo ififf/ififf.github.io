@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Blank">
+    
+    <title>
+        
+            zsh fd 及oh my zsh配置 |
+        
+        Blankの博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo.jpg","favicon":"/images/logo.jpg","avatar":"/images/logo.jpg","font_size":"18px","font_family":"STKaiti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":true},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"5ober","github_admins":"5ober","repository":"hexo-blog-comments","client_id":"40d85a7b36388c0b5094","client_secret":"6c7eab92d24b6f1bdfbcdf077c73e86841b35d5e","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["Trainee","Engineer","Java工程师"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Blankの博客" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.jpg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Blankの博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">zsh fd 及oh my zsh配置</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/logo.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Blank</span>
+                            
+                                <span class="author-label">Java工程师</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-04-26 00:00:00</span>
+        <span class="mobile">2023-04-26 00:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-05-04 02:28:15</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/zsh%E5%8F%8Aomz-fd-%E9%85%8D%E7%BD%AE/">zsh及omz fd 配置</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/zsh%E5%8F%8Aomz-fd-%E9%85%8D%E7%BD%AE/">zsh及omz fd 配置</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>602 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>3 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h3 id="zsh及oh-my-zsh配置"><a href="#zsh及oh-my-zsh配置" class="headerlink" title="zsh及oh my zsh配置"></a>zsh及oh my zsh配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">先安装zsh</span></span><br><span class="line"></span><br><span class="line">ArchLinux</span><br><span class="line">sudo pacman -S zsh</span><br><span class="line"></span><br><span class="line">Ubuntu</span><br><span class="line">sudo apt install zsh</span><br><span class="line"></span><br><span class="line">cat /etc/shells</span><br><span class="line"></span><br><span class="line">chsh -s /bin/bash</span><br><span class="line"></span><br><span class="line">chsh -s /bin/zsh 命令将 zsh 设置为系统默认 shell</span><br><span class="line"></span><br><span class="line">echo $SHELL</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装oh my zsh</span></span><br><span class="line">sh -c &quot;$(curl -fsSL https://gitee.com/caiguang_cc/ohmyzsh/raw/master/tools/install.sh)&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">卸载oh my zsh</span></span><br><span class="line">sh -c &quot;$(curl -fsSL https://gitee.com/caiguang_cc/ohmyzsh/raw/master/tools/uninstall.sh)&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">zsh omz 配置</span><br><span class="line"></span><br><span class="line">gedit ~/.zshrc</span><br><span class="line">source ~/.zshrc</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">主题</span> </span><br><span class="line">dpoggi</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">插件</span></span><br><span class="line">history</span><br><span class="line">extract</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="在RedHat-Enterprise-Linux-8-RHEL8-Almalinux-8-EuroLinux-8-或-Rocky-Linux-8上"><a href="#在RedHat-Enterprise-Linux-8-RHEL8-Almalinux-8-EuroLinux-8-或-Rocky-Linux-8上" class="headerlink" title="在RedHat Enterprise Linux 8 (RHEL8), Almalinux 8, EuroLinux 8 或 Rocky Linux 8上"></a>在RedHat Enterprise Linux 8 (RHEL8), Almalinux 8, EuroLinux 8 或 Rocky Linux 8上</h3><p><a class="link"   target="_blank" rel="noopener" href="https://github.com/cha0ran/fd-zh" >fd官方文档 <i class="fas fa-external-link-alt"></i></a></p>
+<p>从 <a class="link"   target="_blank" rel="noopener" href="https://github.com/sharkdp/fd/releases" >github 上的 sharkdp<i class="fas fa-external-link-alt"></i></a> 中获取最新的 fd-v*-x86_64-unknown-linux-gnu.tar.gz 文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">tar xf fd-v*-x86_64-unknown-linux-gnu.tar.gz</span><br><span class="line">chown -R root:root fd-v*-x86_64-unknown-linux-gnu</span><br><span class="line">cd fd-v*-x86_64-unknown-linux-gnu</span><br><span class="line">sudo cp fd /bin</span><br><span class="line">gzip fd.1</span><br><span class="line">chown root:root fd.1.gz</span><br><span class="line">sudo cp fd.1.gz /usr/share/man/man1</span><br><span class="line">sudo cp autocomplete/fd.bash /usr/share/bash-completion/completions/fd</span><br><span class="line">source /usr/share/bash-completion/completions/fd</span><br><span class="line">fd</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="omz配置"><a href="#omz配置" class="headerlink" title="omz配置"></a>omz配置</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/yaocccc/omz</span><br><span class="line"></span><br><span class="line">echo &quot;source ~/.config/omz/omz.zsh&quot; &gt;&gt; ~/.zshrc</span><br><span class="line"></span><br><span class="line">请自行安装fd</span><br><span class="line">On macOS: brew install fd</span><br><span class="line"></span><br><span class="line">On Arch Linux: sudo pacman -S fd</span><br><span class="line"></span><br><span class="line">On Ubuntu: sudo apt-get install fd-find &amp;&amp; ln -s $(which fdfind) ~/.local/bin/fd</span><br><span class="line">On Debian: sudo apt-get install fd-find &amp;&amp; ln -s $(which fdfind) ~/.local/bin/fd</span><br><span class="line"></span><br><span class="line">请自行安装fzf</span><br><span class="line">git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf</span><br><span class="line">~/.fzf/install</span><br><span class="line"></span><br><span class="line">sudo pacman -S lua</span><br><span class="line">sudo apt install lua5.4</span><br></pre></td></tr></table></figure>
+
+
+
+<ol>
+<li><p>z.lua</p>
+<blockquote>
+<p><code>z keyword</code><br>按使用频率跳转到keyword关联目录<br>例如 <code>z zsh</code> 可快速跳转到 <code>~/.config/zsh</code> 目录</p>
+</blockquote>
+</li>
+<li><p>extract</p>
+<blockquote>
+<p><code>extract xxx</code> 或 <code>x xxx</code><br>extract一个压缩文件<br>可根据不同压缩文件类型进行解压 无需记忆长解压指令</p>
+</blockquote>
+</li>
+<li><p>zsh-autosuggestions</p>
+<blockquote>
+<p>输入命令时从history中找到最符合的命令<br><right> 使用该 suggestion</p>
+</blockquote>
+</li>
+<li><p>zsh-syntax-highlighting</p>
+<blockquote>
+<p>高亮输入命令</p>
+</blockquote>
+</li>
+<li><p>fzf-tab</p>
+<blockquote>
+<p>tab时使用fzf进行候选选择</p>
+</blockquote>
+</li>
+<li><p>常用git命令支持(非插件)</p>
+<blockquote>
+<p><code>gco</code> &#x3D; <code>git checkout</code><br><code>gpo</code> &#x3D; <code>git push origin &lt;当前分支&gt;</code><br><code>gpl</code> &#x3D; <code>git pull origin &lt;当前分支&gt;</code><br><code>gd</code> &#x3D; <code>git diff</code><br><code>gs</code> &#x3D; <code>git status</code><br><code>gss</code> &#x3D; <code>更简洁的 git status</code><br><code>gam</code> &#x3D; <code>git add all 并 git commit -m &#39;内容&#39;</code>, e.g. <code>git commit update readme</code><br><code>gll</code> &#x3D; <code>简洁打印 git log</code>, 默认展示10条 若想展示更多 <code>gll 100</code><br><code>glll</code> &#x3D; <code>详细打印 git log</code>, 默认展示10条 若想展示更多 <code>glll 100</code></p>
+<blockquote>
+<p>展示 glll效果如下 PS: 实际使用带颜色 可自行根据 <a class="link"   target="_blank" rel="noopener" href="https://github.com/yaocccc/omz/blob/master/config/git.zsh" >此文件:git.zsh<i class="fas fa-external-link-alt"></i></a> 内容配置对应颜色</p>
+<p>$ glll<br>* e797da3 2022-12-14 15:18 user1: fix: 透传减轻下游负载<br>* ed8a8ba 2022-12-14 14:41 user1: fix: 查询时透传id<br>* 7c2799b 2022-12-13 19:04 user1: Merge branch ‘abc’ into ‘master’<br>|<br>| * 3f2441b 2022-12-13 19:01 user1: fix: 修复安全隐患 |&#x2F;<br>* 70a46da 2022-12-13 18:27 user2: Merge branch ‘fix&#x2F;abcd’ into ‘master’</p>
+</blockquote>
+</blockquote>
+</li>
+</ol>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">zsh fd 及oh my zsh配置</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Blank</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-04-26 00:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/04/26/zsh fd 及oh my zsh配置/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/zsh%E5%8F%8Aomz-fd-%E9%85%8D%E7%BD%AE/">#zsh及omz fd 配置</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/04/26/Nona%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">nano语法高亮拼写检查</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/04/26/%EF%BC%A4%EF%BC%B7%EF%BC%AD%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%E5%99%A8%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">DWM 窗口管理器安装及配置</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#zsh%E5%8F%8Aoh-my-zsh%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">zsh及oh my zsh配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8RedHat-Enterprise-Linux-8-RHEL8-Almalinux-8-EuroLinux-8-%E6%88%96-Rocky-Linux-8%E4%B8%8A"><span class="nav-number">2.</span> <span class="nav-text">在RedHat Enterprise Linux 8 (RHEL8), Almalinux 8, EuroLinux 8 或 Rocky Linux 8上</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#omz%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">omz配置</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Blank</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://github.com/5ober">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

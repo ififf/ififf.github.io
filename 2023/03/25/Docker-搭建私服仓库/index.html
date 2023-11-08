@@ -219,7 +219,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-05-04 03:16:18</span>
+        <span class="pc">2023-05-04 18:36:35</span>
     </span>
     
     
@@ -250,7 +250,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>573 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>574 字</span>
         </span>
     
     
@@ -299,7 +299,7 @@
 
 
 
-<h2 id="Docker-可视化管理工具portainer"><a href="#Docker-可视化管理工具portainer" class="headerlink" title="Docker 可视化管理工具portainer"></a>Docker 可视化管理工具portainer</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker pull portainer/portainer</span><br><span class="line"></span><br><span class="line">docker run -p 9000:9000 -p 8000:8000 --name portainer \</span><br><span class="line">--restart=always \</span><br><span class="line">-v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">-v /mydata/portainer/data:/data \</span><br><span class="line">-d portainer/portainer</span><br></pre></td></tr></table></figure>
+<h2 id="Docker-可视化管理工具portainer"><a href="#Docker-可视化管理工具portainer" class="headerlink" title="Docker 可视化管理工具portainer"></a>Docker 可视化管理工具portainer</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker pull portainer/portainer</span><br><span class="line"></span><br><span class="line">mkdir -p /docker/volume/portainer_data</span><br><span class="line"></span><br><span class="line">docker run --name portainer -d \</span><br><span class="line">--restart=always \</span><br><span class="line">-p 9000:9000 \</span><br><span class="line">-v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">-v /docker/volume/portainer_data/:/data \</span><br><span class="line">portainer/portainer</span><br></pre></td></tr></table></figure>
 
 
             </div>
